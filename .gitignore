@@ -25,3 +25,5 @@ replay_pid*
 
 ## 하위 프로젝트의 제외파일들
 */.gitignore
+*/.gitattributes
+*/.vscode/
