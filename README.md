@@ -1,13 +1,14 @@
-# study-springboot
+study-springboot
 스프링부트 저장소 다시 만들기
 
-## chap01. Spring Boot 개발환경 설정
+## chap00. 기본 JSP 개발환경 설정
 - 개발환경 만들기
-	- JDK 21
+	- JDK 17
 	- Gradle 8.1.1
 	- Visual Studio Code
+	- Tomcat Server 9.0.41
 
-### A. JDK 21 설치
+### A. JDK 17 설치
 1. https://www.oracle.com/kr/java/technologies/downloads/ 
 2. x64 MSI Installer 다운로드 및 설치
 3. 시스템 속성에 환경변수로 JAVA_HOME 등록, Path에 포함
@@ -26,6 +27,87 @@
 4. Extension Pack for Java 설치
 5. Gradle for Java 설치
 6. Spring Boot Extension Pack 설치
+7. Community Server Connectors 설치
+
+### D. Tomcat Server 9.0.41 설치
+1. 탐색기 SERVERS 클릭
+2. Community Server Connector RMouse > Create New Server...
+3. Download server? Yes
+4. Please choose a Server to download... > Apache Tomcat 9.0.41 클릭
+5. License Yes
+6. 설치 후 Community Server Connector 아래 apache-tomcat-9.0.41 확인
+7. RMouse > Start Server
+8. 실행 로그 텍스트 깨짐 확인 RMouse > Edit Server 로 톰캣 위치 확인
+9. 톰캣 base dir/conf/logging.properties 오픈 utf-8 -> euc-kr로 변경 저장
+10. Start Server 실행
+11. 톰캣 base dir/conf/tomcat-users.xml 에 관리자 계정 추가
+
+### E. Gradle로 프로젝트 생성
+1. 챔터 chap00 생성
+2. 콘솔 오픈, chap00 이동 후 gradle init 실행
+	1. Select type of project to generate: 2. application
+	2. Select implementation language: 3. Java
+	3. Generate muliple subprojects for application? no
+	4. Select build script DSL: 1. Groovy
+	5. Select test framework: 4. JUnit Jupiter
+	6. Project name: chap00 
+	7. Source package: chap00
+	8. Enter target version of Java: 17
+	9. Generate build using new APIs.... no
+3. chap00으로 새 VSCode 오픈
+	1. Gradle 탭 chap00 > Tasks > application > run 실행 확인
+4. app/src/main/webapp 폴더 생성
+5. build.gradle 수정
+	```text
+	dependencies {
+		testImplementation 'org.junit.jupiter:junit-jupiter:5.9.1'
+		testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.1'
+
+		compileOnly 'javax.servlet:javax.servlet-api:4.0.1'
+		compileOnly 'javax.servlet.jsp:javax.servlet.jsp-api:2.3.3'
+
+		implementation 'org.glassfish:javax.json:1.1.4'
+		implementation 'org.apache.logging.log4j:log4j-api:2.20.0'
+		implementation 'org.apache.logging.log4j:log4j-core:2.20.0'
+
+		annotationProcessor 'org.apache.logging.log4j:log4j-api:2.20.0'
+		annotationProcessor 'org.apache.logging.log4j:log4j-core:2.20.0'
+	}
+	```
+6. Tomcat 내 Server Actions... > Edit Configuration File... > conf/server.xml 오픈
+	```xml
+	<Context path="/app" docBase="D:\...\chap00\app\src\main\webapp"></Context>
+	```
+7. webapp/index.jsp 추가
+	```html
+	<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+	<html lang="ko">
+		<head>
+			<title>VS CODE에서 JSP 동작시키기</title>
+		</head>
+		<body>
+			<h1>첫 페이지입니다.</h1>
+		</body>
+	</html>
+	```
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0019.png" width="600">
+
+## chap01. Spring Boot 개발환경 설정
+- 개발환경 만들기
+	- JDK 17
+	- Gradle 8.1.1
+	- Visual Studio Code
+
+### A. JDK 17 설치
+1. 상동, 생략
+
+### B. Gradle 8.1.1 설치
+1. 상동, 생략
+
+### C. VSCode 및 Plugin 설치
+1. 상동, 생략
 
 ### D. Spring Boot 프로젝트 생성
 1. 명령 팔레트... (Ctrl+Shift+P) 시작
@@ -67,7 +149,7 @@
 	```
 
 	3. 터미널 로그에 Tomcat started on port(s): 8080 (http) 를 확인 후 브라우저 오픈
-	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/imgas/sb0018.png" width="600">
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0018.png" width="600">
 
 	4. 종료시는 Ctrl + C 입력 후 일괄 작업을 끝내시겠습니까 (Y/N)? Y 로 종료
 3. Spring Boot Dashboard
