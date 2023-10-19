@@ -114,6 +114,7 @@ study-springboot
 
 ### A. 스프링 프로젝트 템플릿 만들기
 1. https://start.spring.io/ 에 접근
+
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0021.png" width="600">
 2. Spring Initializr
 	1. Project: Gradle - Groovy
@@ -198,6 +199,7 @@ study-springboot
 	```
 
 	3. 터미널 로그에 Tomcat started on port(s): 8080 (http) 를 확인 후 브라우저 오픈
+	
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0018.png" width="600">
 
 	4. 종료시는 Ctrl + C 입력 후 일괄 작업을 끝내시겠습니까 (Y/N)? Y 로 종료
