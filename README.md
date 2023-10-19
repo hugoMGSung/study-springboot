@@ -59,11 +59,23 @@
 	}
 	```
 
-2. 터미널 (Ctrl + `) 오픈, 명령어 실행
-	- gradlew tasks 로 확인해 볼 것
+2. 터미널 (Ctrl + `) 오픈
+	1. gradlew tasks 로 확인해 볼 것
+	2. 명령어 실행
 	```shell
 	> .\gradlew bootRun
 	```
 
-	- 터미널 로그에 Tomcat started on port(s): 8080 (http) 를 확인 후 브라우저 오픈
+	3. 터미널 로그에 Tomcat started on port(s): 8080 (http) 를 확인 후 브라우저 오픈
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/imgas/sb0018.png" width="600">
+
+	4. 종료시는 Ctrl + C 입력 후 일괄 작업을 끝내시겠습니까 (Y/N)? Y 로 종료
+3. Spring Boot Dashboard
+	1. App의 chap01 오른쪽 플레이 버튼 클릭
+	2. 종료는 새로 생기는 탭에서 종료 버튼 클릭
+
+4. 스프링부트 로그 칼라링
+	1. src/resources/application.properties 오픈 
+	```tex
+	spring.output.ansi.enabled=always
+	```
