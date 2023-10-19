@@ -66,4 +66,4 @@
 	```
 
 	- 터미널 로그에 Tomcat started on port(s): 8080 (http) 를 확인 후 브라우저 오픈
-	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0018.png" width="600">
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/imgas/sb0018.png" width="600">
