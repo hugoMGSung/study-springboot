@@ -94,6 +94,55 @@ study-springboot
 
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0019.png" width="600">
 
+8. index.jsp 변경 후 테스트
+	```html
+	...
+	<body>
+	<h1><%= "Hello World!" %></h1>
+	<h1><%= "Hello World!" %></h1>
+	<h1><%= "Hello World!" %></h1>
+
+	<br/>
+	<a href="hello-servlet">Hello Servlet</a>
+	...
+	```
+
+### F. Servlet 구현
+오류가 나면서 제대로 안됨. 방법을 틈
+
+## chap02. Spring으로 Servlet 프로젝트 구성
+
+### A. 스프링 프로젝트 템플릿 만들기
+1. https://start.spring.io/ 에 접근
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0021.png" width="600">
+2. Spring Initializr
+	1. Project: Gradle - Groovy
+	2. Language: Java
+	3. Spring Boot: 3.1.4
+	4. Project Metadata
+		- Group: com.hugo83
+		- Artifact: chap02
+		- Packaging: War
+		- Java: 17
+	5. Dependencies
+		- Spring Web
+	6. Generate 버튼 클릭으로 chap02.zip 다운로드 
+3. chap02 폴더에 압축해제
+4. VSCode에서 오픈
+5. 터미널에서 .\gradlew 실행
+6. 빌드 .\gradlew war 실행
+7. 실행해보기 .\gradlew bootRun 
+8. 실행결과는 동일
+
+### B. 스프링제거 후 Servlet으로 변경
+1. application.properties 수정
+	```tex
+	server.error.whitelabel.enabled=false
+	server.error.path=/error
+	spring.autoconfigure.exclude=org.springframework.boot.autoconfigure.web.ErrorMvcAutoConfiguration
+	```
+	ERROR!! Spring Servlet과 HttpServlet 충돌
+
 ## chap01. Spring Boot 개발환경 설정
 - 개발환경 만들기
 	- JDK 17
