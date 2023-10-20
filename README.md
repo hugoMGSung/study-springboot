@@ -213,4 +213,4 @@ study-springboot
 	spring.output.ansi.enabled=always
 	```
 
-[Next](https://github.com/hugoMGSung/study-springboot/blob/main/CHAP003.md)
+[Next](https://github.com/hugoMGSung/study-springboot/blob/main/CHAP03.md)
