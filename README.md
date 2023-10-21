@@ -1,4 +1,4 @@
-study-springboot
+# study-springboot
 스프링부트 저장소 다시 만들기
 
 ## chap00. 기본 JSP 개발환경 설정

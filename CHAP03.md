@@ -1,4 +1,4 @@
-study-springboot
+# study-springboot
 스프링부트 저장소 다시 만들기
 
 ## chap03. 기본 웹개발환경 맛보기
