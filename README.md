@@ -1,7 +1,7 @@
 # study-springboot
 스프링부트 저장소 다시 만들기
 
-[자바 웹 개발 워크북 학습](https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=298759546), 구멍가게 코딩단 (지은이)프리렉2022-08-04
+[자바 웹 개발 워크북 학습](https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=298759546) /구멍가게 코딩단 /프리렉 /2022-08-04
 
 ## chap00. 기본 JSP 개발환경 설정
 - 개발환경 만들기
