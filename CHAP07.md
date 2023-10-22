@@ -59,12 +59,6 @@
 ### D. DB처리 라이브러리
 1. Lombok 라이브러리 build.gradle에 추가
 	```tex
-	compileOnly 'javax.servlet:javax.servlet-api:4.0.1'         // Servlet
-
-	testImplementation 'org.junit.jupiter:junit-jupiter-api:5.10.0' // jUnit 테스트
-	testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.10.0'
-
-	implementation group: 'jstl', name: 'jstl', version: '1.2'      // jstl
 	implementation 'org.mariadb.jdbc:mariadb-java-client:3.2.0'     // mariadb
 
 	implementation 'com.zaxxer:HikariCP:5.0.1'                  // HikraiCP
@@ -82,3 +76,23 @@
 	implementation group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.21.0'
 	```
 2. main/java/.../domain/TodoVO 클래스 생성 후 작성
+3. main/java/.../dao 패키지 추가
+4. 아래 ConnectionUtil enum 추가 후 작성
+5. TodoDAO 클래스 추가 후 작성
+6. main/java/.../dto 패키지에 TodoDTO 클래스 추가 후 작성 (DAO와 DTO 두 개를 만드는 이유)
+7. main/java/.../util/MapperUtil enum 추가, 작성
+8. main/java/.../service/TodoService enum 추가, 작성
+9. test/java/.../service/TodoServiceTest 클래스 추가, 작성
+10. TodoServiceTest 테스트 실행 확인
+11. main/java/.../resources/log4j2.xml 설정파일 생성, 작성
+
+### E. Todo DB연동 
+1. main/java/.../controller/TodoListController.java 생성, 작성
+2. MariaDB 테이블에 데이터 추가
+3. 톰캣 서버 추가
+	- VM 옵션: -Dfile.encoding=UTF-8
+4. main/webapp/index.jsp 생성, 작성
+5. main/webapp/WEB-INF/todo/list.jsp 생성, 작성
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0029.png" width="600">
+
