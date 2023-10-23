@@ -10,9 +10,6 @@ repositories {
     mavenCentral()
 }
 
-sourceCompatibility = '1.8'
-targetCompatibility = '1.8'
-
 dependencies {
     compileOnly 'javax.servlet:javax.servlet-api:4.0.1'         // Servlet
 

@@ -75,11 +75,11 @@
 
 	implementation group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.21.0'
 	```
-2. main/java/.../domain/TodoVO 클래스 생성 후 작성
-3. main/java/.../dao 패키지 추가
+2. main/java/.../domain/TodoVO 클래스 생성 후 작성 (Value Object)
+3. main/java/.../dao 패키지 추가 (Data Access Object)
 4. 아래 ConnectionUtil enum 추가 후 작성
 5. TodoDAO 클래스 추가 후 작성
-6. main/java/.../dto 패키지에 TodoDTO 클래스 추가 후 작성 (DAO와 DTO 두 개를 만드는 이유)
+6. main/java/.../dto 패키지에 TodoDTO 클래스 추가 후 작성 (Data Transfer Object, DAO와 DTO 두 개를 만드는 이유)
 7. main/java/.../util/MapperUtil enum 추가, 작성
 8. main/java/.../service/TodoService enum 추가, 작성
 9. test/java/.../service/TodoServiceTest 클래스 추가, 작성
@@ -96,3 +96,30 @@
 
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0029.png" width="600">
 
+6. TodoRegisterController.java 생성, 작성
+7. register.jsp 생성, 작성
+8. 등록 테스트
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0030.png" width="600">
+
+9. 한글깨짐, 아래의 내용 추가요!
+	```java
+	resp.setContentType("text/html;charset=UTF-8");
+	req.setCharacterEncoding("UTF-8");
+	```
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0031.png" width="600">
+
+10. TodoReadController.java 생성, 작성
+11. read.jsp 생성, 작성
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0032.png" width="600">
+
+12. TodoModifyController.java 생성, 작성
+13. modify.jsp 생성, 작성
+14. TodoRemoveController.java 생성, 작성
+15. 기타 테스트
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0033.png" width="600">
+
+[Next](https://github.com/hugoMGSung/study-springboot/blob/main/CHAP08.md)
