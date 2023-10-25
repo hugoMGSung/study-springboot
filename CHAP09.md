@@ -222,9 +222,31 @@
 
 2. DTO <--> VO 변환에 사용, config/ModelMapperConfig.java 작성
 3. root-context.xml에 context:component-scan 추가
-4. Bootstrap 적용, webapp/bootstrap_test.html 작성
+4. Bootstrap 적용, webapp/resources/bootstrap_test.html 작성
 	1. https://getbootstrap.com/docs/5.3/getting-started/introduction/ 의 내용대로 소스 복사
 	2. http://localhost:8080/bootstrap_test.html 확인
 
-	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0045.png" width="600">
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0046.png" width="600">
+
+5. MyBatis 개발단계, domain/TodoVO.java 작성
+6. mapper/TodoMapper.java 작성
+7. resources/mappers/TodoMapper.xml 작성, 아래 하나만 추가
+	```xml
+	<select id="getTime" resultType="string"> select now() </select>
+	```
+8. 포맷터 처리 Shift + Alt + F
+9. 테스트 코드 test/.../mapper/TodoMapperTests.java 작성
+10. jUnit 테스트 오류 계속 -> Spring Boot 테스트로 차후 변경
+11. log4j2.xml 수정
+12. Todo 기능개발, TodoMapper.java에 insert 기능 추가
+13. mappers/TodoMapper.xml 에 insert 추가
+14. dto/PageRequestDTO.java 작성
+15. dto/PageResponseDTO.java 작성
+16. service/TodoService.java 작성
+17. service/TodoServiceImpl.java 작성
+18. TodoController GET/POST 처리
+19. register.jsp 부트스트랩 적용
+
+~~ Spring MVC에서 Spring Boot와 충돌오류. PASS ~~
+
 
