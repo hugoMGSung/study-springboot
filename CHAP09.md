@@ -206,3 +206,25 @@
 
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0044.png" width="600">
 
+### G. Spring Web MVC TodoApp 구현
+1. 테이블 수정
+	```sql
+	DROP TABLE tbl_todo;
+
+	CREATE TABLE tbl_todo (
+		tno INT AUTO_INCREMENT PRIMARY KEY,
+		title VARCHAR(100) NOT NULL,
+		dueDate DATE NOT NULL,
+		writer VARCHAR(50) NOT NULL,
+		finished TINYINT DEFAULT 0
+	);
+	```
+
+2. DTO <--> VO 변환에 사용, config/ModelMapperConfig.java 작성
+3. root-context.xml에 context:component-scan 추가
+4. Bootstrap 적용, webapp/bootstrap_test.html 작성
+	1. https://getbootstrap.com/docs/5.3/getting-started/introduction/ 의 내용대로 소스 복사
+	2. http://localhost:8080/bootstrap_test.html 확인
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0045.png" width="600">
+
