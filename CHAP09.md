@@ -158,3 +158,51 @@
 8. webapp/WEB-INF/views/todo/register.jsp 작성, 테스트
 
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0042.png" width="600">
+
+9. Model / SampleController /ex4 작성
+10. views/ex4.jsp 작성
+11. java.lang.ClassNotFoundException: javax.servlet.jsp.tagext.TagLibraryValidator 에러 발생
+12. 이는 SpringBoot 3 이상에서 JSTL 사용시 발생하는 에러. build.gradle의 jstl을 1.2에서 아래로 수정
+	```tex
+	implementation 'org.glassfish.web:jakarta.servlet.jsp.jstl:2.0.0'	 // 업데이트할 것
+	```
+
+13. /ex4_1 ~ /ex6까지 작성
+14. view/ex6.jsp 작성 후 테스트, http://localhost:8080/ex5 이후 F5 재조회
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0043.png" width="600">
+
+### F. 예외처리
+1. web.xml에 error 설정
+	```xml
+	<error-page>
+		<error-code>500</error-code>
+		<location>/error/500.jsp</location>
+	</error-page>
+	
+	<error-page>
+		<error-code>404</error-code>
+		<location>/error/404.jsp</location>
+	</error-page>
+	```
+2. views/404.jsp, 500.jsp 작성
+	```html
+	<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+	<%@ page trimDirectiveWhitespaces="true" %>
+	<!DOCTYPE html>
+	<html>
+	<head>
+	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+	<title></title>
+	</head>
+	<body>
+	<h1>Error Page by web.xml : 404</h1>
+	</body>
+	</html>
+	```
+
+3. http://localhost:8080/aaa/bbb 로 테스트
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0044.png" width="600">
+
