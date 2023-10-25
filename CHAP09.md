@@ -66,3 +66,95 @@
 	```
 
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0040.png" width="600">
+
+### C. Spring Web MVC 진행
+0. build.gradle Dependency 추가
+1. spring 관련 라이브러리 추가
+2. 서블릿 및 jUnit 라이브러리 구성
+3. Lombok 라이브러리 추가
+4. Log4j2 라이브러리 추가
+5. src/main/resources/log4j2.xml 추가/작성
+6. MainController.java Log4j 기능 추가/테스트
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0041.png" width="600">
+
+7. webapp/WEB-INF/web.xml 생성,작성
+8. webapp/WEB-INF/servlet-context.xml 생성,작성
+9. webapp/WEB-INF/root-context.xml 생성,작성
+10. java/lombok.config 생성,작성
+11. MyBatis 라이브러리 추가
+12. main/java/.../mapper/TimeMapper.java 생성,작성
+13. main/java/.../mapper/TimeMapper2.java 생성,작성 (XML, SQL 분리용)
+14. resources/mappers/TimeMapper2.xml
+15. root-context.xml에 설정 추가 // jUnit 라이브러리 설정 오류로 테스트 불가
+16. main/java/.../controller/SampleController.java 생성,작성
+17. 재시작 후 localhost:8080/hello 확인
+18. views/hello.jsp 작성,테스트
+19. main/java/.../controller/TodoController.java 작성
+	```java
+	@Controller
+	@RequestMapping("/todo")
+	@Log4j2
+	@RequiredArgsConstructor
+	public class TodoController {
+		@RequestMapping("/list")
+		public void list() {
+			log.info("todo list.......");
+		}
+
+		@GetMapping(value = "/register")
+		// @RequestMapping(value = "/register", method = RequestMethod.GET)
+		public void register() {
+			log.info("GET todo register.......");
+		}
+
+		@PostMapping(value = "/register")
+		public void registerPost() {
+			log.info("POST todo 등록!.........")
+		}
+	}
+	```
+
+### D. Spring Boot 콘솔로그 Coloring
+1. application.properties 옵션 추가(프로젝트 마다 설정)
+	```tex
+	spring.output.ansi.enabled=always
+	```
+2. ~~VSCode 자체 설정. 설정(Ctrl + ,) > workbench color customizations 검색, settings.json에서 편집 클릭~~
+	```tex
+	// 이 방법 효과없음
+	"workbench.colorCustomizations": {
+        "terminal.background":"#1D2021",
+        "terminal.foreground":"#ffffff",
+        "terminalCursor.background":"#A89984",
+        "terminalCursor.foreground":"#A89984",
+        "terminal.ansiBlack":"#1D2021",
+        "terminal.ansiBlue":"#0D6678",
+        "terminal.ansiBrightBlack":"#665C54",
+        "terminal.ansiBrightBlue":"#0D6678",
+        "terminal.ansiBrightCyan":"#8BA59B",
+        "terminal.ansiBrightGreen":"#95C085",
+        "terminal.ansiBrightMagenta":"#8F4673",
+        "terminal.ansiBrightRed":"#FB543F",
+        "terminal.ansiBrightWhite":"#FDF4C1",
+        "terminal.ansiBrightYellow":"#FAC03B",
+        "terminal.ansiCyan":"#8BA59B",
+        "terminal.ansiGreen":"#95C085",
+        "terminal.ansiMagenta":"#8F4673",
+        "terminal.ansiRed":"#FB543F",
+        "terminal.ansiWhite":"#A89984",
+        "terminal.ansiYellow":"#FAC03B",
+      }
+	```
+
+### E. Spring Web MVC 계속 
+1. Formatter 파라미터 처리
+2. 날짜 등을 GET Param으로 넘기면 오류
+3. SampleController에 /ex3 테스트
+4. (옵션) java/main/.../controller/formatter/LocalDateFormatter.java 작성
+5. CheckboxFormatter.java 작성
+6. 객체 자료형 파라미터용 java/main/.../dto/TodoDTO.java 작성
+7. TodoController 클래스 registerPost메서드의 파라미터로 TodoDTO 적용
+8. webapp/WEB-INF/views/todo/register.jsp 작성, 테스트
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0042.png" width="600">
