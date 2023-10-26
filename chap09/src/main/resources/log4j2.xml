@@ -3,21 +3,25 @@
     <Appenders>
         <!-- 콜솔 -->
         <Console name="console" target="SYSTEM_OUT">
-            <PatternLayout charset="UTF-8" pattern="%d{hh:mm:ss} %5p [%c] %m%n" />
+            <PatternLayout charset="UTF-8" pattern="%d{hh:mm:ss} %5p [%c] %m%n"/>
         </Console>
     </Appenders>
+
     <loggers>
         <logger name="org.springframework" level="INFO" additivity="false">
             <appender-ref ref="console" />
         </logger>
-        <logger name="com.hugo83" level="INFO" additivity="false">
+
+        <logger name="org.zerock" level="INFO" additivity="false">
             <appender-ref ref="console" />
         </logger>
-        <logger name="com.hugo83.chap09.mapper" level="TRACE" additivity="false">
+
+        <logger name="org.zerock.springex.mapper" level="TRACE" additivity="false">
             <appender-ref ref="console" />
         </logger>
+
         <root level="INFO" additivity="false">
-            <AppenderRef ref="console" />
+            <AppenderRef ref="console"/>
         </root>
     </loggers>
 </configuration>
