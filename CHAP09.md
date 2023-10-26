@@ -203,4 +203,52 @@
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0050.png" width="600">
 
 ### E. Todo 관련 작업 시작!
-1. 
+1. controller/TodoController 클래스 작성
+	```java
+	@Controller
+	@RequestMapping("/todo")
+	@Log4j2
+	public class TodoController {
+		@RequestMapping("/list")
+		public void list() {
+			log.info("todo list.......");
+		}
+
+		@RequestMapping(value = "/register", method = RequestMethod.GET)
+		public void register() {
+			log.info("todo register........");
+		}
+	}
+	```
+
+2. 페이지가 없어서 404 에러발생
+3. TodoController의 소스 수정
+	```java
+	//@RequestMapping(value = "/register", method = RequestMethod.GET)
+    @GetMapping(value = "/register")
+    public void registerGET() {
+        log.info("GET Todo register........");
+    }
+
+    @PostMapping(value = "/register")
+    public void registerPOST() {
+        log.info("POST Todo register........");
+    }
+	```
+
+4. SampleController 클래스 여러개 테스트
+5. controller/formater/LocalDateFormatter.java 클래스 작성 (Jakarta EE 에서는 오류나지 않음)
+6. servlet-context.xml 추가 수정
+	```xml
+    <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        <property name="formatters">
+            <set>
+                <bean class="com.hugo83.chap09.controller.formatter.LocalDateFormatter"/>
+            </set>
+        </property>
+    </bean>
+
+	<mvc:annotation-driven  conversion-service="conversionService" />
+	```
+
+7. 
