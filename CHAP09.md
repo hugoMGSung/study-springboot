@@ -81,4 +81,36 @@
 	```
 19. SampleDAO를 인터페이스로 변경
 20. SampleDAOImpl 작성
-21. 
+21. EventSampleDAOImpl 작성
+22. 테스트 후
+23. EventSampleDAOImpl에 @Primary 어노테이션 추가
+24. src/java/패키지/lombok.config 작성
+	```tex
+	lombok.copyableAnnotations += org.springframework.beans.factory.annotation.Qualifier
+	```
+
+25. SampleService 클래스
+	```java
+	// 최종
+	@Service
+	@ToString
+	@RequiredArgsConstructor
+	public class SampleService {
+		@Qualifier("event")
+		private final SampleDAO sampleDAO;
+	}
+
+	```
+26. EventSampleDAOImpl 클래스
+	```java
+	@Repository
+	@Qualifier("event")
+	public class EventSampleDAOImpl implements SampleDAO {
+	}
+
+	```
+
+### B. 스프링 준비
+1. build.gradle 에 Spring 라이브러리 추가
+2. web.xml 리스너, context-param 추가
+2. build.gradle MariaDB, HikariCP 라이브러리 추가
