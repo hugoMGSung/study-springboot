@@ -113,4 +113,94 @@
 ### B. 스프링 준비
 1. build.gradle 에 Spring 라이브러리 추가
 2. web.xml 리스너, context-param 추가
-2. build.gradle MariaDB, HikariCP 라이브러리 추가
+3. build.gradle MariaDB, HikariCP 라이브러리 추가
+4. root-context.xml에 HikraiCP 관련 설정
+	```xml
+    <bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+        <property name="driverClassName" value="org.mariadb.jdbc.Driver"></property>
+        <property name="jdbcUrl" value="jdbc:mariadb://localhost:3326/webdb"></property>
+        <property name="username" value="webuser"></property>
+        <property name="password" value="webuser"></property>
+        <property name="dataSourceProperties">
+            <props>
+                <prop key="cachePrepStmts">true</prop>
+                <prop key="prepStmtCacheSize">250</prop>
+                <prop key="prepStmtCacheSqlLimit">2048</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource"
+          destroy-method="close">
+        <constructor-arg ref="hikariConfig" />
+    </bean>	
+	```
+
+5. SampleTests로 테스트 메서드 작성 후 실행
+
+### C. MyBatis 연동
+1. build.gradle MyBatis 라이브러리추가
+2. root-context.xml에 Mybatis용 SqlSessionFactory 설정
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0047.png" width="600">
+
+3. resources/mappers 폴더 생성. 위의 빨간색 오류에서 mappers가 사라지는 것을 확인
+4. main/java/패키지/mapper/TimeMapper 인터페이스 작성
+5. root-context.xml에 MyBatis 설정 추가
+	```xml
+	<mybatis:scan base-package="com.hugo83.chap09.mapper"></mybatis:scan>
+	```
+6. 패키지명/mapper/TimeMapperTests 테스트코드 작성
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0048.png" width="600">
+
+7. MyBatis XML로 SQL 분리, TimeMapper2 인터페이스 작성
+8. resources/mapper/TimeMapper2.xml 작성
+	```xml
+	<?xml version="1.0" encoding="UTF-8" ?>
+	<!DOCTYPE mapper
+			PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+			"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<mapper namespace="com.hugo83.chap09.mapper.TimeMapper2">
+		<select id="getNow" resultType="string">
+			select now()
+		</select>
+	</mapper>
+	```
+
+9. TimeMapperTests에 두번째 메서드 테스트
+
+### D. Spring MVC 연동
+1. WEB-INF/servlet-context.xml 작성
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0049.png" width="600">
+
+2. 위의 붉은 색 부분, webapp/resources 폴더 생성
+3. web.xml에 DispatcherServlet 설정
+	```xml
+    <servlet>
+        <servlet-name>appServlet</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>/WEB-INF/servlet-context.xml</param-value>
+        </init-param>
+
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>appServlet</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+    <!-- 2차 -->	
+	```
+
+4. servlet-context.xml 에 <context:component-scan 추가
+5. controller/SampleController.java /hello 처리 메서드 작성
+6. WEB-INF/views/hello.jsp 작성
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0050.png" width="600">
+
+### E. Todo 관련 작업 시작!
+1. 
