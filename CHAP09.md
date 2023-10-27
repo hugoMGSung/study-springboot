@@ -336,15 +336,12 @@
 			<logger name="org.springframework" level="INFO" additivity="false">
 				<appender-ref ref="console" />
 			</logger>
-
 			<logger name="com.hugo83" level="INFO" additivity="false">
 				<appender-ref ref="console" />
 			</logger>
-
 			<logger name="com.hugo83.chap09.mapper" level="TRACE" additivity="false">
 				<appender-ref ref="console" />
 			</logger>
-
 			<root level="INFO" additivity="false">
 				<AppenderRef ref="console"/>
 			</root>
