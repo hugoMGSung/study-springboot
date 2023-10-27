@@ -284,7 +284,7 @@
 
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0053.png" width="600">
 
-### G. Todo 웹사이트 완성
+### G. Todo 웹사이트 개발
 1. build.gradle에 DTO/VO간 변환, DTO 검증용 라이브러리 추가
 2. Sample 관련 내용 삭제 권장
 3. MariaDB tbl_todo 테이블 삭제후 재생성
@@ -360,4 +360,12 @@
 18. service/TodoServiceImpl.java 클래스 작성
 19. root-context.xml 확인할 것
 20. test/.../service/TodoServiceTests 클래스 작성, 테스트
+
+21. TodoController에서 GET/POST 처리. 데이터 로그 후 리다이렉션까지 확인
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0055.png" width="600">
+
+22. TodoDTO hibernate로 입력검증 추가
+23. TodoController에서 POST 처리시 검증반영 추가
+	타이틀, 글쓴이가 비었거나 마감일자가 오늘 이전이면 화면이 재실행됨
 
