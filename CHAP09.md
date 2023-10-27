@@ -319,5 +319,37 @@
 	4. 테스트코드 작성
 
 8. domain/TodoVO 작성
+9. mapper/TodoMapper 인터페이스 작성, getTime() 하나만...
+10. resources/mappers/TodoMapper.xml 작성
+11. test/.../mapper/TodoMapperTests 작성 후 테스트
+12. log4j2.xml 에 일반로그 및 SQL 로그까지 설정
+	```xml
+	<configuration status="INFO">
+		<Appenders>
+			<!-- 콜솔 -->
+			<Console name="console" target="SYSTEM_OUT">
+				<PatternLayout charset="UTF-8" pattern="%d{hh:mm:ss} %5p [%c] %m%n"/>
+			</Console>
+		</Appenders>
+
+		<loggers>
+			<logger name="org.springframework" level="INFO" additivity="false">
+				<appender-ref ref="console" />
+			</logger>
+
+			<logger name="com.hugo83" level="INFO" additivity="false">
+				<appender-ref ref="console" />
+			</logger>
+
+			<logger name="com.hugo83.chap09.mapper" level="TRACE" additivity="false">
+				<appender-ref ref="console" />
+			</logger>
+
+			<root level="INFO" additivity="false">
+				<AppenderRef ref="console"/>
+			</root>
+		</loggers>
+	</configuration>
+	```
 
 

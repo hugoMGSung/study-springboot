@@ -12,11 +12,11 @@
             <appender-ref ref="console" />
         </logger>
 
-        <logger name="org.zerock" level="INFO" additivity="false">
+        <logger name="com.hugo83" level="INFO" additivity="false">
             <appender-ref ref="console" />
         </logger>
 
-        <logger name="org.zerock.springex.mapper" level="TRACE" additivity="false">
+        <logger name="com.hugo83.chap09.mapper" level="TRACE" additivity="false">
             <appender-ref ref="console" />
         </logger>
 
