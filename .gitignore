@@ -27,4 +27,4 @@ replay_pid*
 */.gitignore
 */.gitattributes
 */.vscode/
-*/.idea/
+## */.idea/ # 다시 올려야 겠다

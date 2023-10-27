@@ -1,5 +1,6 @@
 package com.hugo83.chap09.controller;
 
+import com.hugo83.chap09.controller.dto.TodoDTO;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,7 +24,8 @@ public class TodoController {
     }
 
     @PostMapping(value = "/register")
-    public void registerPOST() {
+    public void registerPOST(TodoDTO todoDTO) {
         log.info("POST Todo register........");
+        log.info(todoDTO);
     }
 }

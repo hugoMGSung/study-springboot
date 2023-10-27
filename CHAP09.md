@@ -251,4 +251,73 @@
 	<mvc:annotation-driven  conversion-service="conversionService" />
 	```
 
-7. 
+7. dto/TodoDTO 클래스 작성
+8. TodoController POST 메서드 수정
+9. WEB-INF/views/todo/register.jsp 작성(BootStrap 적용) / 한글 깨짐
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0051.png" width="600">
+
+10. web.xml encoding 태그 추가
+	```xml
+	<filter>
+        <filter-name>encoding</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>encoding</filter-name>
+        <servlet-name>appServlet</servlet-name>
+    </filter-mapping>
+	```
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0052.png" width="600">
+
+### F. 예외처리
+1. controller/exception/CommonExceptionAdvice 클래스 작성
+2. WEB-INF/views/custom404.jsp 작성
+3. web.xml에 예외처리 부분 추가
+3. localhost:8080/aaa/bbb 로 테스트
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0053.png" width="600">
+
+### G. Todo 웹사이트 완성
+1. build.gradle에 DTO/VO간 변환, DTO 검증용 라이브러리 추가
+2. Sample 관련 내용 삭제 권장
+3. MariaDB tbl_todo 테이블 삭제후 재생성
+	```sql
+	DROP TABLE tbl_todo;
+
+	CREATE TABLE tbl_todo (
+		tno INT AUTO_INCREMENT PRIMARY KEY,
+		title VARCHAR(100) NOT NULL,
+		dueDate DATE NOT NULL,
+		writer VARCHAR(50) NOT NULL,
+		finished TINYINT DEFAULT 0
+	);
+	```
+
+4. config/ModelMapperConfig.java 작성
+5. root-context.xml 에 config 패키지를 component-scan에 추가
+	```xml
+	<context:component-scan base-package="com.hugo83.chap09.config"/>
+    <context:component-scan base-package="com.hugo83.chap09.service"/>
+	```
+6. Bootstrap 내용
+	1. container, row, col 클래스 관련 적용
+	2. card 컴포넌트 클래스 사용
+	3. navbar 클래스
+	4. footer 클래스 등...
+
+7. Mybatis 개발순서
+	1. VO선언
+	2. XML 개발
+	3. Mapper 인터페이스 개발
+	4. 테스트코드 작성
+
+8. domain/TodoVO 작성
+
+
