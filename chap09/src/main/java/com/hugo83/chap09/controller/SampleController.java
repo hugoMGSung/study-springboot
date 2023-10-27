@@ -1,6 +1,6 @@
 package com.hugo83.chap09.controller;
 
-import com.hugo83.chap09.controller.dto.TodoDTO;
+import com.hugo83.chap09.dto.TodoDTO;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

@@ -349,4 +349,15 @@
 	</configuration>
 	```
 
+13. TodoMapper 인터페이스에 insert() 메서드 추가
+14. TodoMapper.xml 에 insert() 에 대한 쿼리 작성
+15. TodoMapperTests에 testInsert() 작성 후 테스트, DB 확인
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0054.png" width="500">
+
+16. 패키지/controller/dto 폴더를 패키지/dto로 이전
+17. Mapper와 Controller 사이의 서비스계층 처리, service/TodoService 인터페이스 내 register() 작성
+18. service/TodoServiceImpl.java 클래스 작성
+19. root-context.xml 확인할 것
+20. test/.../service/TodoServiceTests 클래스 작성, 테스트
 

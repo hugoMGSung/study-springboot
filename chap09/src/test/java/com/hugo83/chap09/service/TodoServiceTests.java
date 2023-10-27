@@ -1,6 +1,6 @@
-package com.hugo83.chap09.mapper;
+package com.hugo83.chap09.service;
 
-import com.hugo83.chap09.domain.TodoVO;
+import com.hugo83.chap09.dto.TodoDTO;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -13,22 +13,18 @@ import java.time.LocalDate;
 @Log4j2
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(locations="file:src/main/webapp/WEB-INF/root-context.xml")
-public class TodoMapperTests {
-    @Autowired(required = false)
-    private TodoMapper todoMapper;
+public class TodoServiceTests {
+
+    @Autowired
+    private TodoService todoService;
 
     @Test
-    public void testGetTime() {
-        log.info(todoMapper.getTime());
-    }
-
-    @Test
-    public void testInsert() {
-        TodoVO todoVO = TodoVO.builder()
-                .title("스프링 테스트 ")
+    public void testRegister() {
+        TodoDTO todoDTO = TodoDTO.builder()
+                .title("Test......")
                 .dueDate(LocalDate.now())
-                .writer("admin")
+                .writer("user1")
                 .build();
-        todoMapper.insert(todoVO);
+        todoService.register(todoDTO);
     }
 }

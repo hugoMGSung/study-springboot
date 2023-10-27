@@ -1,4 +1,4 @@
-package com.hugo83.chap09.controller.dto;
+package com.hugo83.chap09.dto;
 
 import lombok.*;
 
