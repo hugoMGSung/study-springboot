@@ -369,3 +369,8 @@
 23. TodoController에서 POST 처리시 검증반영 추가
 	타이틀, 글쓴이가 비었거나 마감일자가 오늘 이전이면 화면이 재실행됨
 
+24. register.jsp에서 검증 에러메시지 확인 스크립트 추가
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0056.png" width="650">
+
+25. TodoController 에서 등록기능 완성
