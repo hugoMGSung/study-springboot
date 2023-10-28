@@ -1,6 +1,8 @@
 package com.hugo83.chap09.controller;
 
 import com.hugo83.chap09.dto.TodoDTO;
+import com.hugo83.chap09.service.TodoService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,7 +17,10 @@ import javax.validation.Valid;
 @Controller
 @RequestMapping("/todo")
 @Log4j2
+@RequiredArgsConstructor
 public class TodoController {
+    private final TodoService todoService;
+
     @RequestMapping("/list")
     public void list(Model model) {
         log.info("todo list.......");
@@ -39,6 +44,7 @@ public class TodoController {
             return "redirect:/todo/register";
         }
         log.info(todoDTO);
+        todoService.register(todoDTO); // 등록기능 추가
         return "redirect:/todo/list";
     }
 }

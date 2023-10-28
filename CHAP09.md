@@ -373,4 +373,17 @@
 
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0056.png" width="650">
 
-25. TodoController 에서 등록기능 완성
+25. TodoController 에서 등록기능 완성, registerPOST() 에서 TodoService 기능 호출
+26. 테스트 시 등록 후 localhost:8080/todo/list로 이전, list.jsp 없음
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0058.png" width="600">
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0059.png" width="500">
+
+27. mapper/TodoMapper에 selectAll() 추가
+28. mappers/TodoMapper.xml에 selectAll id 추가
+29. test/.../mapper/TodoMapperTests에 testSelectAll() 작성 후 테스트
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0060.png" width="600">
+
+
