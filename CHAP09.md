@@ -386,4 +386,13 @@
 
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0060.png" width="600">
 
+30. TodoService 인터페이스에 getAll() 작성
+31. TodoServiceImpl 클래스에 getAll() 구현
+32. TodoController의 list() 에 Model 추가 후 jsp에 전달하는 기능 추가
+33. views/list.jsp 작성
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0061.png" width="600">
+
+
+
 

@@ -9,6 +9,9 @@ import com.hugo83.chap09.domain.TodoVO;
 import com.hugo83.chap09.dto.TodoDTO;
 import com.hugo83.chap09.mapper.TodoMapper;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 @Log4j2
 @RequiredArgsConstructor
@@ -21,5 +24,13 @@ public class TodoServiceImpl implements TodoService {
         TodoVO todoVO = modelMapper.map(todoDTO, TodoVO.class);
         log.info(todoVO);
         todoMapper.insert(todoVO);
+    }
+
+    @Override
+    public List<TodoDTO> getAll() {
+        List<TodoDTO> dtoList = todoMapper.selectAll().stream()
+                .map(vo -> modelMapper.map(vo, TodoDTO.class))
+                .collect(Collectors.toList());
+        return dtoList;
     }
 }
