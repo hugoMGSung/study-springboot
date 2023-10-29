@@ -44,7 +44,7 @@
       </div>
     </div>
     <!-- header end -->
-    <!-- 검색 추가 -->
+    <!-- 검색 추가 --><
     <div class="row content">
       <div class="col">
         <div class="card">
@@ -53,16 +53,16 @@
             <form action="/todo/list" method="get">
               <input type="hidden" name="size" value="${pageRequestDTO.size}">
               <div class="mb-3">
-                <input type="checkbox" name="finished">완료여부
+                <input type="checkbox" name="finished" ${pageRequestDTO.finished?"checked":""} >완료여부
               </div>
               <div class="mb-3">
-                <input type="checkbox" name="types" value="t">제목
-                <input type="checkbox" name="types" value="w">작성자
-                <input type="text"  name="keyword" class="form-control"/>
+                <input type="checkbox" name="types" value="t" ${pageRequestDTO.checkType("t")?"checked":""}>제목
+                <input type="checkbox" name="types" value="w"  ${pageRequestDTO.checkType("w")?"checked":""}>작성자
+                <input type="text"  name="keyword" class="form-control" value ='<c:out value="${pageRequestDTO.keyword}"/>' >
               </div>
               <div class="input-group mb-3 dueDateDiv">
-                <input type="date" name="from" class="form-control">
-                <input type="date" name="to" class="form-control">
+                <input type="date" name="from" class="form-control" value="${pageRequestDTO.from}">
+                <input type="date" name="to" class="form-control"  value="${pageRequestDTO.to}">
               </div>
               <div class="input-group mb-3">
                 <div class="float-end">
@@ -133,16 +133,36 @@
 
             </div>
             <script>
-              document.querySelector(".pagination").addEventListener("click", function (e) {
-                e.preventDefault();
-                e.stopPropagation();
+              // document.querySelector(".pagination").addEventListener("click", function (e) {
+              //   e.preventDefault();
+              //   e.stopPropagation();
+              //
+              //   const target = e.target;
+              //   if(target.tagName !== 'A') {
+              //       return;
+              //   }
+              //   const num = target.getAttribute("data-num");
+              //   self.location = `/todo/list?page=\${num}`; //백틱(` `)을 이용해서 템플릿 처리
+              // },false)
 
-                const target = e.target;
+              document.querySelector(".pagination").addEventListener("click", function (e) {
+                e.preventDefault()
+                e.stopPropagation()
+                const target = e.target
                 if(target.tagName !== 'A') {
-                    return;
+                  return
                 }
-                const num = target.getAttribute("data-num");
-                self.location = `/todo/list?page=\${num}`; //백틱(` `)을 이용해서 템플릿 처리
+                const num = target.getAttribute("data-num")
+                const formObj = document.querySelector("form")
+                formObj.innerHTML += `<input type='hidden' name='page' value='\${num}'>`
+                formObj.submit(); // 검색/필터링 조건 유지하며 페이지 이동
+              },false)
+
+              // 클리어버튼 초기화 추가
+              document.querySelector(".clearBtn").addEventListener("click", function (e){
+                e.preventDefault()
+                e.stopPropagation()
+                self.location ='/todo/list'
               },false)
             </script>
           </div>

@@ -511,3 +511,13 @@
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0066.png" width="600">
 
 6. dto/PageRequestDTO checkType() 메서드 작성
+7. list.jsp 위의 부분 EL 적용
+8. 초기화 버튼 스크립트 추가
+9. dto/PageRequestDTO 의 getLink() 검색조건 추가
+10. list.jsp 의 페이지 이동링크 스크립트 변경
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0067.png" width="600">
+
+11. modify.jsp 버튼 이벤트 페이징 처리 추가
+12. TodoController remove() 메서드 리다이렉트 변경
+13. TodoController에서 
