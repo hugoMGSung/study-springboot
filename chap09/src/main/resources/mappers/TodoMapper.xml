@@ -14,4 +14,8 @@
     <select id="selectAll" resultType="com.hugo83.chap09.domain.TodoVO">
         select * from tbl_todo order by tno desc
     </select>
+
+    <select id="selectOne" resultType="com.hugo83.chap09.domain.TodoVO">
+        select * from tbl_todo where tno  = #{tno}
+    </select>
 </mapper>

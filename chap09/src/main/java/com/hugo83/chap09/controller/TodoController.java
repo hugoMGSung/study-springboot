@@ -48,4 +48,11 @@ public class TodoController {
         todoService.register(todoDTO); // 등록기능 추가
         return "redirect:/todo/list";
     }
+
+    @GetMapping("/read")
+    public void read(Long tno, Model model){
+        TodoDTO todoDTO = todoService.getOne(tno);
+        log.info(todoDTO);
+        model.addAttribute("dto", todoDTO);
+    }
 }

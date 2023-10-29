@@ -393,6 +393,25 @@
 
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0061.png" width="600">
 
+34. TodoMapper 인터페이스에 selectOne() 추가
+35. mappers/TodoMapper.xml에 selectOne 쿼리 추가
+36. testSelectOne() 테스트 메서드 추가, 확인
+37. TodoService 인터페이스에 getOne(Long tno) 추가, TodoServiceImple에 구현
+38. TodoController 에 read() 메서드 작성
+39. views/todo/read.jsp 작성
+40. views/todo/list.jsp 링크 수정
+	```html
+	<td>
+	<a href="/todo/read?tno=${dto.tno}" class="text-decoration-none" data-tno="${dto.tno}" >
+	<c:out value="${dto.title}"/>
+	</a>
+	</td>
+	```
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0062.png" width="600">
+
+
+
 
 
 
