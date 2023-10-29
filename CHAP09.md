@@ -521,3 +521,6 @@
 11. modify.jsp 버튼 이벤트 페이징 처리 추가
 12. TodoController remove() 메서드 리다이렉트 변경
 13. TodoController에서 modify() 가 /todo/list에서 /todo/read로 이동하도록 변경
+
+
+[Next](https://github.com/hugoMGSung/study-springboot/blob/main/CHAP10.md)
