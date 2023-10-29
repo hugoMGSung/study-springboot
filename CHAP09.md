@@ -411,7 +411,13 @@
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0062.png" width="600">
 
 
+### H. 수정 및 삭제 기능 추가
+1. TodoController의 read()에 /modify GetMapping 추가
+2. read.jsp를 복사 modify.jsp 구성
+3. TodoController 에 remove() 기본 구현(아직 저장처리 없음)
+4. TodoMapper 인터페이스와 TodoMapper.xml 에 delete() 작성
+5. TodoService, TodoServiceImpl 에 remove() 작성
+6. TodoController remove() 수정
+7. 삭제 확인
 
-
-
-
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0063.png" width="600">

@@ -49,10 +49,23 @@ public class TodoController {
         return "redirect:/todo/list";
     }
 
-    @GetMapping("/read")
+//    @GetMapping("/read")  // GET 한개짜리는 최초로 주석처리
+//    public void read(Long tno, Model model){
+//        TodoDTO todoDTO = todoService.getOne(tno);
+//        log.info(todoDTO);
+//        model.addAttribute("dto", todoDTO);
+//    }
+    @GetMapping({"/read", "/modify"})
     public void read(Long tno, Model model){
         TodoDTO todoDTO = todoService.getOne(tno);
         log.info(todoDTO);
-        model.addAttribute("dto", todoDTO);
+        model.addAttribute("dto", todoDTO );
+    }
+    @PostMapping("/remove")
+    public String remove(Long tno, RedirectAttributes redirectAttributes){
+        log.info("-------------remove------------------");
+        log.info("tno: " + tno);
+        todoService.remove(tno); // 추가할 부분
+        return "redirect:/todo/list";
     }
 }
