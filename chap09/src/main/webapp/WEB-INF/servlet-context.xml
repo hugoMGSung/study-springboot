@@ -21,6 +21,7 @@
         <property name="formatters">
             <set>
                 <bean class="com.hugo83.chap09.controller.formatter.LocalDateFormatter"/>
+                <bean class="com.hugo83.chap09.controller.formatter.CheckboxFormatter"/>
             </set>
         </property>
     </bean>

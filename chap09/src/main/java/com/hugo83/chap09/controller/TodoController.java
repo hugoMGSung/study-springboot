@@ -1,5 +1,6 @@
 package com.hugo83.chap09.controller;
 
+import com.hugo83.chap09.dto.PageRequestDTO;
 import com.hugo83.chap09.dto.TodoDTO;
 import com.hugo83.chap09.service.TodoService;
 import lombok.RequiredArgsConstructor;
@@ -21,10 +22,19 @@ import javax.validation.Valid;
 public class TodoController {
     private final TodoService todoService;
 
-    @RequestMapping("/list")
-    public void list(Model model) {
-        log.info("todo list.......");
-        model.addAttribute("dtoList", todoService.getAll());
+//    @RequestMapping("/list")
+//    public void list(Model model) {
+//        log.info("todo list.......");
+//        model.addAttribute("dtoList", todoService.getAll());
+//    }
+
+    @GetMapping("/list")
+    public void list(@Valid PageRequestDTO pageRequestDTO, BindingResult bindingResult, Model model) {
+        log.info(pageRequestDTO);
+        if(bindingResult.hasErrors()){
+            pageRequestDTO = PageRequestDTO.builder().build();
+        }
+        model.addAttribute("responseDTO", todoService.getList(pageRequestDTO));
     }
 
     //@RequestMapping(value = "/register", method = RequestMethod.GET)
@@ -55,17 +65,74 @@ public class TodoController {
 //        log.info(todoDTO);
 //        model.addAttribute("dto", todoDTO);
 //    }
+//    @GetMapping({"/read", "/modify"})
+//    public void read(Long tno, Model model){
+//        TodoDTO todoDTO = todoService.getOne(tno);
+//        log.info(todoDTO);
+//        model.addAttribute("dto", todoDTO );
+//    }
+
     @GetMapping({"/read", "/modify"})
-    public void read(Long tno, Model model){
+    public void read(Long tno, PageRequestDTO pageRequestDTO, Model model) {
         TodoDTO todoDTO = todoService.getOne(tno);
         log.info(todoDTO);
-        model.addAttribute("dto", todoDTO );
+        model.addAttribute("dto", todoDTO);
     }
+
+//    @PostMapping("/remove")
+//    public String remove(Long tno, RedirectAttributes redirectAttributes){
+//        log.info("-------------remove------------------");
+//        log.info("tno: " + tno);
+//        todoService.remove(tno); // 추가할 부분
+//        return "redirect:/todo/list";
+//    }
+
     @PostMapping("/remove")
-    public String remove(Long tno, RedirectAttributes redirectAttributes){
+    public String remove(Long tno, PageRequestDTO pageRequestDTO, RedirectAttributes redirectAttributes){
         log.info("-------------remove------------------");
         log.info("tno: " + tno);
-        todoService.remove(tno); // 추가할 부분
+        todoService.remove(tno);
+        redirectAttributes.addAttribute("page", 1);
+        redirectAttributes.addAttribute("size", pageRequestDTO.getSize());
         return "redirect:/todo/list";
     }
+
+//    @PostMapping("/modify")
+//    public String modify(@Valid TodoDTO todoDTO,
+//                         BindingResult bindingResult,
+//                         RedirectAttributes redirectAttributes){
+//
+//        if(bindingResult.hasErrors()) {
+//            log.info("has errors.......");
+//            redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors() );
+//            redirectAttributes.addAttribute("tno", todoDTO.getTno() );
+//            return "redirect:/todo/modify";
+//        }
+//
+//        log.info(todoDTO);
+//        todoService.modify(todoDTO);
+//        return "redirect:/todo/list";
+//    }
+
+    @PostMapping("/modify")
+    public String modify(@Valid TodoDTO todoDTO,
+                         PageRequestDTO pageRequestDTO,
+                         BindingResult bindingResult,
+                         RedirectAttributes redirectAttributes){
+        if(bindingResult.hasErrors()) {
+            log.info("has errors.......");
+            redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors() );
+            redirectAttributes.addAttribute("tno", todoDTO.getTno() );
+            return "redirect:/todo/modify";
+        }
+
+        log.info(todoDTO);
+        todoService.modify(todoDTO);
+
+        redirectAttributes.addAttribute("page", pageRequestDTO.getPage());
+        redirectAttributes.addAttribute("size", pageRequestDTO.getSize());
+
+        return "redirect:/todo/list";
+    }
+
 }

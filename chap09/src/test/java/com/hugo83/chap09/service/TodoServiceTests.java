@@ -1,5 +1,7 @@
 package com.hugo83.chap09.service;
 
+import com.hugo83.chap09.dto.PageRequestDTO;
+import com.hugo83.chap09.dto.PageResponseDTO;
 import com.hugo83.chap09.dto.TodoDTO;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
@@ -26,5 +28,13 @@ public class TodoServiceTests {
                 .writer("user2")
                 .build();
         todoService.register(todoDTO);
+    }
+
+    @Test
+    public void testPaging() {
+        PageRequestDTO pageRequestDTO = PageRequestDTO.builder().page(1).size(10).build();
+        PageResponseDTO<TodoDTO> responseDTO = todoService.getList(pageRequestDTO);
+        log.info(responseDTO);
+        responseDTO.getDtoList().stream().forEach(todoDTO -> log.info(todoDTO));
     }
 }

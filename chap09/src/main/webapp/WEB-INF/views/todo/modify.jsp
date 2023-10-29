@@ -52,6 +52,8 @@
           </div>
           <div class="card-body">
             <form action="/todo/modify" method="post">
+              <input type="hidden" name="page" value="${pageRequestDTO.page}">
+              <input type="hidden" name="size" value="${pageRequestDTO.size}">
 
               <div class="input-group mb-3">
                 <span class="input-group-text">TNO</span>
@@ -92,7 +94,7 @@
               </div>
             </form>
 
-            <script>
+            <script> <!-- H.13 검증부분 -->
               const serverValidResult = {}
               <c:forEach items="${errors}" var="error">
               serverValidResult['${error.getField()}'] = '${error.defaultMessage}'
@@ -104,19 +106,15 @@
             const formObj = document.querySelector("form")
 
             document.querySelector(".btn-danger").addEventListener("click",function(e) {
-
                 e.preventDefault()
                 e.stopPropagation()
 
                 formObj.action ="/todo/remove"
                 formObj.method ="post"
-
                 formObj.submit()
-
             },false);
 
-            document.querySelector(".btn-primary").addEventListener("click",function(e) {
-
+            document.querySelector(".btn-primary").addEventListener("click",function(e) { // H.14
               e.preventDefault()
               e.stopPropagation()
 
@@ -127,14 +125,16 @@
 
             },false);
 
+            //document.querySelector(".btn-secondary").addEventListener("click",function(e) { // H.15
+            //    e.preventDefault()
+            //    e.stopPropagation()
+            //    self.location = "/todo/list";
+            //  },false);
             document.querySelector(".btn-secondary").addEventListener("click",function(e) {
-
-                e.preventDefault()
-                e.stopPropagation()
-
-                self.location = "/todo/list";
-
-            },false);
+              e.preventDefault()
+              e.stopPropagation()
+              self.location= `/todo/list?${pageRequestDTO.link}`
+            },false);  // 페이지 링크 번호 추가
           </script>
         </div>
       </div>

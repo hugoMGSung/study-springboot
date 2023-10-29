@@ -1,5 +1,7 @@
 package com.hugo83.chap09.service;
 
+import com.hugo83.chap09.dto.PageRequestDTO;
+import com.hugo83.chap09.dto.PageResponseDTO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.modelmapper.ModelMapper;
@@ -26,12 +28,27 @@ public class TodoServiceImpl implements TodoService {
         todoMapper.insert(todoVO);
     }
 
+//    @Override
+//    public List<TodoDTO> getAll() {
+//        List<TodoDTO> dtoList = todoMapper.selectAll().stream()
+//                .map(vo -> modelMapper.map(vo, TodoDTO.class))
+//                .collect(Collectors.toList());
+//        return dtoList;
+//    }
+
     @Override
-    public List<TodoDTO> getAll() {
-        List<TodoDTO> dtoList = todoMapper.selectAll().stream()
+    public PageResponseDTO<TodoDTO> getList(PageRequestDTO pageRequestDTO) {
+        List<TodoVO> voList = todoMapper.selectList(pageRequestDTO);
+        List<TodoDTO> dtoList = voList.stream()
                 .map(vo -> modelMapper.map(vo, TodoDTO.class))
                 .collect(Collectors.toList());
-        return dtoList;
+        int total = todoMapper.getCount(pageRequestDTO);
+        PageResponseDTO<TodoDTO> pageResponseDTO = PageResponseDTO.<TodoDTO>withAll()
+                .dtoList(dtoList)
+                .total(total)
+                .pageRequestDTO(pageRequestDTO)
+                .build();
+        return pageResponseDTO;
     }
 
     @Override
@@ -44,5 +61,11 @@ public class TodoServiceImpl implements TodoService {
     @Override
     public void remove(Long tno) {
         todoMapper.delete(tno);
+    }
+
+    @Override
+    public void modify(TodoDTO todoDTO) {
+        TodoVO todoVO = modelMapper.map(todoDTO, TodoVO.class );
+        todoMapper.update(todoVO);
     }
 }

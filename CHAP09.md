@@ -421,3 +421,93 @@
 7. 삭제 확인
 
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0063.png" width="600">
+
+8. TodoMapper와 TodoMapper.xml 에 update() 작성
+9. TodoService, TodoServiceImpl 에 modify() 작성
+10. finish 체크박스를 위한 작업위해, formatter/CheckboxFormatter 클래스 작성
+11. 추가한 CheckboxFormatter 를 servlet-context.xml에 등록
+12. TodoController에 modify() 작성
+13. modify.jsp 검증된 정보를 처리하는 스크립트 코드 작성
+14. Modify 버튼 이벤트 처리 스크립트 
+15. List 버튼 클릭 이벤트 처리 스크립트
+16. 수정 테스트. 날짜를 미래로 해야 하는 문제 및 타이틀 한 단어 이외 삭제되는 문제
+
+### I. 페이징 처리
+1. dto/PageRequestDTO 클래스 작성
+2. TodoMapper 인터페이스 및 TodoMapper.xml에 selectList() 작성
+3. TodoMapperTests에 testSelectList() 작성
+4. 테스트를 위해서 데이터를 11~12개로 추가한 뒤 테스트. 11개이기 때문에 최신데이터부터 10개만 테스트 조회됨
+5. TodoMapper, TodoMapper.xml 에 getCount() 작성
+6. dto/PageResponseDTO.java 작성
+7. TodoService, TodoServiceImpl 에서 getList() 작성 (getAll()은 주석처리)
+8. TodoServiceTests에 testPaing() 작성, 테스트
+9. TodoController의 list() 수정 처리
+10. list.jsp에서 dtoList를 responseDTO.dtoList로 변경
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0064.png" width="600">
+
+11. Bootstrap pagination 컴포넌트를 list.jsp </table> 다음에 추가
+12. 페이지 이벤트 스크립트 추가
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0065.png" width="600">
+
+13. 조회페이지로 이동, PageRequestDTO에 getLink() 추가 작성
+14. list.jsp의 /todo/read?tno 부분의 두번째 파라미터 pageRequestDTO.link 추가
+
+15. TodoController read() 메서드에 PageRequestDTO 파라미터 추가
+16. read.jsp 에서의 List 버튼 스크립트 수정
+17. 테스트 잘 되는지 확인
+18. read.jsp 의 Modify 버튼 부분 스크립트 수정
+19. modify.jsp 의 List 버튼 스크립트 변경 수정
+20. 수정/삭제 후 페이지 이동 위해 히든 태그 추가
+	```html
+	<input type="hidden" name="page" value="${pageRequestDTO.page}">
+	<input type="hidden" name="size" value="${pageRequestDTO.size}">
+	```
+
+21. TodoController remove() 메서드 변경
+22. 수정 처리 위해 modify() 메서드 변경
+23. 자기 페이지에서 수정, 삭제 등이 일어나는지 확인
+
+### J. 검색/필터링 처리
+1. dto/PageRequestDTO 검색관련 변수 추가
+2. TodoMapper.xml의 selectList() 에 MyBatis용 태그 추가
+3. testSelectSearch() 작성 후 테스트
+4. TodoMapper.xml getCount에 search 태그 추가
+5. views/todo/list.jsp 에 검색 영역 추가
+	```html
+	<div class="row content">
+      <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Search </h5>
+            <form action="/todo/list" method="get">
+              <input type="hidden" name="size" value="${pageRequestDTO.size}">
+              <div class="mb-3">
+                <input type="checkbox" name="finished">완료여부
+              </div>
+              <div class="mb-3">
+                <input type="checkbox" name="types" value="t">제목
+                <input type="checkbox" name="types" value="w">작성자
+                <input type="text"  name="keyword" class="form-control"/>' >
+              </div>
+              <div class="input-group mb-3 dueDateDiv">
+                <input type="date" name="from" class="form-control">
+                <input type="date" name="to" class="form-control">
+              </div>
+              <div class="input-group mb-3">
+                <div class="float-end">
+                  <button class="btn btn-primary" type="submit">Search</button>
+                  <button class="btn btn-info clearBtn" type="reset">Clear</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+	```
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0066.png" width="600">
+
+6. dto/PageRequestDTO checkType() 메서드 작성

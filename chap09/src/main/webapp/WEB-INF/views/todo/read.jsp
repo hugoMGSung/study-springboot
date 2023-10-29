@@ -94,12 +94,20 @@
             </div>
 
             <script>
+              //document.querySelector(".btn-primary").addEventListener("click", function(e){
+              //    self.location = "/todo/modify?tno="+${dto.tno}
+              //              },false) // 기본 주석처리
+              // 수정 페이지로 이동하는 이벤트 변경
               document.querySelector(".btn-primary").addEventListener("click", function(e){
-                  self.location = "/todo/modify?tno="+${dto.tno}
-                            },false)
+                self.location = `/todo/modify?tno=${dto.tno}&${pageRequestDTO.link}`
+              },false)
 
+              // document.querySelector(".btn-secondary").addEventListener("click", function(e){
+              //     self.location = "/todo/list";
+              // },false)  // 기본은 주석처리
+              //목록 페이지로 이동하는 이벤트 처리
               document.querySelector(".btn-secondary").addEventListener("click", function(e){
-                  self.location = "/todo/list";
+                self.location = "/todo/list?${pageRequestDTO.link}"
               },false)
             </script>
           </div>
