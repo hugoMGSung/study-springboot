@@ -77,7 +77,28 @@
 	
 	- ErrorController 상속받은 CustomError 작성
 
-	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0070.png" width="600">
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0070.png" width="600"> 
+
+3. 라이브러리 설정
+	- build.gradle에 Lombok 테스트용 라이브러리 추가 작성
+	- Spring Data JPA 설정 application.properties 
+	- Log4j2 라이브러리(기본 추가) 사용설정 application.properties 작성
+
+
+### D. SpringBoot 웹개발
+1. controller 패키지 생성
+2. SampleController 클래스 /hello URL 메서드 작성
+3. reources/templates/hello.html 작성
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0071.png" width="600">
+
+4. conroller/SampleJSONController 클래스 /helloArr JSON 메서드 작성
+5. application/json 데이터 전달 확인
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0072.png" width="600">
+
+
+
 
 	
 
