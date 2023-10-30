@@ -41,5 +41,44 @@
 
 	Spring Boot Dashboard, Apps > chap10 Play로 서버 실행
 
-### C. 
+15. MariaDB, JPD 등 DB 설정하지 않으면 실행되지 않음
+
+16. src/main/resources/application.properties 또는 .yml 설정
+	```tex
+	## DB 설정
+	spring.datasource.driver-class-name=org.mariadb.jdbc.Driver
+	spring.datasource.url=jdbc:mariadb://localhost:3326/webdb
+	spring.datasource.username=webuser
+	spring.datasource.password=webuser
+	```
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0068.png" width="600">
+
+### C. 추가 설정 팁
+1. 톰캣 재구동없이 실행
+	- spring-boot-devtools 
+	- 설정(Ctrl + ,) 클릭
+	- Hot Code Replace > auto
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0069.png" width="550">
+
+2. 기본 에러페이지(Whitelabel Error Page) 제거, 커스텀 404 추가
+	- application.properties
+		```tex
+		server.error.whitelabel.enabled=false
+		server.error.path=/error
+		spring.autoconfigure.exclude=org.springframework.boot.autoconfigure.web.ErrorMvcAutoConfiguration
+		```
+	- resource/templates 하위에 에러 페이지 작성(with Bootstrap)
+
+		404, 500, error.html
+	
+	- bg1.jpg는 resources/static/img에 저장
+	
+	- ErrorController 상속받은 CustomError 작성
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0070.png" width="600">
+
+	
+
 
