@@ -215,7 +215,7 @@ DB에서 테이블을 만들 필요없음
 2. Gradle / Tasks 의 build > clean 후 build > build 성공하면, other > compileJava 실행
 3. 결과는 탐색기에 아래와 같이 생성확인
 
-	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0078.png" width="500">
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0078.png" width="400">
 
 
 
