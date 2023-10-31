@@ -37,6 +37,8 @@ dependencies {
 	// Lombok 테스트
 	testCompileOnly 'org.projectlombok:lombok'
     testAnnotationProcessor 'org.projectlombok:lombok'
+	// Thymeleaf 레이아웃
+	implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:3.1.0'
 }
 
 tasks.named('test') {

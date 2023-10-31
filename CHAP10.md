@@ -98,6 +98,50 @@
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0072.png" width="600">
 
 
+### E. Thymeleaf
+1. SampleController와 URL 관련 페이지 작성
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0073.png" width="600">
+
+2. 500에러에 대한 오류 수정
+	```html
+	<h4>[[$(list)]]</h4>
+	위의 오류에서 아래로 수정 ...
+	<h4>[[${list}]]</h4>
+	```
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0074.png" width="600">
+
+3. 레이아웃 기능으로 Thymelaef layout 라이브러리를 build.gradle 에 추가
+4. 여기까지 내용 학습
+
+### F. Spring Data JPA
+DB에서 테이블을 만들 필요없음
+
+1. domain/BaseEntity.java - 테이블 기본 컬럼 regDate, modeDate 작성
+2. domain/Board.java 작성
+3. Chap10Application.java에 @EnableJpaAuditing 추가
+
+	엔티티가 DB에 추가되거나 변경될때 자동으로 시간 값 지정하는 리스너
+
+4. repository/BoardRepository.java 인터페이스 작성
+5. test/.../repository/BoardRepositoryTests.java 작성
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0076.png" width="500">
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0075.png" width="550">
+
+6. 디버그 콘솔에서 Launch Java Tests 콤보박스 선택하며 결과 확인
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0077.png" width="600">
+
+### G. Querydsl로 동적쿼리 처리
+단순 JPA는 처리내용이 단순 JPQL은 정적으로 고정되어 불편 그래서 Querydsl이 편리함
+
+1. build.gradle에 Querydsl 관련 라이브러리 설정
+
+
+
 
 
 	
