@@ -137,8 +137,86 @@ DB에서 테이블을 만들 필요없음
 
 ### G. Querydsl로 동적쿼리 처리
 단순 JPA는 처리내용이 단순 JPQL은 정적으로 고정되어 불편 그래서 Querydsl이 편리함
+단, Querydsl을 사용하려면 버전에 엄청나게 예민해짐(조금만 버전이 달라로 오류!). 오류가 많이 나니 주의할 것!!!
 
-1. build.gradle에 Querydsl 관련 라이브러리 설정
+- https://myvelop.tistory.com/213 확인할 것!
+
+1. build.gradle 설정 완전 변경(현재 ~~**chap12**~~로 테스트 했으므로 chap12는 더이상 사용하지 않음!!!!)
+	```tex
+	plugins {
+		id 'java'
+		id 'org.springframework.boot' version '3.1.5'
+		id 'io.spring.dependency-management' version '1.1.3'
+		id 'war'
+	}
+
+	group = 'com.hugo83'
+	version = '0.0.1-SNAPSHOT'
+
+	java {
+		sourceCompatibility = '17'
+	}
+
+	configurations {
+		compileOnly {
+			extendsFrom annotationProcessor
+		}
+	}
+
+	repositories {
+		mavenCentral()
+	}
+
+	dependencies {
+		implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+		implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+		implementation 'org.springframework.boot:spring-boot-starter-web'
+		developmentOnly 'org.springframework.boot:spring-boot-devtools'
+		testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+		runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
+		// Lombok 기본
+		compileOnly 'org.projectlombok:lombok'
+		annotationProcessor 'org.projectlombok:lombok'
+		// Lombok 테스트
+		testCompileOnly 'org.projectlombok:lombok'
+		testAnnotationProcessor 'org.projectlombok:lombok'
+		// Thymeleaf 레이아웃
+		implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:3.1.0'
+		// Querydsl 라이브러리
+		implementation 'com.querydsl:querydsl-jpa:5.0.0:jakarta'
+		annotationProcessor "com.querydsl:querydsl-apt:${dependencyManagement.importedProperties['querydsl.version']}:jakarta"
+		annotationProcessor "jakarta.annotation:jakarta.annotation-api"
+		annotationProcessor "jakarta.persistence:jakarta.persistence-api"
+	}
+
+	tasks.named('test') {
+		useJUnitPlatform()
+	}
+
+	/**
+	* QueryDSL Build Options
+	*/
+	def querydslDir = "src/main/generated"
+
+	sourceSets {
+		main.java.srcDirs += [ querydslDir ]
+	}
+
+	tasks.withType(JavaCompile) {
+		options.getGeneratedSourceOutputDirectory().set(file(querydslDir))
+	}
+
+	clean.doLast {
+		file(querydslDir).deleteDir()
+	}
+	```
+
+2. Gradle / Tasks 의 build > clean 후 build > build 성공하면, other > compileJava 실행
+3. 결과는 탐색기에 아래와 같이 생성확인
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0078.png" width="500">
+
 
 
 
