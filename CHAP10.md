@@ -218,7 +218,34 @@ DB에서 테이블을 만들 필요없음
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0078.png" width="400">
 
 
+### H. Repository와 Querydsl 연동
+1. search/BoardSearch 에 Querydsl 인터페이스 선언
+2. search/BoardSearchImpl.java 로 BoardSearch를 구현해서 작성
+3. BoardSearchImpl 의 search1() 메서드에 Q도메인 객체로 작성
+4. BoardRepository 선언부에 BoardSearch 인터페이스 추가 지정
+	```java
+	import com.hugo83.chap10.repository.search.BoardSearch; // 반드시 추가!
 
+	// , BoardSearch 반드시 추가
+	public interface BoardRepository extends JpaRepository<Board, Long>, BoardSearch {
+		@Query(value = "select now()", nativeQuery = true)
+		String getTime();
+	}
+	```
+
+5. test/.../repository/BoardRepositoryTests 아래에 testSearch1() 작성 후 테스트
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0079.png" width="600">
+
+6. search1() 중간에 페이징 처리 추가
+
+	위의 쿼리에 order by와 limit 가 추가됨
+
+7. 검색 조건 추가를 위해 BooleanBuilder 추가
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0080.png" width="600">
+
+8. SearchAll() 작성
 
 
 
