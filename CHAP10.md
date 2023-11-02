@@ -282,3 +282,15 @@ DB에서 테이블을 만들 필요없음
 
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0084.png" width="600">
 
+16. list.html 검색내용 추가
+17. list.html 내 js 이벤트 처리
+18. BoardController에 /register GET/POST 메서드 작성
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0085.png" width="600">
+
+19. register.html 작성 및 list.html 수정
+20. BoardController /read 작성
+21. list.html에서 read 링크 처리
+22. BoardController /read에 /modify 추가 작성
+23. modify.html 작성
+24. 삭제 처리

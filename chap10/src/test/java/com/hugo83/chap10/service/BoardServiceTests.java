@@ -20,9 +20,9 @@ public class BoardServiceTests {
 	public void testRegister() {
 		log.info(boardService.getClass().getName());
 		BoardDTO boardDTO = BoardDTO.builder()
-				.title("Sample Title...")
-				.content("Sample Content...")
-				.writer("user00")
+				.title("한글 타이틀...")
+				.content("샘플 컨텐트 내용...")
+				.writer("유저76")
 				.build();
 
 		Long bno = boardService.register(boardDTO);
