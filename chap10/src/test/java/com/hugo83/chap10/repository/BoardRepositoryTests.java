@@ -103,4 +103,6 @@ public class BoardRepositoryTests {
 		log.info(result.hasPrevious() + ": " + result.hasNext()); // prev next
 		result.getContent().forEach(board -> log.info(board));
 	}
+
+	
 }

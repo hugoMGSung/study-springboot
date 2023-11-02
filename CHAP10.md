@@ -248,7 +248,27 @@ DB에서 테이블을 만들 필요없음
 8. SearchAll() 작성
 
 
+### I. 게시물 관리 완성
+1. build.gradle에 modelmapper(DTO와 엔티티간 변환처리) 및 validation 라이브러리 추가
+	```tex
+	// ModelMapper 라이브러리
+	implementation 'org.modelmapper:modelmapper:3.1.0'
+	// Validation 처리 라이브러리
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	```
+2. config/RootConfig.java 클래스 추가
+3. dto/BoardDTO 클래스 작성
+4. service/BoardService 인터페이스와 BoardServiceImpl 클래스 생성
 
-	
+5. 등록작업용 register() 작성
+6. service/BoardServiceTests.java 에 testRegister() 작성
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0081.png" width="600">
+
+7. 조회, 수정, 삭제 메서드 추가 작성
+8. dto/PageRequestDTO.java, PageResponseDTO.java 추가 작성
+9. BoardService, BoardServiceImple에 list() 작성
+
+10. controller/BoardController.java 작성으로 컨트롤러와 화면처리 시작
 
 

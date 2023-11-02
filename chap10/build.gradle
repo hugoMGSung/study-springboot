@@ -28,6 +28,8 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	// Validation 처리 라이브러리
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
 
 	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
 	// Lombok 기본
@@ -43,6 +45,8 @@ dependencies {
 	annotationProcessor "com.querydsl:querydsl-apt:${dependencyManagement.importedProperties['querydsl.version']}:jakarta"
 	annotationProcessor "jakarta.annotation:jakarta.annotation-api"
 	annotationProcessor "jakarta.persistence:jakarta.persistence-api"
+	// ModelMapper 라이브러리
+	implementation 'org.modelmapper:modelmapper:3.1.0'
 }
 
 tasks.named('test') {
