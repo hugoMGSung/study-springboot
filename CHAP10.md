@@ -1,7 +1,7 @@
 # study-springboot
 스프링부트 저장소 다시 만들기
 
-## chap09. Spring Web MVC
+## chap10. Spring Web MVC
 스프링부트 = 스프링 + 추가기능
 
 1. 서버가 내장되어 별도 WAS 설치 필요없음
@@ -294,3 +294,6 @@ DB에서 테이블을 만들 필요없음
 22. BoardController /read에 /modify 추가 작성
 23. modify.html 작성
 24. 삭제 처리
+
+
+[Next](https://github.com/hugoMGSung/study-springboot/blob/main/CHAP11.md)
