@@ -30,7 +30,13 @@ REST방식 서비스
 
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0088.png" width="600">
 
+5. REST방식 에러 출력을 위해 @RestControllerAdvice 설계. controller/advice/CustomRestAdvice 클래스 추가
+6. dto/ReplayDTO 편집
+7. ReplyController register() 메서드 수정 
+8. Swagger 화면에서 replies() 메서트 테스트, Try it 누른뒤 Request Body를 { } 로 변경뒤 테스트
 
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0089.png" width="600">
+ 
 
 
 
