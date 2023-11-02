@@ -70,6 +70,4 @@ REST방식 서비스
 일단 PASS!!! 다시!!!
 
 
-
-
-[Next](https://github.com/hugoMGSung/study-springboot/blob/main/CHAP12.md)
+[Next](https://github.com/hugoMGSung/study-springboot/blob/main/CHAP13.md)
