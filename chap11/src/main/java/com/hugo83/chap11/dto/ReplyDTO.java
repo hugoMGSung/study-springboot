@@ -7,10 +7,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Data
 @Builder
@@ -21,6 +18,9 @@ public class ReplyDTO {
 
 	@NotNull
 	private Long bno;
+
+	// @NotNull
+	// private Long board_bno; // ???
 
 	@NotEmpty
 	private String replyText;

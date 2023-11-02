@@ -6,6 +6,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.hugo83.chap11.dto.BoardDTO;
+import com.hugo83.chap11.dto.BoardListReplyCountDTO;
 import com.hugo83.chap11.dto.PageRequestDTO;
 import com.hugo83.chap11.dto.PageResponseDTO;
 import com.hugo83.chap11.service.BoardService;
@@ -27,7 +28,9 @@ public class BoardController {
 
 	@GetMapping(value = "/list")
 	public void list(PageRequestDTO pageRequestDTO, Model model) {
-		PageResponseDTO<BoardDTO> responseDTO = boardService.list(pageRequestDTO);
+		// PageResponseDTO<BoardDTO> responseDTO = boardService.list(pageRequestDTO);
+		PageResponseDTO<BoardListReplyCountDTO> responseDTO = boardService.listWithReplyCount(pageRequestDTO);
+
 		log.info(responseDTO);
 		model.addAttribute("responseDTO", responseDTO);
 	}

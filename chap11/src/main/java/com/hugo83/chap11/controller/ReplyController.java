@@ -1,19 +1,16 @@
 package com.hugo83.chap11.controller;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.hugo83.chap11.dto.ReplyDTO;
+import com.hugo83.chap11.service.ReplyService;
 
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import jakarta.validation.Valid;
 
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindException;
-import org.springframework.validation.BindingResult;
+import org.springframework.http.*;
+import org.springframework.validation.*;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 
 import java.util.HashMap;
@@ -22,7 +19,10 @@ import java.util.Map;
 @RestController
 @RequestMapping("/replies")
 @Log4j2
+@RequiredArgsConstructor
 public class ReplyController {
+	private final ReplyService replyService;
+
 	// @ApiOperaion
 	// @PostMapping(value = "/", consumes = MediaType.APPLICATION_JSON_VALUE)
 	// public ResponseEntity<Map<String, Long>> register(@RequestBody ReplyDTO
@@ -42,8 +42,11 @@ public class ReplyController {
 		}
 
 		Map<String, Long> resultMap = new HashMap<>();
-		resultMap.put("rno", 112L);
+		// resultMap.put("rno", 112L);
 
-		return resultMap; // ResponseEntity.ok(resultMap);
+		// return resultMap; // ResponseEntity.ok(resultMap);
+		Long rno = replyService.register(replyDTO);
+		resultMap.put("rno", rno);
+		return resultMap;
 	}
 }
