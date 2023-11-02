@@ -270,5 +270,15 @@ DB에서 테이블을 만들 필요없음
 9. BoardService, BoardServiceImple에 list() 작성
 
 10. controller/BoardController.java 작성으로 컨트롤러와 화면처리 시작
+11. build.gradle에 화면 구성을 위한 라이브러리 추가
 
+12. https://startbootstrap.com/template/simple-sidebar 다운받은 압축내용을 resources/static 아래 붙여넣기
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0082.png" width="600">
+
+13. templates/layout/basic.html 생성 후 index.html 복사 그대로 붙여넣기
+14. basic.html에 Thymeleaf용 내용 추가
+15. templates/board/list.html 생성 및 작성 후 실행확인
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0084.png" width="600">
 
