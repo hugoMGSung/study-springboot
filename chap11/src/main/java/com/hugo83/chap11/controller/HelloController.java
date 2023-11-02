@@ -12,7 +12,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 
 @RestController
 public class HelloController {
-
 	@Operation(summary = "test hello", description = "hello api example")
 	@ApiResponses({
 			@ApiResponse(responseCode = "200", description = "OK !!"),
@@ -20,6 +19,7 @@ public class HelloController {
 			@ApiResponse(responseCode = "404", description = "NOT FOUND !!"),
 			@ApiResponse(responseCode = "500", description = "INTERNAL SERVER ERROR !!")
 	})
+
 	@GetMapping("/hello")
 	public ResponseEntity<String> hello(
 			@Parameter(description = "이름", required = true, example = "Park") @RequestParam String name) {

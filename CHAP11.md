@@ -18,8 +18,17 @@ REST방식 서비스
 	```
 
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0087.png" width="600">
-	
-2. dto/ReplyDTO.java 작성
+
+2. 필요없는 것들(Spring Boot 3 이상에서는 필요없음)
+	- config/SwaggerConfig
+	- config/CustomServletConfig
+
+3. dto/ReplyDTO.java 작성
+4. controller/ReplyController 클래스 작성
+
+	@ApiOperaion 불필요
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0088.png" width="600">
 
 
 
