@@ -52,6 +52,27 @@
 
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0097.png" width="550">
 
+7. build.gradle에 Thumbnail 라이브러리 추가
+8. UpDownController에 썸네일 처리를 추가
+
+	이미지가 모두 되는 것은 아님, jfif 와 같은 휘귀한 이미지파일은 썸네일 못만듬
+
+9. dto/upload/UploadResultDTO 클래스 생성(결과 리턴용)
+10. 첨부파일 업로드 및 결과 리턴 처리
+
+	String -> List<UploadResultDTO>
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0098.png" width="600">
+
+### C. 첨부파일 조회/삭제
+1. UpDownController에 viewFileGET() 메서드 작성
+2. Swagger-ui에서 미리 집어넣어둔 aaa.jpg로 테스트
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0099.png" width="600">
+
+3. UpDownController에 removeFile() 메서드 작성
+4. 파일 삭제 테스트 확인
+
 
 
 
