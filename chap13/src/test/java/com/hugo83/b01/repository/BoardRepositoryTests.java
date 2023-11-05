@@ -8,11 +8,17 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.test.annotation.Commit;
+
 import com.hugo83.b01.domain.Board;
+import com.hugo83.b01.domain.Reply;
 import com.hugo83.b01.dto.BoardListReplyCountDTO;
+
+import jakarta.transaction.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.IntStream;
 
 @SpringBootTest
@@ -21,6 +27,9 @@ public class BoardRepositoryTests {
 
     @Autowired
     private BoardRepository boardRepository;
+
+    @Autowired
+    private ReplyRepository replyRepository;
 
     @Test
     public void testInsert() {
@@ -161,4 +170,27 @@ public class BoardRepositoryTests {
         result.getContent().forEach(board -> log.info(board));
     }
 
+    @Test
+    public void testInsertWithImages() {
+        Board board = Board.builder()
+                .title("Image Test")
+                .content("첨부파일 테스트")
+                .writer("tester")
+                .build();
+
+        for (int i = 0; i < 3; i++) {
+            board.addImage(UUID.randomUUID().toString(), "file" + i + ".jpg");
+        } // end for
+
+        boardRepository.save(board);
+    }
+
+    @Test
+    @Transactional
+    @Commit
+    public void testRemoveAll() {
+        Long bno = 1L;
+        replyRepository.deleteByBoard_Bno(bno);
+        boardRepository.deleteById(bno);
+    }
 }

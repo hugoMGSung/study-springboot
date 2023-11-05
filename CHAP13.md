@@ -73,7 +73,13 @@
 3. UpDownController에 removeFile() 메서드 작성
 4. 파일 삭제 테스트 확인
 
+### D. Board/BoardImage 처리
+1. domain/BoardImage 클래스 생성 @ManyToOne 적용
+2. domain/Board 클래스에 @OneToMany 적용
+3. DB에 reply, board 테이블 삭제 후 다시 프로젝트 실행
 
+4. repository/ReplyRepository 인터페이스 delete..() 추가
+5. test/.../BoardRepositoryTests에 ReplyRepository 추가
 
 
 
