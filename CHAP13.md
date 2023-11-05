@@ -47,6 +47,11 @@
 
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0096.png" width="550">
 
+5. 첨부파일 저장시 파일명 중복문제등 해결을 위해 UUID 사용함
+6. 실제 경로에 저장되도록 변경
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0097.png" width="550">
+
 
 
 
