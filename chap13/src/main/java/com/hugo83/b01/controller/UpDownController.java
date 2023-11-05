@@ -25,11 +25,15 @@ public class UpDownController {
 	@Value("${com.hugo83.upload.path}") // import 시에 springframework으로 시작하는 Value
 	private String uploadPath;
 
-	// 어떻게 바꿔야 하는지 알았다!!
-	@PostMapping(value = "/upload", consumes = {
-			MediaType.MULTIPART_FORM_DATA_VALUE })
-	public ResponseEntity<Void> uploadFile(@RequestPart List<MultipartFile> multipartFile) {
-		// yaay!
-		return ResponseEntity.ok(null);
+	@PostMapping(value = "/upload", consumes = { MediaType.MULTIPART_FORM_DATA_VALUE })
+	public String uploadFile(@RequestPart List<MultipartFile> uploadFiles) {
+		log.info(uploadFiles);
+		if (uploadFiles.size() > 0) {
+			for (MultipartFile file : uploadFiles) {
+				log.info(file.getOriginalFilename());
+			} // end of foreach
+		}
+		// return ResponseEntity.ok(null);
+		return null;
 	}
 }

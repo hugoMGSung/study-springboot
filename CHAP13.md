@@ -14,7 +14,7 @@
 ***교재대로 하면 안됨. 아예 2버전에 맞춰서 해야함 ***
 
 1. application.properties 에 업로드용 추가설정
-2. dto/upload/UploadFileDTO.java 작성
+2. dto/upload/UploadFileDTO.java 작성(이 클래스 문제 있음)
 3. controller/UpDownController.java 가장 간단히 작성
 	```java
 	@RestController
@@ -28,8 +28,27 @@
 		}
 	}
 	```
+4. 위의 소스 전부 변경
+	```java
+	@PostMapping(value = "/upload", consumes = { MediaType.MULTIPART_FORM_DATA_VALUE })
+	public String uploadFile(@RequestPart List<MultipartFile> uploadFiles) {
+		log.info(uploadFiles);
+		if (uploadFiles.size() > 0) {
+			for (MultipartFile file : uploadFiles) {
+				log.info(file.getOriginalFilename());
+			} // end of foreach
+		}
+		// return ResponseEntity.ok(null);
+		return null;
+	}
+	```
 
-	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0094.png" width="600">
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0095.png" width="600">
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0096.png" width="550">
+
+
+
 
 
 
