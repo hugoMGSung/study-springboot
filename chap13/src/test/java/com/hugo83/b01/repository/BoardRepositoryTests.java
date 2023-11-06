@@ -11,7 +11,9 @@ import org.springframework.data.domain.Sort;
 import org.springframework.test.annotation.Commit;
 
 import com.hugo83.b01.domain.Board;
+import com.hugo83.b01.domain.BoardImage;
 import com.hugo83.b01.domain.Reply;
+import com.hugo83.b01.dto.BoardListAllDTO;
 import com.hugo83.b01.dto.BoardListReplyCountDTO;
 
 import jakarta.transaction.Transactional;
@@ -192,5 +194,54 @@ public class BoardRepositoryTests {
         Long bno = 1L;
         replyRepository.deleteByBoard_Bno(bno);
         boardRepository.deleteById(bno);
+    }
+
+    @Test
+    public void testReadWithImages() {
+        // 반드시 존재하는 bno로 확인
+        Optional<Board> result = boardRepository.findByIdWithImages(2L);
+
+        Board board = result.orElseThrow();
+
+        log.info(board);
+        log.info("--------------------");
+        for (BoardImage boardImage : board.getImageSet()) {
+            log.info(boardImage);
+        }
+    }
+
+    @Test
+    public void testInsertAll() { // 100 개의 게시물 생성,
+        for (int i = 1; i <= 100; i++) {
+
+            Board board = Board.builder()
+                    .title("Title.." + i)
+                    .content("Content.." + i)
+                    .writer("writer.." + i)
+                    .build();
+
+            for (int j = 0; j < 3; j++) {
+                if (i % 5 == 0) { // 5의 배수씩 패스
+                    continue;
+                }
+                board.addImage(UUID.randomUUID().toString(), i + "file" + j + ".jpg");
+            }
+            boardRepository.save(board);
+
+        } // end for
+    }
+
+    @Transactional
+    @Test
+    public void testSearchImageReplyCount() {
+        Pageable pageable = PageRequest.of(0, 10, Sort.by("bno").descending());
+
+        // boardRepository.searchWithAll(null, null,pageable);
+        Page<BoardListAllDTO> result = boardRepository.searchWithAll(null, null, pageable);
+
+        log.info("---------------------------");
+        log.info(result.getTotalElements());
+
+        result.getContent().forEach(boardListAllDTO -> log.info(boardListAllDTO));
     }
 }

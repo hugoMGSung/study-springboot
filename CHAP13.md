@@ -80,7 +80,36 @@
 
 4. repository/ReplyRepository 인터페이스 delete..() 추가
 5. test/.../BoardRepositoryTests에 ReplyRepository 추가
+6. repository/BoardRepository 인터페이스에 findByIdWithImages() 추가
+7. test/.../BoardRepositoryTests testReadWithImages() 작성 테스트
+8. N+1 문제 테스트를 위한 코드 testInsertAll() 작성 테스트
+9. repository/search/BoardSearch 인터페이스에 searchWithAll() 메서드 추가
+10. BoardSearchImpl에 searchWithAll() 메서드 구현
+11. BoardRepositoryTests에 테스트코드 작성
+
+12. dto/BoardListAllDTO, BoardImageDTO 클래스 작성
+13. service/BoardService에 listWithAll() 추가
+14. service/BoardServiceImpl에 listWithAll() 구현
+15. repository/search/BoardSearch searchWithAll() 의 리턴타입 BoardListAllDTO로 변경
+16. BoardSearchImpl 의 searchWithAll() 변경
+17. test/.../repository/BoardRepositoryTests에 testSearchImageReplyCount() 수정 테스트
+18. 검색조건 추가
+
+19. dto/BoardDTO 파일이름 리스트 추가
+20. service/BoardService 에 dtoToEntry default메서드 작성
+21. service/BoardServiceImpl에 register() 수정
+22. BoardServiceTests 의 testRegisterWithImages() 작성 
+
+	테이블 맨 마지막에 user00의 데이터 추가 확인할 것
+
+23. BoardServiceImpl에 readOne() 메서드 작성 
+24. BoardServiceTests testReadAll() 작성 테스트.
+
+25. 게시물 수정, 삭제, 목록 처리 통합
+	BoardServiceImpl에 modify() 수정, remove(), list() 등
+26. BoardServiceTests에 testModify(), testRemoveAll(), testListWithAll() 작성 테스트.
 
 
-
+### E. 컨트롤러와 화면 처리
+1. 
 

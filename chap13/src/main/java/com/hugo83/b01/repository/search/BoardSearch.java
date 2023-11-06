@@ -3,6 +3,7 @@ package com.hugo83.b01.repository.search;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import com.hugo83.b01.domain.Board;
+import com.hugo83.b01.dto.BoardListAllDTO;
 import com.hugo83.b01.dto.BoardListReplyCountDTO;
 
 public interface BoardSearch {
@@ -15,4 +16,7 @@ public interface BoardSearch {
             String keyword,
             Pageable pageable);
 
+    Page<BoardListAllDTO> searchWithAll(String[] types,
+            String keyword,
+            Pageable pageable);
 }
