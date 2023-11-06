@@ -39,29 +39,79 @@ public class UpDownController {
 	@Value("${com.hugo83.upload.path}") // import 시에 springframework으로 시작하는 Value
 	private String uploadPath;
 
+	// @Operation(summary = "Upload POST")
+	// @PostMapping(value = "/upload", consumes = {
+	// MediaType.MULTIPART_FORM_DATA_VALUE })
+	// public List<UploadResultDTO> uploadFile(@RequestPart List<MultipartFile>
+	// uploadFiles) {
+	// log.info(uploadFiles);
+	// if (uploadFiles.size() > 0) {
+	// final List<UploadResultDTO> list = new ArrayList<>();
+
+	// uploadFiles.forEach(uploadFile -> {
+	// String originalName = uploadFile.getOriginalFilename();
+	// log.info("FileName >> " + originalName);
+	// String uuid = UUID.randomUUID().toString();
+	// Path savePath = Paths.get(uploadPath, uuid + "_" + originalName);
+
+	// boolean image = false; // 일단 이미지가 아님
+	// try {
+	// uploadFile.transferTo(savePath); // 실제 파일저장
+
+	// // 이미지 파일이면
+	// if (Files.probeContentType(savePath).startsWith("image")) {
+	// image = true;
+	// File thumbFile = new File(uploadPath, "s_" + uuid + "_" + originalName);
+	// Thumbnailator.createThumbnail(savePath.toFile(), thumbFile, 200, 200); // 썸네일
+	// 저장
+	// }
+	// } catch (IOException e) {
+	// e.printStackTrace();
+	// }
+
+	// list.add(UploadResultDTO.builder()
+	// .uuid(uuid)
+	// .fileName(originalName)
+	// .img(image).build());
+	// }); // end each
+
+	// return list;
+	// } // end if
+	// // return ResponseEntity.ok(null);
+	// return null;
+	// }
+
 	@Operation(summary = "Upload POST")
-	@PostMapping(value = "/upload", consumes = { MediaType.MULTIPART_FORM_DATA_VALUE })
-	public List<UploadResultDTO> uploadFile(@RequestPart List<MultipartFile> uploadFiles) {
-		log.info(uploadFiles);
-		if (uploadFiles.size() > 0) {
+	@PostMapping(value = "/upload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+	public List<UploadResultDTO> upload(UploadFileDTO uploadFileDTO) {
+		log.info(uploadFileDTO);
+
+		if (uploadFileDTO.getFiles() != null) {
 			final List<UploadResultDTO> list = new ArrayList<>();
 
-			uploadFiles.forEach(uploadFile -> {
-				String originalName = uploadFile.getOriginalFilename();
-				log.info("FileName >> " + originalName);
+			uploadFileDTO.getFiles().forEach(multipartFile -> {
+				String originalName = multipartFile.getOriginalFilename();
+				log.info(originalName);
+
 				String uuid = UUID.randomUUID().toString();
+
 				Path savePath = Paths.get(uploadPath, uuid + "_" + originalName);
 
-				boolean image = false; // 일단 이미지가 아님
-				try {
-					uploadFile.transferTo(savePath); // 실제 파일저장
+				boolean image = false;
 
-					// 이미지 파일이면
+				try {
+					multipartFile.transferTo(savePath);
+
+					// 이미지 파일의 종류라면
 					if (Files.probeContentType(savePath).startsWith("image")) {
+
 						image = true;
+
 						File thumbFile = new File(uploadPath, "s_" + uuid + "_" + originalName);
-						Thumbnailator.createThumbnail(savePath.toFile(), thumbFile, 200, 200); // 썸네일 저장
+
+						Thumbnailator.createThumbnail(savePath.toFile(), thumbFile, 200, 200);
 					}
+
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
@@ -70,11 +120,12 @@ public class UpDownController {
 						.uuid(uuid)
 						.fileName(originalName)
 						.img(image).build());
-			}); // end each
+
+			});// end each
 
 			return list;
 		} // end if
-			// return ResponseEntity.ok(null);
+
 		return null;
 	}
 

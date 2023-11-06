@@ -1,7 +1,7 @@
 package com.hugo83.b01.domain;
 
 import lombok.*;
-
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
@@ -20,7 +20,7 @@ public class BoardImage implements Comparable<BoardImage> {
 
 	private int ord;
 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	private Board board;
 
 	@Override

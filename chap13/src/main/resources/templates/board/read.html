@@ -54,10 +54,14 @@
                         </div>
                     </div>
 
-
                 </div><!--end card body-->
 
-
+                <div class="col">
+                    <div class="card" th:if="${dto.fileNames != null && dto.fileNames.size() > 0}">
+                        <img class="card-img-top"
+                             th:each="fileName: ${dto.fileNames}"
+                             th:src="|/view/${fileName}|">
+                    </div>
 
             </div><!--end card-->
         </div><!-- end col-->
@@ -133,7 +137,8 @@
 
     <script src="/js/reply.js"></script>
 
-</div>
+    </div>
+</div><!-- layout fragment end -->
 
 
 <script layout:fragment="script" th:inline="javascript">
@@ -333,9 +338,4 @@
         })
     },false)
 
-
-
 </script>
-
-
-

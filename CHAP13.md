@@ -111,5 +111,33 @@
 
 
 ### E. 컨트롤러와 화면 처리
-1. 
+1. reosurces/templates/register.html 의 submit() 처리를 Ajax 방식으로 변경. 첩부파일 업로드 버튼 추가
+2. Axios처리 위한 upload.js resource/static/js에 생성
+3. register.html 에 upload.js 사용위해 스크립트 추가
+4. controller/BoardController 클래스 PostMapping("/register") 메서드 수정
 
+5. UpDownController /upload 메서드 파라미터 UploadFileDTO 로 변경
+	```java
+	@Operation(summary = "Upload POST")
+	@PostMapping(value = "/upload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+	public List<UploadResultDTO> upload(UploadFileDTO uploadFileDTO) {
+		log.info(uploadFileDTO);
+		// ... 	
+	```
+
+6. 파일 업로드 테스트
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0100.png" width="600">
+
+	여러개 업로드 아직 에러. 확인해야 함
+
+7. controller/BoardController list() 메서드 수정
+
+	BoardListReplyCountDTO 에서 BoardListAllDTO 로 변경
+
+8. board/list.html 수정 BoardListAllDTO 객체의 boardImages 이용 출력할 때 첨부파일 보여주도록 변경
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0101.png" width="600">
+
+9. board/read.html 에 이미지 출력 내용 추가
+10. board/modify.html 로 게시물 수정과 삭제
