@@ -149,4 +149,4 @@
 12. modify.html 게시물 삭제 추가
 13. controller/BoardController에 remove() 메서드 변경
 
-
+[Next](https://github.com/hugoMGSung/study-springboot/blob/main/CHAP14.md)
