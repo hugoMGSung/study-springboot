@@ -141,3 +141,12 @@
 
 9. board/read.html 에 이미지 출력 내용 추가
 10. board/modify.html 로 게시물 수정과 삭제
+
+	하단 스크립트 영역 추가
+
+11. 이후 답변 오류 생김 확인
+
+12. modify.html 게시물 삭제 추가
+13. controller/BoardController에 remove() 메서드 변경
+
+
