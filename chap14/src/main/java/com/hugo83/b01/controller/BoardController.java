@@ -12,6 +12,7 @@ import org.springframework.core.io.FileSystemResource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.core.io.Resource;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -98,6 +99,7 @@ public class BoardController {
     //
     // }
 
+    @PreAuthorize("isAuthenticated()")
     @GetMapping({ "/read", "/modify" })
     public void read(Long bno, PageRequestDTO pageRequestDTO, Model model) {
 
@@ -109,6 +111,7 @@ public class BoardController {
 
     }
 
+    @PreAuthorize("principal.username == #boardDTO.writer")
     @PostMapping("/modify")
     public String modify(@Valid BoardDTO boardDTO,
             BindingResult bindingResult,
@@ -138,6 +141,7 @@ public class BoardController {
         return "redirect:/board/read";
     }
 
+    @PreAuthorize("principal.username == #boardDTO.writer")
     @PostMapping("/remove")
     // public String remove(Long bno, RedirectAttributes redirectAttributes) {
     public String remove(BoardDTO boardDTO, RedirectAttributes redirectAttributes) {
