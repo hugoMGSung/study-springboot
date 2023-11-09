@@ -2,7 +2,7 @@
 스프링부트 저장소 다시 만들기
 
 ## chap14. Spring Security
-파일 업로드 처리
+스프링 시큐리티 except OAuth2
 
 ### A. 기존 프로젝트 클론
 1. chap13 복사 chap14 붙여넣기
@@ -95,8 +95,24 @@
 7. controller/BoardController 의 modify() 어노테이션 추가 수정
 8. controller/BoardController 의 remove() 어노테이션 추가 수정
 
+
+### E. 소셜 로그인(OAuth2) 처리
+1. https://developers.kakao.com/ 애플리케이션 추가
+2. 플랫폼 웹 등록버튼 클릭 후 http://localhost:8080 입력
+3. 카카오 로그인 항목 클릭 후 온
+4. 아래 Redirect URI 지정 - http://localhost:8080/login/oauth2/code/kakao 로 지정
+5. 보안 클릭 후 Client Secret 에서 코드 생성 클릭
+
+6. build.gradle 에 OAuth2 Client 라이브러리 추가
+7. application.properties에 OAuth2 관련 설정 추가
+8. config/CustomSecurityConfig filterChain() 에 oauth2Login() 추가
+9. templates/member/login.html 로그인 링크 추가
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0111.png" width="600">
+
+10. 단, 로그인 후 리다이렉트 안됨
+11. security/CustomOAuth2UserService.java 작성
+
+-- 문제 심각, Google OAuth2로 변경할 예정 나중에 하자...
+
 [Next](https://github.com/hugoMGSung/study-springboot/blob/main/CHAP15.md)
-
-
-### E. 소셜 로그인 처리
-1. 

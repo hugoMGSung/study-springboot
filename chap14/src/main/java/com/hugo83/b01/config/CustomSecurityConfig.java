@@ -77,6 +77,8 @@ public class CustomSecurityConfig {
 				.tokenValiditySeconds(60 * 60 * 24 * 30));
 
 		http.exceptionHandling(x -> x.accessDeniedHandler(accessDeniedHandler())); // 403 exceptionHandling() deprecated
+		http.oauth2Login(ol -> ol.loginPage("/member/login")); // oauth2Login().loginPage() deprecated
+
 		return http.build();
 	}
 

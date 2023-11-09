@@ -61,6 +61,8 @@ dependencies {
 	implementation 'net.coobird:thumbnailator:0.4.16'
 	// Thymeleaf security 라이브러리
 	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
+	// OAuth2 라이브러리
+	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
 }
 
 tasks.named('test') {
