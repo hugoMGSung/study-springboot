@@ -51,5 +51,49 @@ REST API와 JWT
 
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0117.png" width="500">
 
+3. JSON 처리를 위한 build.gradle 에 라이브러리 추가
+4. /security/filter/APILoginFilter.java POST 방식요청 JSON 문자열 처리 부분 추가
+5. /resources/static/apiLogin.html 작성
+
+6. /handler/APILoginSuccessHandler.java 작성
+7. CustomSecurityConfig.java 에 APILoginSuccessHandler 추가
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0118.png" width="500">
+
+8. build.gradle 에 jjwt 라이브러리 추가
+9. /util/JWTUtil.java 작성 (JWT 사용 편의용)
+10. application.properties에 서명 추가
+11. /test/.../util/JWTUtilTests.java 작성 및 테스트
+12. /util/JWTUtil.java generateToken() 수정
+13. testGenerate() 재테스트 JWT 문자열 준비.
+
+	```tex
+	com.hugo83.api01.util.JWTUtilTests       : eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2OTk1OTExMDEsIm1pZCI6IkFCQ0RFIiwiaWF0IjoxNjk5NTkxMDQxfQ.eKD0nXOTPfidGs07Cu2cZSNFvJ0HwCMo0U-Six4jumk
+	```
+
+14. 생성된 JWT 문자열 https://jwt.io 에서 확인
+
+	VERIFY SIGNATURE에 비밀키 hello1234567890 먼저 입력 후 생성된 JWT 문자열을 Encoded에 붙여넣고 확인
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0119.png" width="500">
+
+15. JWTUtil의 validateToken() 수정
+16. JWTUtilTest.java에 testValidate() 작성 후 테스트(1분지나면 오류남)
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0120.png" width="500">
+
+17. JWTUtil의 generateToken() 의 유효기간 변경 / testAll() 작성 후 테스트
+
+### C. Access Token 발행
+1. /security/handler/APILoginSuccessHandler.java 수정
+2. /config/CustomSecurityConfig.java 에 JWTUtil 주입
+3. /apiLogin.html에서 토큰 확인
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0122.png" width="600">
+
+4. https://jwt.io 에서 확인
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0121.png" width="600">
+
 
 [Next](https://github.com/hugoMGSung/study-springboot/blob/main/CHAP16.md)

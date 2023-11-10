@@ -25,7 +25,7 @@ public class APIUserRepositoryTests {
 		IntStream.rangeClosed(1, 100).forEach(i -> {
 			APIUser apiUser = APIUser.builder()
 					.mid("apiuser" + i)
-					.mpw(passwordEncoder.encode("12345"))
+					.mpw(passwordEncoder.encode("1111"))
 					.build();
 
 			apiUserRepository.save(apiUser);

@@ -18,6 +18,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 import com.hugo83.api01.security.APIUserDetailsService;
 import com.hugo83.api01.security.filter.APILoginFilter;
+import com.hugo83.api01.security.handler.APILoginSuccessHandler;
+import com.hugo83.api01.util.JWTUtil;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -31,6 +33,7 @@ import lombok.extern.log4j.Log4j2;
 public class CustomSecurityConfig {
 	// 신규 주입
 	private final APIUserDetailsService apiUserDetailsService;
+	private final JWTUtil jwtUtil;
 
 	@Bean
 	public PasswordEncoder passwordEncoder() {
@@ -60,6 +63,12 @@ public class CustomSecurityConfig {
 		// APILoginFilter
 		APILoginFilter apiLoginFilter = new APILoginFilter("/generateToken");
 		apiLoginFilter.setAuthenticationManager(authenticationManager);
+
+		// APILoginSuccessHandler
+		APILoginSuccessHandler successHandler = new APILoginSuccessHandler(jwtUtil);
+		// SuccessHandler 세팅
+		apiLoginFilter.setAuthenticationSuccessHandler(successHandler);
+
 		// APILoginFilter 위치 조정
 		http.addFilterBefore(apiLoginFilter, UsernamePasswordAuthenticationFilter.class);
 		http.cors(cors -> cors.disable()) // Cross Origin Resource Sharing
