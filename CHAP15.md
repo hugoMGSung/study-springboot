@@ -95,5 +95,72 @@ REST API와 JWT
 
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0121.png" width="600">
 
+5. /security/filter/TokenCheckFilter.java 작성
+6. /config/CustomSecurityConfig 에 TokenCheckFilter 설정 지정
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0123.png" width="500">
+
+
+7. /security/exception/AccessTokenException.java / RefreshTokenException.java 작성 
+8. TokenCheckFilter에 AccessToken 검증용 validateAccessToken() 메서드 추가
+
+9. /config/SwaggerConfig.java (문제 구형 Swagger와 최신 Swagger에서는 동작안함)[X]
+10. /security/filter/RefreshTokenFilter.java 작성
+11. CustomSecurityConfig 클래스 코드 수정
+12. /resources/static/apiLogin.html 내용 수정
+13. /resources/static/refreshTest.html 작성
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0124.png" width="600">
+
+14. RefreshTokenFilter의 doFilterInternal() 내부 수정
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0125.png" width="600">
+
+15. /resources/static/sample.html 작성
+16. /resources/static/sendJWT.html 작성
+
+	작업중 쿠키 삭제후 클릭하면 'Cannot Find Access Token' 팝업 
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0126.png" width="600">
+
+### D. Ajax / CORS 설정
+1. https://nginx.org/en/download.html 에서 Stable Version 다운로드 / 압축해제
+2. Nginx 사용 명령어
+	- nginx -s stop
+	- nginx -s quit
+	- nginx -s reload
+	- nginx -s reopen
+	- start nginx
+
+3. static 폴더내 html 파일을 nginx html 내에 복사/붙여넣기
+4. localhost/apiLogin.html 로 테스트
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0127.png" width="600">
+
+5. /config/CustomSecurityConfig 내 cors() 설정 추가
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0128.png" width="600">
+
+#### D-1. Todo API 서비스
+6. build.gradle 내 DB처리 및 기타 설정 추가
+7. /domain/Todo.java 클래스 작성
+8. Gradle > build > clear -> build -> other > compileJava
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0129.png" width="300">
+
+9. /repository/TodoRepository.java 작성
+10. /dto/TodoDTO.java 작성
+11. /dto/PageResponseDTO.java, PageRequestDTO.java 작성
+12. /repository/search/TodoSearch.java, TodoSearchImpl.java 작성
+13. /test/.../repository/TodoRepositoryTests.java 작성 테스트 데이터 생성
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0130.png" width="500">
+
+14. /service/TodoService.java, TodoServiceImpl.java 작성
+15. /controller/TodoController.java 작성
+16. localhost:8080/swagger-ui/index.html 에서 테스트
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0131.png" width="600">
+
 
 [Next](https://github.com/hugoMGSung/study-springboot/blob/main/CHAP16.md)

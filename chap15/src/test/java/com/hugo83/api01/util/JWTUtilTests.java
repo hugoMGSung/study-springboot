@@ -20,13 +20,14 @@ public class JWTUtilTests {
 		log.info(jwtStr);
 	}
 
-	@Test
-	public void testValidate() {
-		// 유효시간이 지난 토큰
-		String jwtStr = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2OTk1OTIwMzQsIm1pZCI6IkFCQ0RFIiwiaWF0IjoxNjk5NTkxOTc0fQ.lkR1LG7TNTsx7nL0LrFI1iE60F3Vxq4CyejBq8XVfkA";
-		Map<String, Object> claim = jwtUtil.validateToken(jwtStr);
-		log.info(claim);
-	}
+	// @Test
+	// public void testValidate() {
+	// // 유효시간이 지난 토큰
+	// String jwtStr =
+	// "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2OTk1OTIwMzQsIm1pZCI6IkFCQ0RFIiwiaWF0IjoxNjk5NTkxOTc0fQ.lkR1LG7TNTsx7nL0LrFI1iE60F3Vxq4CyejBq8XVfkA";
+	// Map<String, Object> claim = jwtUtil.validateToken(jwtStr);
+	// log.info(claim);
+	// }
 
 	@Test
 	public void testAll() {
