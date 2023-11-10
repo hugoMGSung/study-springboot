@@ -1,7 +1,7 @@
 # study-springboot
 스프링부트 저장소 다시 만들기
 
-## chap14. API서버 / JWT
+## chap15. API서버 / JWT
 REST API와 JWT
 
 ### A. 프로젝트 생성
@@ -162,5 +162,9 @@ REST API와 JWT
 
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0131.png" width="600">
 
+17. /security/filter/TokenCheckFilter.java 추가 주입
+18. CustomSecurityConfig.java 수정
+
+19. "Token is null or too short" 문제해결 요
 
 [Next](https://github.com/hugoMGSung/study-springboot/blob/main/CHAP16.md)

@@ -82,7 +82,7 @@ public class CustomSecurityConfig {
 
 		// API로 시작하는 모든 경로는 TokenCheckFilter 동작
 		http.addFilterBefore(
-				tokenCheckFilter(jwtUtil),
+				tokenCheckFilter(jwtUtil, apiUserDetailsService),
 				UsernamePasswordAuthenticationFilter.class);
 
 		// refreshToken 호출 처리
@@ -100,8 +100,8 @@ public class CustomSecurityConfig {
 		return http.build();
 	}
 
-	private TokenCheckFilter tokenCheckFilter(JWTUtil jwtUtil) {
-		return new TokenCheckFilter(jwtUtil);
+	private TokenCheckFilter tokenCheckFilter(JWTUtil jwtUtil, APIUserDetailsService apiUserDetailsService) {
+		return new TokenCheckFilter(apiUserDetailsService, jwtUtil);
 	}
 
 	@Bean

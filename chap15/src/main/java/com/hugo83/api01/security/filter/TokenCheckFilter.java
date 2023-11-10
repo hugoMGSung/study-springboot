@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.web.filter.OncePerRequestFilter;
 
+import com.hugo83.api01.security.APIUserDetailsService;
 import com.hugo83.api01.security.exception.AccessTokenException;
 import com.hugo83.api01.util.JWTUtil;
 
@@ -21,9 +22,11 @@ import lombok.extern.log4j.Log4j2;
 @Log4j2
 // @RequiredArgsConstructor
 public class TokenCheckFilter extends OncePerRequestFilter {
+	private final APIUserDetailsService apiUserDetailsService;
 	private JWTUtil jwtUtil;
 
-	public TokenCheckFilter(JWTUtil jwtUtil) {
+	public TokenCheckFilter(APIUserDetailsService apiUserDetailsService, JWTUtil jwtUtil) {
+		this.apiUserDetailsService = apiUserDetailsService;
 		this.jwtUtil = jwtUtil;
 	}
 
