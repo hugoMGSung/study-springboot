@@ -75,3 +75,112 @@
 
 7. 프로젝트를 깃허브에 올려놓은 다음 EC2에서 받은 뒤 빌드하는 것이 좋으므로 이전과는 달리 깃헙에 독립적으로 올리는 것을 추천(파일 용량)
 8. AWS용 깃헙 새로 생성
+9. Linux 콘솔에서 git 설치 및 폴더 생성
+	```shell
+	> sudo yum install git
+	> git --version
+	> mkdir webapp
+	> cd webapp
+	```
+
+10. git 명령으로 소스 내려받기
+	```shell
+	> git clone https://github.com/hugoMGSung/springaws.git
+	> cd springaws
+	```
+
+11. https://gradle.org/install/#manually 에서 Download 링크를 새 탭으로 오픈
+
+12. direct link 의 링크주소 복사
+
+13. AWS 콘솔에서 다음과 같이 입력
+	```shell
+	> sudo wget https://services.gradle.org/distributions/gradle-8.4-bin.zip
+	```
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0146.png" width="600">
+
+14. 압축파일을 처리할 작업 진행
+	```shell
+	> sudo mkdir /opt/gradle
+	> sudo unzip -d /opt/gradle/ gradle-8.4-bin.zip
+	> ls /opt/gradle/gradle-8.4/
+	LICENSE  NOTICE  README  bin  init.d  lib
+	```
+15. gradle path 지정
+	```shell
+	> export PATH=$PATH:/opt/gradle/gradle-8.4/bin
+	> gradle -v
+	```
+
+16. 스프링 위치로 이동
+	```shell
+	> cd webapp/springaws
+	```
+
+17. gradle wrapper 실행
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0148.png" width="600">
+
+11. gradlew 권한 변경 실행
+	```shell
+	> sudo chmod 777 ./gradlew
+	```
+
+12. gradlew 빌드 실행
+	```shell
+	> ./gradlew build
+	```
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0149.png" width="600">
+
+13. /build/libs 에 jar파일 확인
+14. java -jar jar파일명으로 프로젝트 실행
+	```shell
+	> java -jar app-ec2-0.0.1-SNAPSHOT.jar
+	```
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0150.png" width="600">
+
+	실행확인 후...
+
+15. 할당받은 public 아이피로 확인
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0151.png" width="600">
+
+
+### F. AWS RDS 서비스
+데이터베이스 클라우딩 서비스
+
+1. RDS 선택
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0152.png" width="600">
+
+2. 데이터베이스 생성 버튼 클릭
+3. 표준생성, MariaDB 선택, 템플릿 프리티어, DB인스턴스 식별자명 지정, 
+
+	자격증명설정에 마스터 아이디/패스워드 입력(/, ', ", @ 사용불가)
+
+4. 퍼블릭 액세스 허용
+5. 데이터베이스 생성 클릭 -> 시간 소요
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0153.png" width="600">
+6. 상세에서 VPC 보안 그룹 링크 클릭
+
+7. 인바운드 규칙 편집으로 MYSQL/Aurora , AnyWhere IPV4 규칙저장
+8. HeidiSQL 연결확인
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0154.png" width="600">
+
+9. RDS 파라미터 그룹 클릭
+10. 기본값의 default.mariadb.xx 클릭
+
+	- time_zone : Asia/Seoul
+	- character_set_client, character_set_filesystem, character_set_conneciton : utf8 지정
+	- chracter_set_results, chracter_set_database, chracter_set_server : utf8 지정
+
+11. 수정 마지막에 즉시적용, RDS 인스턴스 재부팅 선택
+
+
+
+
+
