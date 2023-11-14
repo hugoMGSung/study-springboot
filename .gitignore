@@ -28,3 +28,4 @@ replay_pid*
 */.gitattributes
 */.vscode/
 ## */.idea/ # 다시 올려야 겠다
+app-s3/src/main/resources/application.properties
