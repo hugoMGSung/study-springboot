@@ -1,7 +1,7 @@
 # study-springboot
 스프링부트 저장소 다시 만들기
 
-## chap16. SpringBoot AWS
+## chap17. SpringBoot AWS
 아마존 웹서비스 운영 계속
 
 ### A. AWS S3 서비스
@@ -25,7 +25,7 @@
 
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0163.png" width="600">
 
-### B. Spring Boot 연동
+### B. Spring Boot 연동 테스트
 1. 프로젝트 생성
 2. build.gradle에 의존성 추가
 3. application.properties 에 S3 설정 추가
@@ -74,3 +74,14 @@
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0170.png" width="600">
 
 	테스트에서 mountain.jpg 삭제 후
+
+
+### C. 컨트롤러를 통한 업로드 처리, S3 연동
+1. build.gradle 썸네일 라이브러리 추가
+2. application.properties에 로그 등 추가 설정
+
+~~아래에서 부터 S3연동이나 EC2 VPC 내부에 저장하는 방식은 생략~~
+3. /util/LocalUploader.java 작성
+4. ...
+
+[Next](https://github.com/hugoMGSung/study-springboot/blob/main/CHAP18.md)
