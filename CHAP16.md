@@ -180,7 +180,86 @@
 
 11. 수정 마지막에 즉시적용, RDS 인스턴스 재부팅 선택
 
+12. 새 계정 추가
+	```sql
+	-- DB 생성
+	CREATE DATABASE webdb;
+	-- 사용자 생성
+	CREATE USER 'webuser'@'%' IDENTIFIED BY 'webuser';
+	-- 권한 설정
+	GRANT ALL PRIVILEGES ON webdb.* TO 'webuser'@'%';
+	-- 또는 각자로 실행
+	GRANT SELECT, INSERT, DELETE, CREATE, UPDATE, ALTER, DROP PRIVILEGES ON webdb.* TO 'webuser'@'%';
+	```
+
+13. webuser로 로그인 확인
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0155.png" width="600">
 
 
+### G. RDS 연동
+1. build.gradle에 Spring Data JPA, MariaDB Driver, Spring Security, Web 추가
+2. application.properties에 AWS RDS DB 설정 추가
+3. /test/.../AppRdsApplicaitonTest.java 작성
+4. /controller/TimeController.java 작성
+5. /config/CustomSecurityConfig.java 와 CustomServletConfig.java 작성
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0156.png" width="600">
+
+~~여기서부턴 다시~~
+
+### H. AWS S3 서비스
+스토리지 서비스
+
+1. S3 선택
+2. 버킷 만들기 클릭
+3. 버킷 이름 작성, 액세스 설정 외부 가능 선택 버킷 만들기
+4. 만들어진 버킷 클릭, 권한 탭 이동
+5. 버킷 권한 > 버킷 정책 > 편집 클릭
+6. 정책 생성기 클릭
+7. 정책 설정
+	- Select Type of Policy : S3 Bucket Policy
+	- Principal : *
+	- Action : GetObject, PutObject, DeleteObject 선택
+	- ARN : arn:aws:s3:::hugo-sb-bucket/* (/* 중요!!!)
+8. Add Statement 버튼 클릭 후, Generate Policy 클릭
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0157.png" width="600">
+
+9. 위의 생성된 json 복사하여 버킷 정책에 붙여넣고, 변경사항 저장 클릭
+
+### I. 버킷 테스트
+1. 업로드 버튼 클릭
+2. 파일 추가 후 업로드
+3. 이미지 링크 클릭하면 객체 URL 표시
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0158.png" width="600">
+
+4. AWS에서 IAM 클릭, IAM 대시보드 메뉴 사용자 클릭, 사용자 생성
+5. 다음에서 직접 정책 연결 선택 후 AmazonS3FullAccess 선택
+6. 보안자격증명에서 콘솔 로그인 링크 콘솔 액세스 활성화
 
 
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0160.png" width="500">
+
+7. csv 파일 다운로드
+8. S3 서비스 복귀, 권한 탭 이동 객체 소유권 편집
+9. ACL 활성화 변경사항 저장 클릭
+10. 계정 > 보안자격 증명 클릭, 액세스 키 클릭
+11. 액세스 키 csv도 다운로드
+
+### J. SpringBoot S3 접근
+1. build.gradle에 라이브러리 추가
+	```tex
+	implementation 'org.springframework.cloud:spring-cloud-starter-aws:2.2.6.RELEASE'
+    implementation 'net.coobird:thumbnailator:0.4.16'
+	```
+
+2. applicaiton.properties에 AWS accesskey및 secretkey 추가 등 설정
+3. /util/LocalUploader.java, S3Uploader.java 작성
+4. /test/.../util/S3UploaderTests.java 작성, 테스트
+
+
+... 다시
+
+[Next](https://github.com/hugoMGSung/study-springboot/blob/main/CHAP17.md)
