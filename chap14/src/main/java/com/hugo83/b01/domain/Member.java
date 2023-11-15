@@ -21,6 +21,7 @@ public class Member extends BaseEntity {
 	private String mpw;
 	private String email;
 	private boolean del;
+	private boolean social;
 
 	@ElementCollection(fetch = FetchType.LAZY)
 	@Builder.Default
@@ -45,4 +46,19 @@ public class Member extends BaseEntity {
 	public void clearRoles() {
 		this.roleSet.clear();
 	}
+
+	public void changeSocial(boolean social) {
+		this.social = social;
+	}
+
+	// public Member update(String mid, String email) {
+	// this.mid = mid;
+	// this.email = email;
+
+	// return this;
+	// }
+
+	// public String getRoleKey() {
+	// return this.roleSet.toString();
+	// }
 }

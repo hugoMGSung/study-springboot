@@ -12,8 +12,8 @@ import java.util.Optional;
 
 public interface MemberRepository extends JpaRepository<Member, String> {
 	@EntityGraph(attributePaths = "roleSet")
-	// @Query("select m from Member m where m.mid = :mid and m.social = false")
-	@Query("select m from Member m where m.mid = :mid")
+	@Query("select m from Member m where m.mid = :mid and m.social = false")
+	// @Query("select m from Member m where m.mid = :mid")
 	Optional<Member> getWithRoles(String mid);
 
 	@EntityGraph(attributePaths = "roleSet")

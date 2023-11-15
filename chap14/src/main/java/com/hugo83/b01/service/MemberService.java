@@ -8,4 +8,6 @@ public interface MemberService {
 	}
 
 	void join(MemberJoinDTO memberJoinDTO) throws MidExistException;
+
+	void modify(String mid, String mpw);
 }
