@@ -1,7 +1,7 @@
 # study-springboot
 스프링부트 저장소 다시 만들기
 
-## chap22. SpringBoot ToyProject
+## chap92. SpringBoot ToyProject
 배운 것 모아 토이프로젝트2
 
 ### A. 프로젝트 생성

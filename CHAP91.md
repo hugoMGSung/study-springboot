@@ -1,7 +1,7 @@
 # study-springboot
 스프링부트 저장소 다시 만들기
 
-## chap21. SpringBoot ToyProject
+## chap91. SpringBoot ToyProject
 배운 것 모아 토이프로젝트1
 
 ### A. VSCode 설정
