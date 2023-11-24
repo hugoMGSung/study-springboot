@@ -1,7 +1,7 @@
 # study-springboot
 스프링부트 저장소 다시 만들기
 
-## chap10. Spring Web MVC
+## chap10. Spring Boot
 스프링부트 = 스프링 + 추가기능
 
 1. 서버가 내장되어 별도 WAS 설치 필요없음

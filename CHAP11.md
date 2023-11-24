@@ -1,7 +1,7 @@
 # study-springboot
 스프링부트 저장소 다시 만들기
 
-## chap11. Spring Web MVC
+## chap11. Spring REST
 AJAX, JSON
 REST방식 서비스
 

@@ -1,0 +1,14 @@
+{
+	"configurations": [
+		{
+			"type": "java",
+			"name": "Spring Boot-AppEc2Application<app-ec2>",
+			"request": "launch",
+			"cwd": "${workspaceFolder}",
+			"mainClass": "com.hugo83.appec2.AppEc2Application",
+			"projectName": "app-ec2",
+			"args": "",
+			"envFile": "${workspaceFolder}/.env"
+		}
+	]
+}
