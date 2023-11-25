@@ -69,96 +69,68 @@
 	- href, src를 th:href, th:src 로 변경
 
 ### D. 구현 시작 - 도서 데이터 조회 및 입력
-1. /controller/IndexController.java 작성
-2. /repository/BooksRepository.java 인터페이스 작성
-3. TinylibraryApplication.java 에 
-3. /test/.../repository/BooksRepositoryTests.java 작성, 테스트
-4. /config/RootConfig.java 작성
-5. /dto/BookDTO.java 작성
-6. /service/BookService.java 인터페이스 작성
-7. /service/BookServiceImpl.java 에 메서드 구현
-8. /test/.../service/BookServiceTests.java 작성, 테스트
-9. /dto/PageRequestDTO.java, PageResponseDTO.java 작성
-
-10. /controller/BooksController.java 작성
-11. /resources/templates/books/list.html 작성(admin_base.html 사용)
-
-	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0222.png" width="600">
-
-12. /resources/templates/books/list.html 에 register 버튼 추가
-
-	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0223.png" width="600">
-
-13. /controller/BooksController.java에 /books/register 메서드 작성하기
-14. 책 등록화면에 들어갈 컬럼 확인
-	- 책제목 / 부제목 / 추가제목 / 저자 / 번역 / 출판 / 발행 / 책소개 / 카테고리
-	- 쪽수 / ISBN / 책이미지 / 목차 / 기타...
-
-15. /resources/templates/books/register.html 기본 틀 작성
-
-	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0210.png" width="600">
-
-16. register.html에 @Valid의 에러메시지 처리 추가
-17. /dto/BookDTO.java에 @NonNull, @NotBlank 어노테이션 추가. releaseDate에 어노테이션은 오류 발생
-18. /books/register 등록 확인
-
-	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0224.png" width="600">
-
-8. /entity/BaseEntity.java 작성
-9. /entity/Book.java 작성
-10. /TinylibraryApplication.java 에 @EnableJpaAuditing 어노테이션 추가
-11. application.properties, spring.jpa.hibernate.ddl-auto=create-update로 변경 후 서버 재시작 
+1. /entity/BaseEntity.java 작성
+2. /entity/Book.java 작성
+3. application.properties, spring.jpa.hibernate.ddl-auto=create-update로 변경 후 서버 재시작 
 
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0211.png" width="600">
 
-12. /repository/BookRepository 인터페이스 작성
+4. /controller/IndexController.java 작성
+5. /repository/BooksRepository.java 인터페이스 작성
+6. TinylibraryApplication.java 에 
+7. /test/.../repository/BooksRepositoryTests.java 작성, 테스트
+8. /config/RootConfig.java 작성
+9. /dto/BookDTO.java 작성
+10. /service/BookService.java 인터페이스 작성
+11. /service/BookServiceImpl.java 에 메서드 구현
+12. /test/.../service/BookServiceTests.java 작성, 테스트
+13. /dto/PageRequestDTO.java, PageResponseDTO.java 작성
 
-13. /test/.../repository/BookRepositoryTests.java 작성 
+14. /controller/BooksController.java 작성
+15. /resources/templates/books/list.html 작성(admin_base.html 사용)
 
-	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0212.png" width="600">
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0222.png" width="600">
 
-13. /dto/BookDTO.java 작성
-14. /service/BookService.java 인터페이스 작성
-15. /service/BookServiceImpl.java 클래스 작성
-16. /controller/BooksController.java에 코드 서비스 객체 추가
+16. /resources/templates/books/list.html 에 register 버튼 추가
 
-	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0213.png" width="600">
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0223.png" width="600">
 
-	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0214.png" width="600">
+17. /controller/BooksController.java에 /books/register 메서드 작성하기
+18. 책 등록화면에 들어갈 컬럼 확인
+	- 책제목 / 부제목 / 추가제목 / 저자 / 번역 / 출판 / 발행 / 책소개 / 카테고리
+	- 쪽수 / ISBN / 책이미지 / 목차 / 기타...
 
+19. /resources/templates/books/register.html 기본 틀 작성
 
-### E. 구현 - 검증 추가
-1. build.gradle에 검증 라이브러리 추가
-2. /dto/BookDTO.java에 검증 어노테이션 추가
-3. /controller/BookController.java 수정
-4. /resources/templates/books/create.html 수정
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0210.png" width="600">
 
-	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0215.png" width="600">
+20. register.html에 @Valid의 에러메시지 처리 추가
+21. /dto/BookDTO.java에 @NonNull, @NotBlank 어노테이션 추가. releaseDate에 어노테이션은 오류 발생
+22. /books/register 등록 확인
 
-### F. 구현 - 상세화면 구현
-1. /dto/BookReadDTO.java 작성 - 조합하여 새로 묶은 DTO 사용해도 무방
-2. /service/BookService.java read() 메서드 추가
-3. /service/BookServiceImpl.java 에 read() 메서드 구현
-4. /test/.../service/BookServiceImplTest.java 작성, 테스트
-5. /controller/BooksController.java에 읽기 메서드 추가
-6. /resources/.../books/read.html 작성 (create.html 활용)
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0224.png" width="600">
 
-	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0216.png" width="600">
+23. 검증 변경을 위해선 /books/register GetMapping 메서드에 Model model 파라미터 추가후 전부 변경해야 함!!
 
-7. /templates/common/error/422.html 작성
+### F. 구현 - 상세화면, 수정, 삭제 구현
+1. /controller/BooksController.java /books/read GetMapping 메서드 구현
+2. /template/read.html 작성
 
-	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0217.png" width="600">
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0226.png" width="600">
 
-### G. 구현 - 편집화면 및 기능 구현
-1. /service/BookService.java 에 edit() 추가
-2. /service/BookServiceImpl.java에 edit() 구현
-3. /controller/BooksController.java에 코드 추가
-4. /resources/.../books/edit.html 작성
+3. /controller/BooksController.java read() 메서드 @GetMapping 어노테이션 수정
+4. /template/modify.html 작성
+5. /controller/BooksControoler.java remove() 메서드 작성
+6. /modify.html에 삭제 모달창 추가, 변경
 
-	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0218.png" width="600">
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0227.png" width="600">
 
-5. /entity/Book.java에 change() 메서드 추가
-6. /service/BookService.java update() 추가
-7. /service/BookServiceImpl.java 에 update() 추가
-8. /controller/BooksController.java에 /edit POST 메서드 작성
+7. /modify.html 모달창 커스터마이징 및 삭제 확인
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0228.png" width="600">
+	
+### G. 첨부파일로 책 표지 저장 구현
+1. build.gradle 에 첨부파일 관련 라이브러리 추가
+2. application.properties 파일 설정
+
 
