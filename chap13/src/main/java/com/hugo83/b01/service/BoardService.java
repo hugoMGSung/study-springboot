@@ -55,7 +55,7 @@ public interface BoardService {
                 .regDate(board.getRegDate())
                 .modDate(board.getModDate())
                 .build();
-
+        // 여기에 문제가 있다.
         List<String> fileNames = board.getImageSet().stream().sorted()
                 .map(boardImage -> boardImage.getUuid() + "_" + boardImage.getFileName()).collect(Collectors.toList());
 

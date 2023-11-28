@@ -48,9 +48,11 @@
 	```
 2. Gradle build
 3. application.properties 작성
-4. https://themewagon.com/themes/dashmin-responsive-free-bootstrap-5-html5-admin-dashboard-template/  에 있는 무료 templates 다운로드
+~~4.https://themewagon.com/themes/dashmin-responsive-free-bootstrap-5-html5-admin-dashboard-template/  에 있는 무료 templates 다운로드~~
 
-	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0220.png" width="600">
+	~~<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0220.png" width="600">~~
+
+4. 계속 js 오류가나서 https://adminkit.io/ 로 변경. 아래 내용은 동일하므로 사진 변경안함
 
 5. https://www.flaticon.com/ 에서 Book 검색 book-stack.png 다운로드
 6. https://convertio.co/kr/png-ico/ 에서 book-stack.png를 업로드, 아이콘으로 변환, 다운로드 book.ico로 이름 변경
@@ -67,6 +69,7 @@
 
 	- layout:fragment 헤더 스크립트, 메인, 하단 스크립트 추가
 	- href, src를 th:href, th:src 로 변경
+	- Bootstrap 기능 추가하기 (refered by https://getbootstrap.com/docs/5.3/getting-started/introduction/)
 
 ### D. 구현 시작 - 도서 데이터 조회 및 입력
 1. /entity/BaseEntity.java 작성
@@ -132,5 +135,42 @@
 ### G. 첨부파일로 책 표지 저장 구현
 1. build.gradle 에 첨부파일 관련 라이브러리 추가
 2. application.properties 파일 설정
+3. /entity/BookImage.java 작성
+4. /entity/Book.java 에 @OneToMany 적용 및 이미지처리 추가 수정
 
+5. build.gradle에 RestAPI 설정 추가
 
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0229.png" width="600">
+
+6. /controller/advice/CustomRestAdvice.java 작성
+7. /controller/UpDownController.java 작성
+
+	```java
+	// 아래 파라미터 주시할 것!
+	public List<UploadResultDTO> upload(@RequestParam("files") List<MultipartFile> uploadFiles) {
+	```
+8. 이미지 사이즈 확인 메서드 추가(시간 소요로 실패)
+9. /test/.../repository/BooksRepositoryTests.java 이미지 업로드 메서드 작성, 테스트
+10. BooksRepository @EntityGraph 추가 후 조회테스트 
+
+11. /templates/books/register.html 에 파일표지 업로드 추가
+12. /static/js/upload.js 추가
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0230.png" width="600">
+
+13. /dto/BookDTO.java 수정
+14. /service/BookService.java 에 default 메서드 작성
+15. /service/BookServiceImpl.java 메서드 내 수정
+16. /test/.../service/BookServiceTests.java testRegisterWithImages() 메서드 작성, 테스트 확인
+17. testReadAll() 메서드 작성, 테스트
+18. /service/BookServiceImpl.java 메서드 내 modify() 수정
+19. BooServiceTests.java 내 testModify() 작성, 테스트
+
+### H. 리스트 및 상세에 책표지 표시
+~~1. build.gradle 에 MyBatis 라이브러리 추가~~
+~~2. application.properties 에 Mybatis 설정 추가~~
+~~3. /mapper/BooksMapper.java 인터페이스 추가 ~~
+~~4. /resources/mapper/BooksMapper.xml 생성~~
+1. /templates/books/read.html 책 표지 나오도록 수정
+2. /templates/books/modify.html 책 표지 출력과 수정용 모달창 표시
+3. /controller/BookController.java 삭제처리 수정
