@@ -2,7 +2,7 @@
 스프링부트 저장소 다시 만들기
 
 ## chap14. Spring Security
-스프링 시큐리티 except OAuth2
+스프링 시큐리티 with Google OAuth2
 
 ### A. 기존 프로젝트 클론
 1. chap13 복사 chap14 붙여넣기
