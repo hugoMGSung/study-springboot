@@ -174,3 +174,30 @@
 1. /templates/books/read.html 책 표지 나오도록 수정
 2. /templates/books/modify.html 책 표지 출력과 수정용 모달창 표시
 3. /controller/BookController.java 삭제처리 수정
+
+### I. 회원관리 
+1. application.properties에 Whiteabel Error Page 제거내용 추가
+2. /templates/error 폴더에 404.html, 500.html 추가
+3. build.gradle에 스프링시큐리티 라이브러리 추가
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0231.png" width="600">
+
+4. /config/CustomSecurityConfig.java 작성, SecurityFilterChain 리턴 filterChain() 작성
+5. filterChain() 에 커스텀 로그인 부분 추가
+
+	화면이 없어서 오류남
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0232.png" width="600">
+
+6. /security/CustomUserDetailsService.java 작성
+7. /controller/MemberController.java @GetMapping으로 /login, /join 작성
+8. /entity/Member.java 작성, Book.java 내용 수정
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0233.png" width="500">
+
+9. /dto/MemberJoinDTO.java 작성
+10. /templates/member/join.html 작성
+10. /controller/MemberController.java @PostMapping /join 작성
+
+
+
