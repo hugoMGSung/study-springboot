@@ -192,12 +192,25 @@
 6. /security/CustomUserDetailsService.java 작성
 7. /controller/MemberController.java @GetMapping으로 /login, /join 작성
 8. /entity/Member.java 작성, Book.java 내용 수정
+9. /entity/MemberRole.java enum 작성
 
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0233.png" width="500">
 
-9. /dto/MemberJoinDTO.java 작성
-10. /templates/member/join.html 작성
-10. /controller/MemberController.java @PostMapping /join 작성
+10. remember-me 용 테이블 생성(옵션)
+11. /dto/MemberJoinDTO.java 작성
+12. /security/dto/MemberSecurityDTO.java 작성
+13. /security/CustomUserDetailService 수정(/login Post 없음)
 
+14. /templates/member/join.html 작성
+15. /repository/MemberRepository.java 작성
+16. /service/MemberService.java 작성
+17. /service/MemberServiceImpl.java 작성
+18. /controller/MemberController.java @PostMapping /join 작성
+19. /join.html 에서 회원가입 진행
 
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0234.png" width="400">
 
+20. /template/mamber/login.html 작성
+21. /controller/MemberController.java에 /logout 구현
+
+[Next](https://github.com/hugoMGSung/study-springboot/blob/main/CHAP92.md)
