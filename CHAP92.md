@@ -53,8 +53,8 @@
 
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0304.png" width="600">
 
-### C. 연동 테스트
-1. /frontend/package.json 수정
+### C. React / Spring Boot 통합테스트
+1. /frontend/package.json 수정(없어도 됨)
 	```json
 	"scripts": {
 		"start": "react-scripts start",
@@ -103,8 +103,78 @@
 	export default App;
 	```
 
-4. 리액트 서버와 스프링부트 실행 후 확인
+4. 중요! 명령 프롬프트의 리액트 서버 실행 종료
+5. build.gradle 에 플러그인 추가
+	```groovy
+	plugins {
+		//...
+		id 'com.moowork.node' version '1.3.1'
+	}
+	```
 
-	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0305.png" width="600">
+6. build.gradle의 맨 아래에 아래의 코드 추가
+	```groovy
+	def reactAppDir = "$projectDir/frontend"	//리액트경로
 
-	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0306.png" width="600">
+	sourceSets {
+		main {
+			resources {
+				srcDirs = ["$projectDir/build", "$projectDir/src/main/resources"]
+			}
+		}
+	}
+
+	processResources {
+		dependsOn "copyReactFile"
+	}
+
+	task copyReactFile(type: Copy){	
+	//build 된 React 정적파일을 Spring Boot 정적파일 디렉토리로 이동
+		dependsOn "buildReact"
+		from "$reactAppDir/build"
+		into "$projectDir/src/main/resources/static"
+	}
+
+	task buildReact(type: Exec) {	//React build 
+		dependsOn "installReact"
+		workingDir "$reactAppDir"
+		inputs.dir "$reactAppDir"
+		group = BasePlugin.BUILD_GROUP
+		if (System.getProperty('os.name').toLowerCase(Locale.ROOT).contains('windows')) {
+			commandLine "npm.cmd","run-script","build"
+		} else {
+			commandLine "npm","run-script","build"
+		}
+	}
+
+	task installReact(type: Exec) {	 //프로젝트에 필요한 라이브러리 install
+		dependsOn "deleteReactFile"
+		workingDir "$reactAppDir"
+		inputs.dir "$reactAppDir"
+		group = BasePlugin.BUILD_GROUP
+		if(System.getProperty('os.name').toLowerCase(Locale.ROOT).contains('windows')){
+			commandLine "npm.cmd","audit","fix"
+			commandLine "npm.cmd","install"
+		}else{
+			commandLine "npm","audit","fix"
+			commandLine "npm","install"
+		}
+	}
+
+	task deleteReactFile(type: Delete) {	 //static 폴더 삭제
+		delete "$projectDir/src/main/resources/static"
+	}
+	```
+
+7. VSCode gradle 탭에서 nitflex > build > clean 실행
+8. gradle 탭에서 nitflex > other > processResources 실행. 이때 /src/main/resources/static 아래 삭제되고 다시 생성되는 것 확인할 것
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0307.png" width="400">
+
+9. Spring Boot 서버 실행시 build.gradle의 리액트 설정은 주석처리 뒤 실행
+
+	3000 이 아닌 8080 으로 React 실행되는 것 확인할 것!
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0308.png" width="600">
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0309.png" width="600">
