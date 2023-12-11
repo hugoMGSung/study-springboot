@@ -92,6 +92,34 @@
 	```
 
 ### B. CRUD 구현 진행
+0. /config/MyBatisConfig.java 작성
+	```java
+	@Configuration
+	@MapperScan(value = "com.hugo83.toybatis", sqlSessionFactoryRef = "SqlSessionFactory")
+	public class MyBatisConfig {
+		@Value("${spring.datasource.mapper-locations}")
+		String mPath;
+
+		@Bean(name = "dataSource")
+		@ConfigurationProperties(prefix = "spring.datasource")
+		public DataSource DataSource() {
+			return DataSourceBuilder.create().build();
+		}
+
+
+		@Bean(name = "SqlSessionFactory")
+		public SqlSessionFactory SqlSessionFactory(@Qualifier("dataSource") DataSource DataSource, ApplicationContext applicationContext) throws Exception {
+			SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
+			sqlSessionFactoryBean.setDataSource(DataSource);
+			sqlSessionFactoryBean.setMapperLocations(applicationContext.getResources(mPath));
+			return sqlSessionFactoryBean.getObject();
+		}
+
+		@Bean(name = "SessionTemplate")
+		public SqlSessionTemplate SqlSessionTemplate(@Qualifier("SqlSessionFactory") SqlSessionFactory firstSqlSessionFactory) {
+			return new SqlSessionTemplate(firstSqlSessionFactory);
+		}
+	```
 1. /dto/ResponseDTO.java 작성
 	```java
 	@Data
@@ -151,5 +179,13 @@
 6. Swagger-ui 실행 후 테스트
 
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0312.png" width="600">
-	
-2. /domain/User.java 도메인 클래스 작성
+
+7. /domain/User.java 도메인 클래스 작성
+8. /mapper/UserMapper.java 나머지 부분 작성 (CRUD 순서별)
+9. /resources/mapper/UserMapper.xml 나머지 부분 작성
+10. /service/UserService.java 그외 부분 작성
+11. /controller/UserController.java 나머지 부분 작성
+12. /handler/GlobalExceptionHandler.java 작성
+13. 전체 RestAPI 테스트
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0313.png" width="600">
