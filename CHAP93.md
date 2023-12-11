@@ -20,9 +20,58 @@
 13. Swagger 라이브러리 추가
 14. RestAPI 설정 확인
 
-	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0301.png" width="600">
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0301.png" width="700">
 
-	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0302.png" width="600">
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0302.png" width="700">
+
+### B. Spring Boot API 구현
+1. build.gradle dependencies 작성
+2. application.properties 콘솔로그, Log4J2 설정, Maria DB 설정 작성
+3. /config/MyBatisConfig.java 작성
+4. /domain/ResponseVO.java 작성
+5. /mapper/UserMapper.java 작성
+	```java
+	@Mapper
+	@Repository
+	public interface UserMapper {
+		ArrayList<HashMap<String, Object>> findAll();
+	}
+	```
+6. /resources/mapper/UserMapper.xml 작성
+	```xml
+	<?xml version="1.0" encoding="UTF-8"?>
+	<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<mapper namespace="com.hugo83.nitflex.mapper.UserMapper">
+
+		<select id="findAll" resultType="HashMap"> 
+			select * from nf_user
+		</select>
+	</mapper>
+	```
+
+7. /service/UserService.java 작성
+8. /controller/UserController.java 작성
+	```java
+	@RestController
+	@RequestMapping(value = "/api/v1/user/")
+	@Log4j2
+	public class UserController {
+		@Autowired
+		UserService userService;
+
+		@RequestMapping(value = "findAll", method = RequestMethod.POST)
+		public ResponseEntity<?> findAll() {
+			ResponseVO responseVO = new ResponseVO();
+			responseVO.setResultCode("S0001"); // 역시 결과를 보고 만들면 됨.
+			log.info("resultCode는 결과 리턴 후 나오는 값에 따라 조절할 것!");
+			responseVO.setRes(userService.findAll());
+			return new ResponseEntity<>(responseVO, HttpStatus.OK);
+		}
+	```
+9. 서버 실행 후 swagger-ui 실행
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0314.png" width="700">
+
 
 ### B. React 설치
 1. 명령 프롬프트 실행
