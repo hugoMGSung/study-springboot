@@ -72,6 +72,43 @@
 
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0314.png" width="700">
 
+10. /domain/UserVO.java 작성
+	```java
+	@Data
+	@AllArgsConstructor
+	@NoArgsConstructor
+	public class UserVO {
+		private Long idx;
+		private String email;
+		private String password;
+		private String name;
+		private LocalDate red_date;
+		private LocalDate mod_date;
+	}
+	```
+
+11. /mapper/UserMapper.java 나머지 작성
+12. /reources/mapper/UserMapper.xml 나머지 작성
+13. /service/UserService.java 나머지 작성
+14. /controller/UserController.java 나머지 작성
+15. /domain/FavoriteMoviesVO.java 작성
+16. /mapper/FavoriteMoviesMapper.java 작성
+17. /service/FavoriteMoviesService.java 작성
+18. /config/CORSFilter.java 작성
+19. /controller/FavoriteMoviesController.java 작성
+
+20. /domain/CommentVO.java 작성
+21. /mapper/CommentMapper.java 작성
+22. /service/CommentService.java 작성
+23. /controller/CommentController.java 작성
+
+24. /resource/application-API-KEY.properties 생성 TMDB api-key 입력
+25. /resource/application.properties 에 위의 키를 include
+26. /service/TmdbMovieService.java 작성
+27. /controller/TmdbMovieController.java 작성
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0315.png" width="700">
+
 
 ### B. React 설치
 1. 명령 프롬프트 실행
