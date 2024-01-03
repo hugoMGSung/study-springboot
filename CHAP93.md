@@ -273,5 +273,74 @@
 
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0310.png" width="600">
 
-2. /entity/User.java 생성
+2. /entity/User.java 생성 --> 생략할래...
 
+### E. react 작업
+1. /frontend/public/nilflex_logo.png 저장
+2. /frontend/public/index.html 변경
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0316.png" width="700">
+
+3. /src/ 내
+	- apis
+	- components
+	- routes
+	- styles 
+
+	로 폴더 추가
+
+4. /src/styles/App.css, Detail.css, Login.css, index.css 작업처리
+5. /src/components/App.js 옮기기
+6. /src/index.js 수정
+7. /src/components/App.js 수정
+
+	```javascript
+	import React, { Component } from "react";
+	import { Container } from "reactstrap"; // reactstrap 이 없음
+
+	import '../styles/App.css';
+
+	class App extends Component {
+	render() {
+		return (
+		<div className="App">
+			{/* <MainNavbar /> */}
+			<Container className="classname">
+			{/* <Router /> */}
+			</Container>
+		</div>
+		);
+	}
+	}
+
+	export default App;
+	```
+
+8. 터미널에서 reactstrap, bootstarp 을 추가. 부트스트랩은 reactstrap에 없으므로 같이 추가
+ 
+	- ~~npm install --save reactstrap 옛날방식~~
+	- ~~npm install --save bootstarp ~~
+
+	```shell
+	> npm i bootstrap
+	> npm i reactstrap react react-dom 
+	```
+9. 문제 발생시 아래 명령어 실행
+
+	```shell
+	> npm audit fix --force 
+	```
+
+10. 위의 App.js 에서 <MainNavbar /> 부분 처리를 위해 /routes/MainNavbar.js 추가
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0317.png" width="700">
+
+11. MainNavbar.js 작성
+12. 콘솔에 라이브러리 추가
+
+	```shell
+	> npm i react-bootstrap-icons
+	```
+13. /components/SearchBar.js 작성 후 MainNavbar.js에 추가
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0318.png" width="700">
