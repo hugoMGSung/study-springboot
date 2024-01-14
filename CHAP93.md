@@ -344,3 +344,42 @@
 13. /components/SearchBar.js 작성 후 MainNavbar.js에 추가
 
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0318.png" width="700">
+
+14. /routers/Router.js 추가
+
+	switch 기능으로 화면 전환용. 먼저 react-router-dom 설치
+
+	```shell
+	> npm i react-router-dom
+	```
+
+15. /components/Main.js 추가
+
+	```javascript
+	// import { BrowserRouter, Route, Switch } from 'react-router-dom';  // React V5 Switch is deprecated...
+	import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
+	//... 
+	<Routes> // <Switch> to <Routes>
+		<Route path="/" element={<Main />} exact />
+		{/* <Route path="/login" component={Login} /> // 더이상 component 안됨
+		// ...
+	```
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0319.png" width="700">
+
+16. react-reveal, react-slick 라이브러리 추가
+
+	```shell
+	> npm i react-reveal // 이전 버전까지 지원
+	> npm i react-awesome-reveal
+	> npm i react-slick
+	```
+
+17. Main.js에 포함되는 /components/Row.js 추가. Row.js에는 DetailContent.js 가 또 포함되어 있음.
+	
+	아래의 각 장르마다 영화내용이 Slider로 나열됨.
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0320.png" width="700">
+
+18. 
