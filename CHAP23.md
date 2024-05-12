@@ -136,3 +136,30 @@
 - 결과
 
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0327.png" width="800">
+
+
+### C. 구현 작업
+- /controller/StudentController.java 작업
+
+	```java
+	@Controller
+	public class StudentController {
+		@Autowired
+		private StudentRepository studentRepository;
+
+		@GetMapping("/home")
+		public String homePage(Model mv) {
+			mv.addAttribute("studentlist", studentRepository.findAll());
+			return "home";
+		}
+	}
+	```
+
+- /resource/templates/home.html 작업
+	- 생략
+
+- 실행결과
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0328.png" width="800">
+
+
