@@ -48,7 +48,7 @@
 	implementation 'org.springframework.boot:spring-boot-devtools'
 	```
 
-5. Whiteabel Error Page 제거설정
+5. Whiteabel Error Page 제거설정(404)
 	- application.properties 코드 추가
 
 	```markdown
@@ -57,3 +57,6 @@
 	server.error.path=/error
 	spring.autoconfigure.exclude=org.springframework.boot.autoconfigure.web.ErrorMvcAutoConfiguration
 	```
+
+	- 또는 /resources/static/index.html 추가
+
