@@ -162,4 +162,57 @@
 
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0328.png" width="800">
 
+- 컨트롤러에 Add관련 추가
+
+	```java
+	@GetMapping("/addStudent")
+	public String addStudent(Model m)
+	{
+		Student student=new Student();
+		m.addAttribute(student);
+		return "addNewStudent";
+	}
+
+	@PostMapping("/saveStudent")
+	public String saveAStudent(@ModelAttribute("student") Student student)
+	{
+		studentRepository.save(student);		
+		return "redirect:/home";
+	}
+	```
+
+- /addNewStudent.html 작업
+	- 생략
+
+- 실행화면
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0329.png" width="800">
+
+- 컨트롤러 Update와 Delete 추가
+
+	```java
+	@GetMapping("/updateStudent/{id}")
+	public String updateStudent(@PathVariable("id") int id,Model m)
+	{
+		Optional<Student> temp=studentRepository.findById(id);
+		Student student=temp.get();
+		m.addAttribute("student",student);
+		
+		return "updateStudent";
+	}
+
+	@GetMapping("/deleteStudent/{id}")
+	public String deleteStudent(@PathVariable("id") int id)
+	{
+		studentRepository.deleteById(id);
+		return "redirect:/home";
+	}
+	```
+
+- /updateStudent.html 작업
+	- 소스 생략
+
+- 실행결과
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0330.png" width="800">
 
