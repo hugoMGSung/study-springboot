@@ -22,7 +22,7 @@
 
 	```properties
 	## 기본 설정
-	spring.application.name=bboard
+	spring.application.name=oboard
 
 	## 포트변경
 	server.port=8090
@@ -62,50 +62,6 @@
 	spring.thymeleaf.check-template-location=true
 	```
 
-2. /resources/templates/index.html 생성 및 실행
-	- 코드 생략 
-	- 실행 결과
-
-	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0331.png" width="800">
-
-3. /controller/SampleController.java 작성
-
-	```java
-	@Controller
-	@Log4j2
-	public class SampleController {
-		@GetMapping("/hello")
-		public void hello(Model model) {
-			String msg = "Hello, Hugo's SpringBoot~!";
-			log.info(msg);
-
-			model.addAttribute("msg", msg);
-		}
-	}
-	```
-
-4. hello.html 작성 및 실행결과
-	```html
-	<!doctype html>
-	<html lang="ko" xmlns:th="http://www.thymeleaf.org">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
-			integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
-			integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
-			crossorigin="anonymous"></script>
-		<title>Hello Title!</title>
-	</head>
-	<body>
-		<h2 th:text="${msg}"></h2>
-	</body>
-	</html>
-	```
-
-	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0332.png" width="800">
-
 ## C. JPA 작업
 1. /entity/Board.java 작성
 	```java
@@ -133,9 +89,87 @@
 
 2. /repository/BoardRepository.java 작성
 	```java
-	public interface BoardRepository extends JpaRepository<Board, Long> {
+	@Repository
+	public interface BoardRepository extends JpaRepository<Board, Integer> {
 	
 	}
 	```
 
-3. 
+3. OBoardApplication.java 수정
+	```java
+	@SpringBootApplication
+	public class OboardApplication implements CommandLineRunner {
+
+		@Autowired
+		private BoardRepository boardRepository;
+
+		// main 생략
+
+		@Override
+		public void run(String... args) throws Exception {
+			Board b1 = Board.builder().title("첫번째 게시물입니다.").content("첫번째 게시물입니다. 감사합니다.")
+					.writer("휴고성").regDate(LocalDateTime.now()).build();
+			Board b2 = Board.builder().title("두번째 게시물입니다.").content("두번째 게시물입니다. 안녕히가세요.")
+					.writer("애슐리").regDate(LocalDateTime.now()).build();
+
+			List<Board> boardList = List.of(b1, b2);
+			boardRepository.saveAll(boardList);
+		}
+	}
+	```
+
+4. 실행결과
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0333.png" width="800">
+
+5. application.properties 로그레벨 추가
+	```properties
+	## 로그레벨 설정
+	logging.level.org.springframework=info
+	logging.level.org.zerock=debug
+	```
+
+## D. Thymleaf와 연계
+1. /resources/templates/index.html 생성 및 실행
+	- 코드 생략 
+	- 실행 결과
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0331.png" width="800">
+
+2. /controller/SampleController.java 작성
+
+	```java
+	@Controller
+	@Log4j2
+	public class SampleController {
+		@GetMapping("/hello")
+		public void hello(Model model) {
+			String msg = "Hello, Hugo's SpringBoot~!";
+			log.info(msg);
+
+			model.addAttribute("msg", msg);
+		}
+	}
+	```
+
+3. hello.html 작성 및 실행결과
+	```html
+	<!doctype html>
+	<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+			integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+			crossorigin="anonymous"></script>
+		<title>Hello Title!</title>
+	</head>
+	<body>
+		<h2 th:text="${msg}"></h2>
+	</body>
+	</html>
+	```
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0332.png" width="800">
