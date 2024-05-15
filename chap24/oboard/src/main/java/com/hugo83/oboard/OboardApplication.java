@@ -29,6 +29,6 @@ public class OboardApplication implements CommandLineRunner {
 				.writer("애슐리").regDate(LocalDateTime.now()).build();
 
 		List<Board> boardList = List.of(b1, b2);
-		boardRepository.saveAll(boardList);
+		//boardRepository.saveAll(boardList);
 	}
 }

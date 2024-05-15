@@ -129,12 +129,16 @@
 	logging.level.org.zerock=debug
 	```
 
+6. 이하 작업할 때는 
+	- application.properties 의 spring.jpa.hibernate.ddl-auto=update 로
+	- OBoardApplication.java run()을 주석처리할 것
+
 ## D. Thymleaf와 연계
 1. /resources/templates/index.html 생성 및 실행
 	- 코드 생략 
 	- 실행 결과
 
-	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0331.png" width="800">
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0334.png" width="800">
 
 2. /controller/SampleController.java 작성
 
