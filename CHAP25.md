@@ -5,6 +5,7 @@ React + Spring Boot + Oracle
 
 ### A. 리액트 프로젝트 생성
 0. VS Code, node.js 등은 모두 설치 진행, 반드시 크롬브라우저로 개발할 것!!
+	- 플러그 인 : Simple React Snippets 설치
 1. 프로젝트 생성한 폴더 아래와 같이 생성
 	- **board-front (프론트엔드 폴더) : npx로 생성**
 	- **board-back (백엔드 폴더) : 나중에 생성함**
@@ -211,4 +212,31 @@ React + Spring Boot + Oracle
 	chap25/board-front> _
 	```
 
+## C. Bootstrap 패키지 설치
+- Bootstrap 설치 방법 두가지
+	1. 일반적인 CDN으로 설치하는 방법
+	2. npm 명령어로 추가하는 방법 - https://www.npmjs.com/package/bootstrap 확인
+
+		```shell
+		> npm i bootstrap
+		```
 	
+	3. package.json에 설치결과 확인
+
+		<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0405.png" width="700">
+
+- axios 패키지 설치
+
+	```shell
+	> npm i axios
+	```
+
+- react-router-dom 패키지 설치
+	```shell
+	> npm i react-router-dom
+	```
+
+## D. Back-end 개발설정
+- 명령 팔레트 실행(Ctrl + Shift + P)
+	1. Spring Initializr: Create a Gradle Project...
+	2. 
