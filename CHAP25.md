@@ -239,4 +239,22 @@ React + Spring Boot + Oracle
 ## D. Back-end 개발설정
 - 명령 팔레트 실행(Ctrl + Shift + P)
 	1. Spring Initializr: Create a Gradle Project...
-	2. 
+	2. Specify Spring Boot version : 3.2.x 이상 선택
+	3. Specify project language : Java 
+	4. Input Group Id : com.hugo83 등 자신의 도메인으로 입력
+	5. Input Artifact Id : board-back 등 자신의 호스트로 입력
+	6. Specify packaging type : Jar 선택
+	7. Specify Java version : 17 선택
+	8. Choose dependencies : Spring Boot Data JPA, thymeleaf, Spring Boot Web, lombok, Spring Boot Devtools, Oracle Driver 여섯개 선택
+
+- application.properties 설정
+
+	- 생략
+
+- 실행결과
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0406.png" width="800">
+
+- /src/main/resources/templates/index.html 생성
+
+	
