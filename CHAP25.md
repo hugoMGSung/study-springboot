@@ -257,4 +257,10 @@ React + Spring Boot + Oracle
 
 - /src/main/resources/templates/index.html 생성
 
-	
+	- 기본 페이지
+
+- 컨트롤러 및 Thymleaf 작업
+	- controller/SampleController.java 생성
+	- templates/hello.html 생성
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0407.png" width="800">
