@@ -264,3 +264,12 @@ React + Spring Boot + Oracle
 	- templates/hello.html 생성
 
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0407.png" width="800">
+
+- 레스트컨트롤러 작업
+	- model/Test.java 생성
+	- controller/SampleRestController.java 생성
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0408.png" width="800">
+
+
+- 챕터 5.3 부터 계속
