@@ -50,6 +50,12 @@
 	# update: create once
 	# create: create every time of application up
 	# create-drop: create at the start of app and drop before end of app
+	# create : 기존 테이블 삭제 후 다시 생성
+	# create-drop : create와 동일하나 종료 시점에 table 삭제
+	# update : 주어진 구조에 따라 엔티티 변경
+	# validate : 정상 매핑 되었는지만 확인
+	# none: 변화 없음
+	# 실제 서비스 배포시에는 create, create-drop등은 사용하지 
 	spring.jpa.hibernate.ddl-auto=create-drop
 
 	## thymeleaf 참조 경로
