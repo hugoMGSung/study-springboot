@@ -1,7 +1,7 @@
 plugins {
 	id 'java'
-	id 'org.springframework.boot' version '3.2.5'
-	id 'io.spring.dependency-management' version '1.1.4'
+	id 'org.springframework.boot' version '3.3.0'
+	id 'io.spring.dependency-management' version '1.1.5'
 }
 
 group = 'com.hugo83'
@@ -22,43 +22,21 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.modelmapper:modelmapper:3.1.0'
-	compileOnly 'org.projectlombok:lombok'
-	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	runtimeOnly 'com.oracle.database.jdbc:ojdbc11'
-	annotationProcessor 'org.projectlombok:lombok'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
-	testCompileOnly 'org.projectlombok:lombok'
-	testAnnotationProcessor 'org.projectlombok:lombok'
-	// Querydsl 라이브러리
-	implementation 'com.querydsl:querydsl-jpa:5.0.0:jakarta'
-	annotationProcessor "com.querydsl:querydsl-apt:${dependencyManagement.importedProperties['querydsl.version']}:jakarta"
-	annotationProcessor "jakarta.annotation:jakarta.annotation-api"
-	annotationProcessor "jakarta.persistence:jakarta.persistence-api"
+	runtimeOnly 'com.h2database:h2'
+	//runtimeOnly 'com.oracle.database.jdbc:ojdbc11'
 }
 
 tasks.named('test') {
 	useJUnitPlatform()
-}
-
-/**
-* QueryDSL Build Options
-*/
-def querydslDir = "src/main/generated"
-
-sourceSets {
-	main.java.srcDirs += [ querydslDir ]
-}
-
-tasks.withType(JavaCompile) {
-	options.getGeneratedSourceOutputDirectory().set(file(querydslDir))
-}
-
-clean.doLast {
-	file(querydslDir).deleteDir()
 }
