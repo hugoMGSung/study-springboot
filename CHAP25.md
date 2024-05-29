@@ -341,7 +341,7 @@ React + Spring Boot + DB(H2DB -> Oracle)
 	@ManyToOne
 	private Board board;
 	```
-- /entity/Board.java에 Reply 멤버변수 추가
+- /entity/Board.java에 Reply 멤버변수 추가(위의 것 또는 이거 중 하나만!!!)
 	```java
 	@OneToMany(mappedBy = "Board", cascade = CascadeType.REMOVE)
 	private List<Reply> replyList;
@@ -350,3 +350,8 @@ React + Spring Boot + DB(H2DB -> Oracle)
 - 서버 재실행
 
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0411.png" width="700">
+
+- /repository/BoardReposity.java 인터페이스 생성
+- /repository/ReplyReposity.java 인터페이스 생성
+
+- https://wikidocs.net/160890 JUnit 부터 시작!!
