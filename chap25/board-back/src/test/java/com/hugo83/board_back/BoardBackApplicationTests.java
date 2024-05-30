@@ -4,10 +4,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class BoardBackApplicationTests {
-
+public class BoardBackApplicationTests {
 	@Test
-	void contextLoads() {
+	void sampleTest() {
+		System.out.println("TEST!!");
 	}
-
 }

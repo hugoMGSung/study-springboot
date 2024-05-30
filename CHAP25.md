@@ -6,6 +6,7 @@ React + Spring Boot + DB(H2DB -> Oracle)
 ### A. 리액트 프로젝트 생성
 0. VS Code, node.js 등은 모두 설치 진행, 반드시 크롬브라우저로 개발할 것!!
 	- 플러그 인 : Simple React Snippets 설치
+	- 크롬브라우저 : LiveReload++, React 개발자 도구 설치
 1. 프로젝트 생성한 폴더 아래와 같이 생성
 	- **board-front (프론트엔드 폴더) : npx로 생성**
 	- **board-back (백엔드 폴더) : 나중에 생성함**
@@ -354,4 +355,6 @@ React + Spring Boot + DB(H2DB -> Oracle)
 - /repository/BoardReposity.java 인터페이스 생성
 - /repository/ReplyReposity.java 인터페이스 생성
 
-- https://wikidocs.net/160890 JUnit 부터 시작!!
+- test/repository/BoardRepositoryTests.java 작성 테스트
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0412.png" width="700">
