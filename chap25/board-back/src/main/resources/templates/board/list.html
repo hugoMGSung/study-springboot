@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -19,7 +19,12 @@
       </thead>
       <tbody>
         <tr th:each="board : ${boardList}">
-          <td th:text="${board.title}"></td>
+          <td>
+            <a
+              th:href="@{|/board/detail/${board.Bno}|}"
+              th:text="${board.title}"
+            ></a>
+          </td>
           <td th:text="${board.createDate}"></td>
         </tr>
       </tbody>

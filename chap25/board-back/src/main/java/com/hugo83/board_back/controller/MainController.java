@@ -8,7 +8,7 @@ import lombok.extern.log4j.Log4j2;
 
 @Controller
 @Log4j2
-public class HelloController {
+public class MainController {
 	@GetMapping("/hello")
 	@ResponseBody
 	public String getHello() {
@@ -16,4 +16,8 @@ public class HelloController {
 		return "Hello, SpringBoot3!";
 	}
 	
+	@GetMapping("/")
+	public String index() {
+		return "redirect:/board/list";
+	}
 }

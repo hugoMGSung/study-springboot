@@ -434,3 +434,25 @@ React + Spring Boot + DB(H2DB -> Oracle)
 
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0414.png" width="700">
 
+- HelloController -> MainController로 변경
+	- index() 메서드 추가
+
+### 서비스 활용
+- 서비스는 복잡한 코드를 모듈화 할 수 있음
+	- 중복된 메서드를 서비스에서 통합 여러 컨트롤러에서 호출해서 사용할 수 있음
+- 엔티티 객체를 DTO(Data Transfer Object)로 변환가능
+	- 엔티티가 직접 전달되는 것은 보안적으로 데이터 노출에 좋지 않음
+
+- /service/BoardService.java 생성
+- /controller/BoardController.java 서비스 추가
+
+- /templates/board/list.html 링크 추가
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0415.png" width="700">
+
+- BoardController.java에 상세페이지 매핑 메서드 detail() 추가
+- BoardService.java 상세페이지 메서드 추가
+- /common/DataNotFoundException.java 클래스 생성
+- detail() 메서드 내 서비스 사용내용 추가
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0416.png" width="700">
