@@ -1,17 +1,19 @@
 package com.hugo83.board_back.entity;
 
-// import java.util.List;
+import java.util.List;
 import java.time.LocalDateTime;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
+import jakarta.persistence.CascadeType;
 // import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 // import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -44,6 +46,7 @@ public class Board {
 	@Column(name="ModifyDate")
 	private LocalDateTime modifyDate;
 
-	// @OneToMany(mappedBy = "Board", cascade = CascadeType.REMOVE)
-	// private List<Reply> replyList;
+	// 중요!!!
+	@OneToMany(mappedBy = "board", cascade = CascadeType.REMOVE)
+	private List<Reply> replyList;
 }

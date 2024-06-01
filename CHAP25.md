@@ -456,3 +456,23 @@ React + Spring Boot + DB(H2DB -> Oracle)
 - detail() 메서드 내 서비스 사용내용 추가
 
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0416.png" width="700">
+
+- /board/detail.html 에 답변 내용 만들기
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0417.png" width="700">
+
+- /controller/ReplyController.java 작성
+- /service/ReplyService.java 작성
+- ReplyController.java에 ReplyService 객체 추가
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0418.png" width="800">
+
+- /templates/board/detail.html 에서 답변표시
+
+	- 이전에 Board.java에 replyList 확인!
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0419.png" width="800">
+
+### 부트스트랩 적용
+- 부트스트랩은 다운로드 받아서 static에 넣기, CDN을 추가하는 두 방법 
+- bootstrap-5.3.3-dist.zip 다운로드
+	- 압축 해제 후 bootstrap.min.css를 static에 위치

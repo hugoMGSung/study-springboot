@@ -6,28 +6,28 @@
     <title>Board List</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="" />
+    <link rel="stylesheet" type="text/css" th:href="@{/bootstrap.min.css}">
   </head>
   <body>
-    <h2>이건뭐</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>제목</th>
-          <th>작성일시</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr th:each="board : ${boardList}">
-          <td>
-            <a
-              th:href="@{|/board/detail/${board.Bno}|}"
-              th:text="${board.title}"
-            ></a>
-          </td>
-          <td th:text="${board.createDate}"></td>
-        </tr>
-      </tbody>
+    <div class="container my-3">
+    <table class="table">
+        <thead class="table-dark">
+            <tr>
+                <th>번호</th>
+                <th>제목</th>
+                <th>작성일시</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="board, loop : ${boardList}">
+                <td th:text="${loop.count}"></td>
+                <td>
+                    <a th:href="@{|/board/detail/${board.Bno}|}" th:text="${board.title}"></a>
+                </td>
+                <td th:text="${#temporals.format(board.createDate, 'yyyy-MM-dd HH:mm')}"></td>
+            </tr>
+        </tbody>
     </table>
+</div>
   </body>
 </html>
