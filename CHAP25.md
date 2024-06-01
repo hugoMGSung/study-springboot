@@ -476,3 +476,7 @@ React + Spring Boot + DB(H2DB -> Oracle)
 - 부트스트랩은 다운로드 받아서 static에 넣기, CDN을 추가하는 두 방법 
 - bootstrap-5.3.3-dist.zip 다운로드
 	- 압축 해제 후 bootstrap.min.css를 static에 위치
+	- /board/list.html 에 부트스트랩 적용
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0420.png" width="800">
+
