@@ -480,3 +480,7 @@ React + Spring Boot + DB(H2DB -> Oracle)
 
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0420.png" width="800">
 
+	- /board/detail.html 에 부트스트랩 적용
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0421.png" width="800">
+
