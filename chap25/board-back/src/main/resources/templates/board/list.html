@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Board List</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+  </head>
+  <body>
+    <h2>이건뭐</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>제목</th>
+          <th>작성일시</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="board : ${boardList}">
+          <td th:text="${board.title}"></td>
+          <td th:text="${board.createDate}"></td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

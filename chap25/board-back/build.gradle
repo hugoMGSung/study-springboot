@@ -34,6 +34,8 @@ dependencies {
 	testImplementation 'org.junit.jupiter:junit-jupiter'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
+	implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'	
+
 	runtimeOnly 'com.h2database:h2'
 	//runtimeOnly 'com.oracle.database.jdbc:ojdbc11'
 }

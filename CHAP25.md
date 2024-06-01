@@ -358,3 +358,79 @@ React + Spring Boot + DB(H2DB -> Oracle)
 - test/repository/BoardRepositoryTests.java 작성 테스트
 
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0412.png" width="700">
+
+- 테스트에 조회 작성 테스트
+
+## JPA, Oracle로 변경 테스트(성공!)
+- H2와 변경
+	- build.gradle
+	```gradle
+	//runtimeOnly 'com.h2database:h2'
+	runtimeOnly 'com.oracle.database.jdbc:ojdbc11'
+	```
+
+	- application.properties
+	```properties
+	## H2 설정
+	# spring.h2.console.enabled=true
+	# spring.h2.console.path=/h2-console
+	# spring.datasource.url=jdbc:h2:~/local
+	# spring.datasource.driverClassName=org.h2.Driver
+	# spring.datasource.username=sa
+	# spring.datasource.password=
+
+	## Oracle 설정
+	spring.datasource.username=sbboard
+	spring.datasource.password=1234
+	spring.datasource.url=jdbc:oracle:thin:@localhost:1521:XE
+	spring.datasource.driver-class-name=oracle.jdbc.OracleDriver
+
+	## H2와 Oracle별 Dialect
+	# spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.H2Dialect
+	# 중요! Spring Boot 최신 버전에서는 Oracle10gDialect, Oracle12gDialect 등 사용 불가!
+	spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.OracleDialect
+	```
+
+	- Board.java / Reply.java
+		```java
+		public class Board {
+			@Id
+			//@GeneratedValue(strategy = GenerationType.IDENTITY)
+			@GeneratedValue(strategy = GenerationType.SEQUENCE) // H2는 IDENTITY/SEQUENCE 모두 가능
+			private Long Bno;
+
+			@Column(name = "Title", length = 200)
+			private String title;
+
+			// @Column(name="Content", columnDefinition = "TEXT")
+			@Column(name="Content")
+			private String content;
+
+			// ...
+		```
+
+		```java
+		public class Reply {
+			@Id
+			//@GeneratedValue(strategy = GenerationType.IDENTITY)
+			@GeneratedValue(strategy = GenerationType.SEQUENCE)
+			private Long Rno;
+
+			//@Column(name = "Content", columnDefinition = "TEXT")
+			@Column(name = "Content")
+			private String content;
+
+			// ...
+		```
+
+## 다시 H2DB
+- 답변 입력 테스트 확인
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0413.png" width="700">
+
+- build.gradle에 Thymeleaf 라이브러리 추가
+- 게시글 목록 
+	/controller/BoardController.java 생성
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0414.png" width="700">
+
