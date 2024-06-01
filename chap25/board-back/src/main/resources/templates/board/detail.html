@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout}">
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" th:href="@{/bootstrap.min.css}" />
   </head>
   <body>
-    <div class="container my-3">
+    <div layout:fragment="content" class="container my-3">
       <!-- 질문 -->
       <h2 class="border-bottom py-2" th:text="${board.title}"></h2>
       <div class="card my-3">

@@ -2,6 +2,7 @@ package com.hugo83.board_back.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.time.LocalDateTime;
 import org.springframework.stereotype.Service;
 
 import com.hugo83.board_back.common.DataNotFoundException;
@@ -27,5 +28,11 @@ public class BoardService {
 		} else {
 			throw new DataNotFoundException("board not found");
 		}
+	}
+
+	public void setBoardDetail(String title, String content) {
+		Board b = Board.builder().title(title).content(content).createDate(LocalDateTime.now()).build();
+
+		this.boardRepository.save(b);
 	}
 }

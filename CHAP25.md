@@ -484,3 +484,25 @@ React + Spring Boot + DB(H2DB -> Oracle)
 
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0421.png" width="800">
 
+	- templates/layout.html 작성
+	- list.html, detail.html에 layout.html 적용
+	- list.html 게시글 버튼 만들기
+
+- BoardController에 boardCreate() 추가
+- /board/create.html 작성
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0422.png" width="800">
+
+- BoardService.java 에 저장관련 메서드 추가
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0423.png" width="800">
+
+### 스프링부트 검증 라이브러리 
+- build.gradle에 Spring Boot Validation 추가
+	```properties
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	```
+- 검증확인 : https://beanvalidation.org/
+- /validation/BoardForm.java 생성
+- 검증클래스 컨트롤러에 전송, public String create() 가 전면 수정됨
+- /templates/board/create.html 템플릿 수정
