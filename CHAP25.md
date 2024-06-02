@@ -506,3 +506,20 @@ React + Spring Boot + DB(H2DB -> Oracle)
 - /validation/BoardForm.java 생성
 - 검증클래스 컨트롤러에 전송, public String create() 가 전면 수정됨
 - /templates/board/create.html 템플릿 수정
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0424.png" width="800">
+
+- ReplyForm.java 작성
+- ReplyController.java 수정
+- /board/detail.html 수정
+- BoardController.java detail() 메서드 수정
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0425.png" width="800">
+
+- create.html, detail.html에 사용한 오류메시지 부분 공통템플릿으로 만들기
+- 기존 화면에 적용
+
+### 내비게이션바 추가
+- layout.html 템플릿에 내비케이션 바 추가
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0426.png" width="800">

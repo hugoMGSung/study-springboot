@@ -2,7 +2,7 @@ package com.hugo83.board_back.controller;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
+// import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -11,14 +11,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+// import org.springframework.web.bind.annotation.RequestParam;
 
 import com.hugo83.board_back.entity.Board;
-import com.hugo83.board_back.entity.Reply;
+// import com.hugo83.board_back.entity.Reply;
 // import com.hugo83.board_back.repository.BoardRepository;
 import com.hugo83.board_back.service.BoardService;
-import com.hugo83.board_back.service.ReplyService;
+// import com.hugo83.board_back.service.ReplyService;
 import com.hugo83.board_back.validation.BoardForm;
+import com.hugo83.board_back.validation.ReplyForm;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -39,14 +40,14 @@ public class BoardController {
 	}
 
 	@GetMapping(value = "/detail/{Bno}")
-	public String detail(Model model, @PathVariable("Bno") Long bno) {
+	public String detail(Model model, @PathVariable("Bno") Long bno, ReplyForm replyForm) {
 		Board board = this.boardService.getBoardDetail(bno);
 		model.addAttribute("board", board);
 		return "board/detail";
 	}
 
 	@GetMapping("/create")
-	public String create() {
+	public String create(BoardForm boardForm) {
 		return "board/create";
 	}
 
