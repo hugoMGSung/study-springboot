@@ -523,3 +523,13 @@ React + Spring Boot + DB(H2DB -> Oracle)
 - layout.html 템플릿에 내비케이션 바 추가
 
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0426.png" width="800">
+
+- bootstrap.min.js 를 static 폴더에 옮기기
+- layout.html 템플릿 소스 맨아래 부트스트랩 자바스크립트 소스 추가
+- navbar.html에 내비게이션바 분리하기
+
+### 페이징 추가
+- 대량데이터 출력시 불편함 해소
+- /test/.../service/BoardServiceTests.java 작성, 대량데이터 테스트 생성 및 실행
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0427.png" width="800">
