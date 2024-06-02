@@ -555,4 +555,20 @@ React + Spring Boot + DB(H2DB -> Oracle)
 
 - /service/BoardSerivce.java 최신순으로 데이터 조회 변경
 
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0430.png" width="800">
 
+- /board/list.html에 댓글 개수 표시하기
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0431.png" width="800">
+
+### 로그인 처리
+- build.gradle에 스프링 시큐리티 설치
+	```gradle
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
+	```
+- 재시작 후 http://localhost:8080/board/list?page=0 등을 입력하면 로그인화면으로 이동
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0432.png" width="800">
+
+- /config/SecurityConfig.java 작성

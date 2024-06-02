@@ -20,9 +20,12 @@
         </thead>
         <tbody>
             <tr th:each="board, loop : ${paging}">
-                <td th:text="${loop.count}"></td>
+                <td th:text="${paging.getTotalElements - (paging.number * paging.size) - loop.index}"></td>
                 <td>
                     <a th:href="@{|/board/detail/${board.Bno}|}" th:text="${board.title}"></a>
+                    <span class="text-warning small ms-2"
+                          th:if="${#lists.size(board.replyList) > 0}"
+                          th:text="${#lists.size(board.replyList)}"></span>
                 </td>
                 <td th:text="${#temporals.format(board.createDate, 'yyyy-MM-dd HH:mm')}"></td>
             </tr>
