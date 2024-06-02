@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 // import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.data.domain.Page;
 
 import com.hugo83.board_back.entity.Board;
 // import com.hugo83.board_back.entity.Reply;
@@ -33,9 +35,11 @@ public class BoardController {
 
 	@GetMapping({ "", "/list" })
 	// @ResponseBody
-	public String list(Model model) {
-		List<Board> boardList = this.boardService.getBoardList();
-		model.addAttribute("boardList", boardList);
+	public String list(Model model, @RequestParam(value="page", defaultValue = "0") int page) {
+		// List<Board> boardList = this.boardService.getBoardList();
+		// model.addAttribute("boardList", boardList);
+		Page<Board> paging = this.boardService.getList(page);
+		model.addAttribute("paging", paging);
 		return "board/list";
 	}
 

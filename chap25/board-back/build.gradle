@@ -37,8 +37,8 @@ dependencies {
 
 	implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'	
 
-	runtimeOnly 'com.h2database:h2'
-	//runtimeOnly 'com.oracle.database.jdbc:ojdbc11'
+	//runtimeOnly 'com.h2database:h2'
+	runtimeOnly 'com.oracle.database.jdbc:ojdbc11'
 }
 
 tasks.named('test') {

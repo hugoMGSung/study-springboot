@@ -362,6 +362,8 @@ React + Spring Boot + DB(H2DB -> Oracle)
 - 테스트에 조회 작성 테스트
 
 ## JPA, Oracle로 변경 테스트(성공!)
+- 중요사항!! JPA가 만들어주는 페이징 쿼리가 Oracle 12c 아래버전은 제대로 동작하지 않음.
+	- 최소 12c, 그 이상 버전으로 설치할 것!!!
 - H2와 변경
 	- build.gradle
 	```gradle
@@ -533,3 +535,24 @@ React + Spring Boot + DB(H2DB -> Oracle)
 - /test/.../service/BoardServiceTests.java 작성, 대량데이터 테스트 생성 및 실행
 
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0427.png" width="800">
+
+- 페이징처리에 필요한 요소
+	- org.springframework.data.domain.Page: 페이징을 위한 클래스
+	- org.springframework.data.domain.PageRequest: 현재 페이지와 한 페이지에 보여 줄 게시물 개수 등을 설정, 페이징 요청
+	- org.springframework.data.domain.Pageable: 페이징을 처리하는 인터페이스
+
+- /repository/BoardRepository.java 인터페이스에 페이징용 추가메서드 작성
+- /service/BoardService.java에 페이징 관련 추가
+- /controller/BoardController.java 수정
+- /board/list.html 변경
+- http://localhost:8080/board/list?page=1 로 페이지 요청
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0428.png" width="800">
+
+- /board/list.html에 페이지 이동 기능 추가 및 완성
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0429.png" width="800">
+
+- /service/BoardSerivce.java 최신순으로 데이터 조회 변경
+
+
