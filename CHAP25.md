@@ -572,3 +572,7 @@ React + Spring Boot + DB(H2DB -> Oracle)
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0432.png" width="800">
 
 - /config/SecurityConfig.java 작성
+	- CSRF 토큰으로 토큰이 없으면 스프링 시큐리티 차단함
+	- 모든 영역에서 그냥 볼 수 있도록 처리
+	- 단, H2 DB를 사용할 때 403(권한없음) 문제 발생. 문제 발생하지 않도록 SecurityConfig 수정
+
