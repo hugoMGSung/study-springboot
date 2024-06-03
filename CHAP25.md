@@ -576,3 +576,21 @@ React + Spring Boot + DB(H2DB -> Oracle)
 	- 모든 영역에서 그냥 볼 수 있도록 처리
 	- 단, H2 DB를 사용할 때 403(권한없음) 문제 발생. 문제 발생하지 않도록 SecurityConfig 수정
 
+- 회원가입 기능 구현
+	- SiteUser.java 회원 엔티티 생성
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0433.png" width="800">
+
+- /repository/UserRepository.java 작성
+- /service/UserService.java 작성
+- /validation/UserForm.java 작성
+- /controller/UserController.java 작성
+- /templates/user/signup.html 작성
+- 내비게이션 바에 회원가입 링크 추가
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0434.png" width="800">
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0435.png" width="800">
+
+- 로그인/로그아웃 구현
+	- SecurityConfig.java에 로그인 URL 등록
