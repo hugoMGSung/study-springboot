@@ -37,4 +37,7 @@ public class Reply {
 	// 중요!!!
 	@ManyToOne
 	private Board board;
+
+	@ManyToOne
+	private SiteUser author;
 }

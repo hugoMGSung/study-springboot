@@ -30,7 +30,7 @@ React + Spring Boot + DB(H2DB -> Oracle)
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0401.png" width="500">
 
 	- 실행결과
-	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0402.png" width="800">
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0402.png" width="730">
 
 	- 추가!
 		- Chrome 브라우저 > 확장 프로그램 > React Developer Tools 5.x 설치요!
@@ -204,7 +204,7 @@ React + Spring Boot + DB(H2DB -> Oracle)
 
 	- 실행결과
 
-		<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0404.png" width="800">
+		<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0404.png" width="730">
 
 	- 서버종료
 	```shell
@@ -224,7 +224,7 @@ React + Spring Boot + DB(H2DB -> Oracle)
 	
 	3. package.json에 설치결과 확인
 
-		<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0405.png" width="700">
+		<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0405.png" width="730">
 
 - axios 패키지 설치
 
@@ -322,7 +322,7 @@ React + Spring Boot + DB(H2DB -> Oracle)
 	spring.jpa.hibernate.ddl-auto=update
 	```
 
-	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0410.png" width="700">
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0410.png" width="730">
 
 - H2 콘솔접속
 	- http://localhost:8080/h2-console
@@ -350,14 +350,14 @@ React + Spring Boot + DB(H2DB -> Oracle)
 
 - 서버 재실행
 
-	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0411.png" width="700">
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0411.png" width="730">
 
 - /repository/BoardReposity.java 인터페이스 생성
 - /repository/ReplyReposity.java 인터페이스 생성
 
 - test/repository/BoardRepositoryTests.java 작성 테스트
 
-	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0412.png" width="700">
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0412.png" width="730">
 
 - 테스트에 조회 작성 테스트
 
@@ -428,13 +428,13 @@ React + Spring Boot + DB(H2DB -> Oracle)
 ## 다시 H2DB
 - 답변 입력 테스트 확인
 
-	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0413.png" width="700">
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0413.png" width="730">
 
 - build.gradle에 Thymeleaf 라이브러리 추가
 - 게시글 목록 
 	/controller/BoardController.java 생성
 
-	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0414.png" width="700">
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0414.png" width="730">
 
 - HelloController -> MainController로 변경
 	- index() 메서드 추가
@@ -450,29 +450,29 @@ React + Spring Boot + DB(H2DB -> Oracle)
 
 - /templates/board/list.html 링크 추가
 
-	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0415.png" width="700">
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0415.png" width="730">
 
 - BoardController.java에 상세페이지 매핑 메서드 detail() 추가
 - BoardService.java 상세페이지 메서드 추가
 - /common/DataNotFoundException.java 클래스 생성
 - detail() 메서드 내 서비스 사용내용 추가
 
-	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0416.png" width="700">
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0416.png" width="730">
 
 - /board/detail.html 에 답변 내용 만들기
 
-	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0417.png" width="700">
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0417.png" width="730">
 
 - /controller/ReplyController.java 작성
 - /service/ReplyService.java 작성
 - ReplyController.java에 ReplyService 객체 추가
 
-	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0418.png" width="800">
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0418.png" width="730">
 
 - /templates/board/detail.html 에서 답변표시
 
 	- 이전에 Board.java에 replyList 확인!
-	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0419.png" width="800">
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0419.png" width="730">
 
 ### 부트스트랩 적용
 - 부트스트랩은 다운로드 받아서 static에 넣기, CDN을 추가하는 두 방법 
@@ -480,11 +480,11 @@ React + Spring Boot + DB(H2DB -> Oracle)
 	- 압축 해제 후 bootstrap.min.css를 static에 위치
 	- /board/list.html 에 부트스트랩 적용
 
-	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0420.png" width="800">
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0420.png" width="730">
 
 	- /board/detail.html 에 부트스트랩 적용
 
-	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0421.png" width="800">
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0421.png" width="730">
 
 	- templates/layout.html 작성
 	- list.html, detail.html에 layout.html 적용
@@ -493,11 +493,11 @@ React + Spring Boot + DB(H2DB -> Oracle)
 - BoardController에 boardCreate() 추가
 - /board/create.html 작성
 
-	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0422.png" width="800">
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0422.png" width="730">
 
 - BoardService.java 에 저장관련 메서드 추가
 
-	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0423.png" width="800">
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0423.png" width="730">
 
 ### 스프링부트 검증 라이브러리 
 - build.gradle에 Spring Boot Validation 추가
@@ -509,14 +509,14 @@ React + Spring Boot + DB(H2DB -> Oracle)
 - 검증클래스 컨트롤러에 전송, public String create() 가 전면 수정됨
 - /templates/board/create.html 템플릿 수정
 
-	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0424.png" width="800">
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0424.png" width="730">
 
 - ReplyForm.java 작성
 - ReplyController.java 수정
 - /board/detail.html 수정
 - BoardController.java detail() 메서드 수정
 
-	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0425.png" width="800">
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0425.png" width="730">
 
 - create.html, detail.html에 사용한 오류메시지 부분 공통템플릿으로 만들기
 - 기존 화면에 적용
@@ -524,7 +524,7 @@ React + Spring Boot + DB(H2DB -> Oracle)
 ### 내비게이션바 추가
 - layout.html 템플릿에 내비케이션 바 추가
 
-	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0426.png" width="800">
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0426.png" width="730">
 
 - bootstrap.min.js 를 static 폴더에 옮기기
 - layout.html 템플릿 소스 맨아래 부트스트랩 자바스크립트 소스 추가
@@ -534,7 +534,7 @@ React + Spring Boot + DB(H2DB -> Oracle)
 - 대량데이터 출력시 불편함 해소
 - /test/.../service/BoardServiceTests.java 작성, 대량데이터 테스트 생성 및 실행
 
-	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0427.png" width="800">
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0427.png" width="730">
 
 - 페이징처리에 필요한 요소
 	- org.springframework.data.domain.Page: 페이징을 위한 클래스
@@ -547,19 +547,19 @@ React + Spring Boot + DB(H2DB -> Oracle)
 - /board/list.html 변경
 - http://localhost:8080/board/list?page=1 로 페이지 요청
 
-	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0428.png" width="800">
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0428.png" width="730">
 
 - /board/list.html에 페이지 이동 기능 추가 및 완성
 
-	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0429.png" width="800">
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0429.png" width="730">
 
 - /service/BoardSerivce.java 최신순으로 데이터 조회 변경
 
-	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0430.png" width="800">
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0430.png" width="730">
 
 - /board/list.html에 댓글 개수 표시하기
 
-	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0431.png" width="800">
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0431.png" width="730">
 
 ### 로그인 처리
 - build.gradle에 스프링 시큐리티 설치
@@ -569,7 +569,11 @@ React + Spring Boot + DB(H2DB -> Oracle)
 	```
 - 재시작 후 http://localhost:8080/board/list?page=0 등을 입력하면 로그인화면으로 이동
 
-	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0432.png" width="800">
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0432.png" width="730">
+
+	- http://localhost:8080/logout 실행 테스트
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0436.png" width="730">
 
 - /config/SecurityConfig.java 작성
 	- CSRF 토큰으로 토큰이 없으면 스프링 시큐리티 차단함
@@ -579,7 +583,9 @@ React + Spring Boot + DB(H2DB -> Oracle)
 - 회원가입 기능 구현
 	- SiteUser.java 회원 엔티티 생성
 
-	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0433.png" width="800">
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0433.png" width="730">
+
+- UserController.java 중복회원 가입 방지 추가
 
 - /repository/UserRepository.java 작성
 - /service/UserService.java 작성
@@ -588,11 +594,20 @@ React + Spring Boot + DB(H2DB -> Oracle)
 - /templates/user/signup.html 작성
 - 내비게이션 바에 회원가입 링크 추가
 
-	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0434.png" width="800">
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0434.png" width="730">
 
-	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0435.png" width="800">
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0435.png" width="730">
 
 - 로그인/로그아웃 구현
 	- SecurityConfig.java에 로그인 URL 등록
 	- UserController에 로그인 URL 매핑 추가
 	- 로그인 템플릿 작성하기
+	- UserRepository에 Email로 사용자찾기 메서드 추가
+	- /role/UserRole.java enum 생성
+	- /service/UserSecurityService.java 생성
+	- SecurityConfig.java에 AuthenticationManager 빈 추가
+	- 로그인 화면 수정
+	- 로그아웃 기능 구현
+
+- /entity/Board.java와 Reply.java에 author 속성 추가하기
+- /controller/ReplyController.java에 수정

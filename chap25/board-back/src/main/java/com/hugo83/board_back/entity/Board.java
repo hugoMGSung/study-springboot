@@ -13,6 +13,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 // import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
@@ -49,4 +50,7 @@ public class Board {
 	// 중요!!!
 	@OneToMany(mappedBy = "board", cascade = CascadeType.REMOVE)
 	private List<Reply> replyList;
+
+	@ManyToOne
+	private SiteUser author; // 사용자 중 여려명이 게시글을 적을 수 있다.
 }
