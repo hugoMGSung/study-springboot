@@ -9,12 +9,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 // import org.springframework.web.bind.annotation.RequestParam;
 
 import com.hugo83.board_back.entity.Board;
+import com.hugo83.board_back.entity.SiteUser;
 import com.hugo83.board_back.service.BoardService;
 import com.hugo83.board_back.service.ReplyService;
+import com.hugo83.board_back.service.UserService;
 import com.hugo83.board_back.validation.ReplyForm;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import java.security.Principal;
 
 @RequestMapping("/reply")
 @RequiredArgsConstructor
@@ -22,6 +25,7 @@ import lombok.RequiredArgsConstructor;
 public class ReplyController {
 	private final BoardService boardService;
 	private final ReplyService replyService;
+	private final UserService userService;
 
 	// @PostMapping("/create/{Bno}")
 	// public String createReply(Model model, @PathVariable("Bno") Long bno, @RequestParam(value="content") String content) {
@@ -32,12 +36,13 @@ public class ReplyController {
 
 	@PostMapping("/create/{Bno}")
 	public String createReply(Model model, @PathVariable("Bno") Long bno,
-			@Valid ReplyForm replyForm, BindingResult bindingResult) {
+			@Valid ReplyForm replyForm, BindingResult bindingResult, Principal principal) {
 		Board board = this.boardService.getBoardDetail(bno);
+		SiteUser siteUser = this.userService.getUser(principal.getName());
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("board", board);
 			return "board/detail";
 		}
-		this.replyService.setReply(board, replyForm.getContent());
+		this.replyService.setReply(board, replyForm.getContent(), siteUser);
 		return String.format("redirect:/board/detail/%s", bno);
 	}}

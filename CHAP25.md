@@ -611,3 +611,5 @@ React + Spring Boot + DB(H2DB -> Oracle)
 
 - /entity/Board.java와 Reply.java에 author 속성 추가하기
 - /controller/ReplyController.java에 수정
+- /service/UserService.java 에 getUser() 구현
+- ReplyController.java에 UserService 추가
