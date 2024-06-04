@@ -11,12 +11,20 @@ import com.hugo83.board_back.validation.UserForm;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @RequiredArgsConstructor
 @RequestMapping("/user")
 @Controller
 public class UserController {
 	private final UserService userService;
+
+	@GetMapping("/signin")
+	public String login() {
+		return "user/signin";
+	}
+	
 
 	@GetMapping("/signup")
 	public String signup(UserForm userForm) {

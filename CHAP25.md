@@ -594,3 +594,5 @@ React + Spring Boot + DB(H2DB -> Oracle)
 
 - 로그인/로그아웃 구현
 	- SecurityConfig.java에 로그인 URL 등록
+	- UserController에 로그인 URL 매핑 추가
+	- 로그인 템플릿 작성하기
