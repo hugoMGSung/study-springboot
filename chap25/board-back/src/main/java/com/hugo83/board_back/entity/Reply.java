@@ -3,6 +3,7 @@ package com.hugo83.board_back.entity;
 import java.time.LocalDateTime;
 
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -33,6 +34,10 @@ public class Reply {
 	@CreatedDate
 	@Column(name="CreateDate", updatable = false)
 	private LocalDateTime createDate;
+	
+	@LastModifiedDate
+	@Column(name = "ModifyDate")
+	private LocalDateTime modifyDate;
 
 	// 중요!!!
 	@ManyToOne

@@ -613,3 +613,34 @@ React + Spring Boot + DB(H2DB -> Oracle)
 - /controller/ReplyController.java에 수정
 - /service/UserService.java 에 getUser() 구현
 - ReplyController.java에 UserService 추가
+
+- /service/BoardService.java 에 SiteUser 추가
+- /controller/BoardController.java에 UserService 추가
+- 로그아웃 후 질문 또는 답변 등록하면 내부서버오류(500) 발생
+- BoardController.java와 ReplyController.java에 @PreAuthorize("isAuthenticated()") 추가
+- SecurityConfig.java 에 @EnableMethodSecurity 어노테이션 추가
+
+- /board/detail.html에 로그아웃시 답변 작성 못하도록 변경
+- 글쓴이 추가
+
+## 수정 삭제 등 추가기능 완료
+- 게시글 수정/삭제 기능
+	- /entity/Reply.java에 수정일차 추가
+	- /board/detail.html 에 질문 수정버튼 생성
+	- BoardController.java 수정
+	- /board/create.html 템플릿 수정에서도 쓰도록 변경
+		- th:action="@{/board/create}" 반드시 삭제해야 함!!
+	- BoardService.java에서 수정 메서드 추가
+	- BoardController.java에 수정 Post메서드 추가
+
+	- /board/detail.html 에 삭제 버튼 추가
+	- layout.html 에 스크립트 템플릿 추가
+	- 삭제를 위한 자바스크립트 추가
+
+		<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0438.png" width="730">
+
+	- BoardServce.java 수정
+	- BoardController.java 삭제 메서드 추가
+
+- 댓글 수정기능 추가
+	- 

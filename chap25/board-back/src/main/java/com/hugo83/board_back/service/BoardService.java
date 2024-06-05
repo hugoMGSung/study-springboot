@@ -12,6 +12,7 @@ import org.springframework.data.domain.Sort;
 
 import com.hugo83.board_back.common.DataNotFoundException;
 import com.hugo83.board_back.entity.Board;
+import com.hugo83.board_back.entity.SiteUser;
 import com.hugo83.board_back.repository.BoardRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -43,9 +44,22 @@ public class BoardService {
 		}
 	}
 
-	public void setBoardDetail(String title, String content) {
+	public void setBoardDetail(String title, String content, SiteUser user) {
 		Board b = Board.builder().title(title).content(content).createDate(LocalDateTime.now()).build();
+		b.setAuthor(user);
 
 		this.boardRepository.save(b);
+	}
+
+	public void setBoardModify(Board board, String title, String content) {
+		board.setTitle(title);
+		board.setContent(content);
+		board.setModifyDate(LocalDateTime.now());
+
+		this.boardRepository.save(board);
+	}
+
+	public void setBoardDelete(Board board) {
+		this.boardRepository.delete(board);
 	}
 }

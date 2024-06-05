@@ -15,6 +15,8 @@ import com.hugo83.board_back.service.ReplyService;
 import com.hugo83.board_back.service.UserService;
 import com.hugo83.board_back.validation.ReplyForm;
 
+import org.springframework.security.access.prepost.PreAuthorize;
+
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import java.security.Principal;
@@ -34,6 +36,7 @@ public class ReplyController {
 	// 	return String.format("redirect:/board/detail/%s", bno);
 	// }
 
+	@PreAuthorize("isAuthenticated()")
 	@PostMapping("/create/{Bno}")
 	public String createReply(Model model, @PathVariable("Bno") Long bno,
 			@Valid ReplyForm replyForm, BindingResult bindingResult, Principal principal) {
@@ -45,4 +48,5 @@ public class ReplyController {
 		}
 		this.replyService.setReply(board, replyForm.getContent(), siteUser);
 		return String.format("redirect:/board/detail/%s", bno);
-	}}
+	}
+}
