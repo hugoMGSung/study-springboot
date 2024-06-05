@@ -639,7 +639,7 @@ React + Spring Boot + DB(H2DB -> Oracle)
 
 		<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0438.png" width="730">
 
-	- BoardServce.java 수정
+	- BoardService.java 수정
 	- BoardController.java 삭제 메서드 추가
 
 - 댓글 수정기능 추가
