@@ -32,8 +32,6 @@ import com.hugo83.board_back.validation.ReplyForm;
 import java.security.Principal;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.RequestBody;
-
 
 @RequestMapping("/board")
 @RequiredArgsConstructor

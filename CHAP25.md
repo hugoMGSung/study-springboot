@@ -643,4 +643,18 @@ React + Spring Boot + DB(H2DB -> Oracle)
 	- BoardController.java 삭제 메서드 추가
 
 - 댓글 수정기능 추가
-	- 
+	- /board/detail.html 에 댓글 수정 버튼 추가
+	- /service/ReplyService.java 에 메서드 추가
+	- /controller/ReplyController.java 에 답변 Get 메서드 추가
+	- /templates/reply/modify.html 작성
+	- /controller/ReplyController.java에 재수정 Post 메서드 추가
+- 댓글 삭제기능 추가
+	- /templates/board/detail.html 댓글 삭제버튼 추가
+	- /service/ReplyService.java 에 삭제 메서드 추가
+	- /controller.ReplyController.java 삭제 메서드 
+	
+	- /templates/board/detail.html에 수정일시 표시
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0439.png" width="730">
+
+## 추천기능 부터...

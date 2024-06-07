@@ -1,5 +1,8 @@
 package com.hugo83.board_back.service;
 
+import java.util.Optional;
+
+import com.hugo83.board_back.common.DataNotFoundException;
 import com.hugo83.board_back.entity.Board;
 import com.hugo83.board_back.entity.Reply;
 import com.hugo83.board_back.entity.SiteUser;
@@ -22,5 +25,24 @@ public class ReplyService {
 				.board(board).build();
 		reply.setAuthor(author); // 저자 추가
 		this.replyRepository.save(reply);
+	}
+
+	public Reply getReply(Long bno) {
+		Optional<Reply> reply = this.replyRepository.findById(bno);
+		if (reply.isPresent()) {
+			return reply.get();
+		} else {
+			throw new DataNotFoundException("reply not found");
+		}
+	}
+
+	public void setReplyModify(Reply reply, String content) {
+		reply.setContent(content);
+		reply.setModifyDate(LocalDateTime.now());
+		this.replyRepository.save(reply);
+	}
+
+	public void delReply(Reply reply) {
+		this.replyRepository.delete(reply);
 	}
 }

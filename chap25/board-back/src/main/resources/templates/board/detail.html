@@ -11,13 +11,16 @@
         th:text="${board.content}"
       ></div>
       <div class="d-flex justify-content-end">
+        <div th:if="${board.modifyDate != null}" class="badge bg-light text-dark p-2 text-start mx-3">
+          <div class="mb-2">modified at</div>
+          <div th:text="${#temporals.format(board.modifyDate, 'yyyy-MM-dd HH:mm')}"></div>
+            </div>
         <div class="badge bg-light text-dark p-2 text-start">
           <div class="mb-2">
             <span th:if="${board.author != null}" th:text="${board.author.username}"></span>
           </div>
           <div
-            th:text="${#temporals.format(board.createDate, 'yyyy-MM-dd HH:mm')}"
-          ></div>
+            th:text="${#temporals.format(board.createDate, 'yyyy-MM-dd HH:mm')}"></div>
         </div>
       </div>
       <div class="my-3">
@@ -46,6 +49,10 @@
         th:text="${reply.content}"
       ></div>
       <div class="d-flex justify-content-end">
+        <div th:if="${reply.modifyDate != null}" class="badge bg-light text-dark p-2 text-start mx-3">
+          <div class="mb-2">modified at</div>
+          <div th:text="${#temporals.format(reply.modifyDate, 'yyyy-MM-dd HH:mm')}"></div>
+            </div>
         <div class="badge bg-light text-dark p-2 text-start">
           <div class="mb-2">
             <span th:if="${reply.author != null}" th:text="${reply.author.username}"></span>
@@ -55,7 +62,16 @@
           </div>
         </div>
       </div>
-      
+      <div class="my-3">
+            <a th:href="@{|/reply/modify/${reply.rno}|}" class="btn btn-sm btn-outline-secondary"
+                sec:authorize="isAuthenticated()"
+                th:if="${reply.author != null and #authentication.getPrincipal().getUsername() == reply.author.username}"
+                th:text="수정"></a>
+            <a href="javascript:void(0);" th:data-uri="@{|/reply/delete/${reply.rno}|}"
+                class="delete btn btn-sm btn-outline-secondary" sec:authorize="isAuthenticated()"
+                th:if="${reply.author != null and #authentication.getPrincipal().getUsername() == reply.author.username}"
+                th:text="삭제"></a>
+        </div>
     </div>
   </div>
   <!-- 댓글 반복 끝  -->
