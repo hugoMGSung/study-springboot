@@ -23,7 +23,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import java.security.Principal;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+// import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.server.ResponseStatusException;
 
 
@@ -90,6 +90,15 @@ public class ReplyController {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "삭제권한이 없습니다.");
 		}
 		this.replyService.delReply(reply);
+		return String.format("redirect:/board/detail/%s", reply.getBoard().getBno());
+	}
+
+	@PreAuthorize("isAuthenticated()")
+    @GetMapping("/vote/{Rno}")
+	public String replyVote(Principal principal, @PathVariable("Rno") Long rno) {
+		Reply reply = this.replyService.getReply(rno);
+		SiteUser siteUser = this.userService.getUser(principal.getName());
+		this.replyService.setReplyVote(reply, siteUser);
 		return String.format("redirect:/board/detail/%s", reply.getBoard().getBno());
 	}
 }

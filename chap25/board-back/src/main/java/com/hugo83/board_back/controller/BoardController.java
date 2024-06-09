@@ -123,4 +123,15 @@ public class BoardController {
 		this.boardService.setBoardDelete(board);
 		return "redirect:/board/list";
 	}
+
+	@PreAuthorize("isAuthenticated()")
+	@GetMapping("/vote/{Bno}")
+	public String boardVote(Principal principal, @PathVariable("Bno") Long bno) {
+		Board board = this.boardService.getBoardDetail(bno);
+		SiteUser siteUser = this.userService.getUser(principal.getName());
+		this.boardService.setBoardVote(board, siteUser);
+
+		return String.format("redirect:/board/detail/%s", bno);
+	}
+	
 }

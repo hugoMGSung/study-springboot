@@ -62,4 +62,9 @@ public class BoardService {
 	public void setBoardDelete(Board board) {
 		this.boardRepository.delete(board);
 	}
+
+	public void setBoardVote(Board board, SiteUser siteUser) {
+		board.getVoter().add(siteUser);
+		this.boardRepository.save(board);
+	}
 }

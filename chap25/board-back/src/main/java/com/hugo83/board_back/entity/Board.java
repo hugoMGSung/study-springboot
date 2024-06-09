@@ -1,6 +1,7 @@
 package com.hugo83.board_back.entity;
 
 import java.util.List;
+import java.util.Set;
 import java.time.LocalDateTime;
 
 import org.springframework.data.annotation.CreatedDate;
@@ -15,6 +16,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.ManyToMany;
 // import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -53,4 +55,7 @@ public class Board {
 
 	@ManyToOne
 	private SiteUser author; // 사용자 중 여려명이 게시글을 적을 수 있다.
+
+	@ManyToMany
+	Set<SiteUser> voter; // 한사람이 여러 게시글을 게시글에 여러 사람이 추천할 수 있음!
 }

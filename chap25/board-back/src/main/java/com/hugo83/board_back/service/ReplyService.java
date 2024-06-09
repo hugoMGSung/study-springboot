@@ -45,4 +45,9 @@ public class ReplyService {
 	public void delReply(Reply reply) {
 		this.replyRepository.delete(reply);
 	}
+
+	public void setReplyVote(Reply reply, SiteUser siteUser) {
+		reply.getVoter().add(siteUser);
+		this.replyRepository.save(reply);
+	}
 }

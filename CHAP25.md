@@ -657,4 +657,17 @@ React + Spring Boot + DB(H2DB -> Oracle)
 
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0439.png" width="730">
 
-## 추천기능 부터...
+## 추천 등 추가 기능 
+- Board와 Reply 엔티티에 추천자 속성 추가
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0440.png" width="730">
+
+- /templates/board/detail.html 게시글에 추천 버튼 및 스크립트 추가
+- /service/BoardService.java 에 추천메서드 추가
+- /controller/BoardController.java 에 GetMapping 메서드 추가
+- /templates/board/detail.html 댓글에 추천 버튼 및 스크립트 추가
+- /service/ReplyService.java에 추천메서드 추가
+- /controller/ReplyController.java에 GetMapping 메서드 추가
+
+## 앵커기능
+- 
