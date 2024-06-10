@@ -52,8 +52,8 @@ public class ReplyController {
 			model.addAttribute("board", board);
 			return "board/detail";
 		}
-		this.replyService.setReply(board, replyForm.getContent(), siteUser);
-		return String.format("redirect:/board/detail/%s", bno);
+		Reply reply = this.replyService.setReply(board, replyForm.getContent(), siteUser);
+		return String.format("redirect:/board/detail/%s#reply_%s", bno, reply.getRno());
 	}
 
 	@PreAuthorize("isAuthenticated()")
@@ -79,7 +79,7 @@ public class ReplyController {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "수정권한이 없습니다.");
 		}
 		this.replyService.setReplyModify(reply, replyForm.getContent());
-		return String.format("redirect:/board/detail/%s", reply.getBoard().getBno());
+		return String.format("redirect:/board/detail/%s#reply_%s", reply.getBoard().getBno(), reply.getRno());
 	}
 	
 	@PreAuthorize("isAuthenticated()")
@@ -99,6 +99,6 @@ public class ReplyController {
 		Reply reply = this.replyService.getReply(rno);
 		SiteUser siteUser = this.userService.getUser(principal.getName());
 		this.replyService.setReplyVote(reply, siteUser);
-		return String.format("redirect:/board/detail/%s", reply.getBoard().getBno());
+		return String.format("redirect:/board/detail/%s#reply_%s", reply.getBoard().getBno(), reply.getRno());
 	}
 }

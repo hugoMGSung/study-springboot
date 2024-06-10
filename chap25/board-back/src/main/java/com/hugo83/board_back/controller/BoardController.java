@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 // import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.server.ResponseStatusException;
+// import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 // import org.springframework.http.HttpStatusCode;
@@ -28,6 +29,8 @@ import org.springframework.security.access.prepost.PreAuthorize;
 // import com.hugo83.board_back.service.ReplyService;
 import com.hugo83.board_back.validation.BoardForm;
 import com.hugo83.board_back.validation.ReplyForm;
+
+import jakarta.servlet.http.HttpServletRequest;
 
 import java.security.Principal;
 import jakarta.validation.Valid;
@@ -52,9 +55,12 @@ public class BoardController {
 	}
 
 	@GetMapping(value = "/detail/{Bno}")
-	public String detail(Model model, @PathVariable("Bno") Long bno, ReplyForm replyForm) {
+	public String detail(Model model, @PathVariable("Bno") Long bno, ReplyForm replyForm, HttpServletRequest request) {
+		String prevUrl = request.getHeader("referer");
 		Board board = this.boardService.getBoardDetail(bno);
 		model.addAttribute("board", board);
+		model.addAttribute("prevUrl", prevUrl);
+		System.out.println(prevUrl);
 		return "board/detail";
 	}
 

@@ -17,14 +17,21 @@ import java.time.LocalDateTime;
 @RequiredArgsConstructor
 @Service
 public class ReplyService {
-	
+
 	private final ReplyRepository replyRepository;
 
-	public void setReply(Board board, String content, SiteUser author) {
+	// public void setReply(Board board, String content, SiteUser author) {
+	// 	Reply reply = Reply.builder().content(content).createDate(LocalDateTime.now())
+	// 			.board(board).build();
+	// 	reply.setAuthor(author); // 저자 추가
+	// 	this.replyRepository.save(reply);
+	// }
+	public Reply setReply(Board board, String content, SiteUser author) {
 		Reply reply = Reply.builder().content(content).createDate(LocalDateTime.now())
 				.board(board).build();
 		reply.setAuthor(author); // 저자 추가
 		this.replyRepository.save(reply);
+		return reply;
 	}
 
 	public Reply getReply(Long bno) {

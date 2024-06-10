@@ -670,4 +670,40 @@ React + Spring Boot + DB(H2DB -> Oracle)
 - /controller/ReplyController.java에 GetMapping 메서드 추가
 
 ## 앵커기능
-- 
+- /templates/board/detail.html 에 a 태그 추가
+- 답변 등록, 수정 후 리다이렉트 부분을 변경
+	```java
+	return String.format("redirect:/board/detail/%s", reply.getBoard().getBno());
+	// 아래로 변경
+	return String.format("redirect:/board/detail/%s#reply_%s", reply.getBoard().getBno(), reply.getRno());
+	```
+- 해당 답변 수정 후 해당 답변 위치로 스크롤 확인
+- /service/ReplyService.java 에서 setReply() 메서드 리턴값 변경
+- /controller/ReplyController.java createReply() 메서드 수정
+
+## 목록으로 돌아가기 
+- /controller/BoardController.java에 detail() 메서드 수정
+	```java
+	@GetMapping(value = "/detail/{Bno}")
+	public String detail(Model model, @PathVariable("Bno") Long bno, ReplyForm replyForm, HttpServletRequest request) {
+		String prevUrl = request.getHeader("referer");
+		Board board = this.boardService.getBoardDetail(bno);
+		model.addAttribute("board", board);
+		model.addAttribute("prevUrl", prevUrl);
+		System.out.println(prevUrl);
+		return "board/detail";
+	}
+	```
+- /templates/board/detail.html 에 목록 a 태그 추가
+	```html
+	<a th:href="${prevUrl}" class="btn btn-secondary my-2">목록</a>
+	```
+	
+## 검색기능 추가
+
+## 마크다운 에디터 적용
+
+
+## AWS 라이트세일 시작하기
+
+## 웹서버 배포
