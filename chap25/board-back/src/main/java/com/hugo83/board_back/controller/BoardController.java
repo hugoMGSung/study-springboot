@@ -46,11 +46,13 @@ public class BoardController {
 
 	@GetMapping({ "", "/list" })
 	// @ResponseBody
-	public String list(Model model, @RequestParam(value = "page", defaultValue = "0") int page) {
+	public String list(Model model, @RequestParam(value = "page", defaultValue = "0") int page, 
+			@RequestParam(value = "kw", defaultValue = "") String kw) {
 		// List<Board> boardList = this.boardService.getBoardList();
 		// model.addAttribute("boardList", boardList);
-		Page<Board> paging = this.boardService.getList(page);
+		Page<Board> paging = this.boardService.getList(page, kw);
 		model.addAttribute("paging", paging);
+		model.addAttribute("kw", kw);
 		return "board/list";
 	}
 

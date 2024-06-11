@@ -700,10 +700,44 @@ React + Spring Boot + DB(H2DB -> Oracle)
 	```
 	
 ## 검색기능 추가
+- JPA의 Specification 인터페이스 사용
+	- /service/BoardService.java 에 search() 메서드 추가
+	- /repository/BoardRepository.java 수정
+	- /service/BoardService.java getList() 메서드 수정
+	- /controller/BoardController.java getList() 사용오류 수정
+	- /templates/board/list.html에 검색창, 입력폼 추가, 페이징 수정, 검색 스크립트 추가
+
+- 페이지번호를 1부터 보이기 위해 list.html의 paging 에서 변경
+	```html
+	<a th:text="${page}" class="page-link" href="javascript:void(0)" th:data-page="${page}"></a>
+	<!-- 아래로 변경 -->
+	<a th:text="${page+1}" class="page-link" href="javascript:void(0)" th:data-page="${page}"></a>
+	```
+
+- 커스텀 쿼리로 적용
+	- /repository/BoardRepository.java에 findAllByKeyword() 추가
+	- /service/BoardService.java getList() 수정
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0441.png" width="730">
+
+- 참조링크 : https://velog.io/@puar12/%EC%A0%90%ED%94%84%ED%88%AC%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8-%EC%B6%94%EA%B0%80%EA%B8%B0%EB%8A%A5-%EA%B5%AC%ED%98%84-%EC%A1%B0%ED%9A%8C%EC%88%98
 
 ## 마크다운 에디터 적용
+- https://simplemde.com/ 에서 확인
+	- layout.html에 css, js 링크 추가
+	- /templates/board/create.html 수정
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0442.png" width="730">
+
+- build.gradle에 마크다운 종속성 추가
+- /common/CommonUtil.java 추가생성
+- /templates/board/detail.html에 마크다운 적용
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0443.png" width="730">
 
 
 ## AWS 라이트세일 시작하기
 
 ## 웹서버 배포
+
+## 리액트 프론트엔드 시작
