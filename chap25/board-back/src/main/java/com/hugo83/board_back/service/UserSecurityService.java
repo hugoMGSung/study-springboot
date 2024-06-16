@@ -12,9 +12,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.hugo83.board_back.common.UserRole;
 import com.hugo83.board_back.entity.SiteUser;
 import com.hugo83.board_back.repository.UserRepository;
+import com.hugo83.board_back.role.UserRole;
 
 import lombok.RequiredArgsConstructor;
 

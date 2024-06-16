@@ -27,12 +27,18 @@
         </a>
         <a th:href="@{|/board/modify/${board.Bno}|}" class="btn btn-sm btn-outline-secondary"
             sec:authorize="isAuthenticated()"
-            th:if="${board.author != null and #authentication.getPrincipal().getUsername() == board.author.username}"
             th:text="수정"></a>
         <a href="javascript:void(0);" th:data-uri="@{|/board/delete/${board.bno}|}"
             class="delete btn btn-sm btn-outline-warning" sec:authorize="isAuthenticated()"
-            th:if="${board.author != null and #authentication.getPrincipal().getUsername() == board.author.username}"
             th:text="삭제"></a>
+        <!-- <a th:href="@{|/board/modify/${board.Bno}|}" class="btn btn-sm btn-outline-secondary"
+            sec:authorize="isAuthenticated()"
+            thif="{board.author != null and #authentication.getPrincipal().getUsername() == board.author.username}"
+            th:text="수정"></a>
+        <a href="javascript:void(0);" th:data-uri="@{|/board/delete/${board.bno}|}"
+            class="delete btn btn-sm btn-outline-warning" sec:authorize="isAuthenticated()"
+            thif="{board.author != null and #authentication.getPrincipal().getUsername() == board.author.username}"
+            th:text="삭제"></a> -->
       </div>
     </div>
   </div>

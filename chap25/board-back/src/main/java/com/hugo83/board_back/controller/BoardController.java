@@ -21,6 +21,11 @@ import com.hugo83.board_back.service.BoardService;
 import com.hugo83.board_back.service.CategoryService;
 import com.hugo83.board_back.service.UserService;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
+import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
+import org.springframework.security.web.authentication.WebAuthenticationDetails;
+
 import com.hugo83.board_back.validation.BoardForm;
 import com.hugo83.board_back.validation.ReplyForm;
 
@@ -66,6 +71,7 @@ public class BoardController {
 		Board board = this.boardService.hitBoard(bno);
 		model.addAttribute("board", board);
 		model.addAttribute("prevUrl", prevUrl);
+		// 소셜과 일반 사용자에 대한 권한을 넣어줘야 함!!
 		System.out.println(prevUrl);
 		return "board/detail";
 	}
@@ -84,13 +90,22 @@ public class BoardController {
 	public String create(Model model,
 						@PathVariable("category") String category,
 						@Valid BoardForm boardForm,
-						BindingResult bindingResult, Principal principal) {
+						BindingResult bindingResult, Principal principal, Authentication authentication) {
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("category", category);
 			return "board/create";
 		}
 
-		SiteUser siteUser = this.userService.getUser(principal.getName());
+		SiteUser siteUser;
+		if (principal instanceof OAuth2AuthenticationToken) {
+			DefaultOAuth2User userDetails = (DefaultOAuth2User) authentication.getPrincipal();
+			
+			siteUser = this.userService.getUserByEmail(userDetails.getAttribute("email"));
+		} else {
+			siteUser = this.userService.getUser(principal.getName());
+		}
+
+		
 		Category category1 = this.categoryService.getCategoryByTitle(category);
 		this.boardService.setBoardDetail(boardForm.getTitle(), boardForm.getContent(), siteUser, category1);
 		return String.format("redirect:/board/list/%s", category);

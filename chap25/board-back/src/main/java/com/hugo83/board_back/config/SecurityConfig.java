@@ -8,9 +8,12 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.header.writers.frameoptions.XFrameOptionsHeaderWriter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+// import com.hugo83.board_back.service.CustomOAuth2UserService;
+
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 
@@ -22,6 +25,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableMethodSecurity(prePostEnabled = true)
 @RequiredArgsConstructor
 public class SecurityConfig {
+
+	// private final CustomOAuth2UserService customOAuth2UserService;
 
 	// OAuth2 추가 06.16.
 	@Bean
@@ -39,7 +44,15 @@ public class SecurityConfig {
 				.logout((logout) -> logout
 						.logoutRequestMatcher(new AntPathRequestMatcher("/user/logout"))
 						.logoutSuccessUrl("/")
-						.invalidateHttpSession(true));
+						.invalidateHttpSession(true))
+				// OAuth2 로그인 기능에 대한 여러 설정
+				.oauth2Login(Customizer.withDefaults()); // 아래 코드와 동일한 결과
+				// .oauth2Login(
+				// 		(oauth) ->
+				// 			oauth.userInfoEndpoint(
+				// 					(endpoint) -> endpoint.userService(customOAuth2UserService)
+				// 			))
+				;
 		
 		// userInfoEndpoint() 는 deprecated and marked for removal 6.1에서 
 

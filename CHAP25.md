@@ -802,6 +802,29 @@ React + Spring Boot + DB(H2DB -> Oracle)
 
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0446.png" width="730">
 
+## 구글 로그인
+- 구글 개발자 콘솔에서 설정(패스)
+- application.properties 구글 설정 업로드
+- /templates/user/login.html 에 구글 로그인 추가
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0447.png" width="730">
+
+- /entity/SiteUser.java에 구글 처리 변수 추가
+- /entity/SessionUser.java 클래스 생성
+- /config/OAuthAttributes.java 생성
+- /service/CustomOAuth2UserService.java 생성 (필요없음)
+- /config/SecurityConfig.java 추가 수정
+- /controller/BoardController.java PostMapping create() 에 소셜 추가변경
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0448.png" width="730">
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0449.png" width="730">
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0450.png" width="730">
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0451.png" width="730">
+
+
 ## AWS 라이트세일 시작하기
 
 ## 웹서버 배포
