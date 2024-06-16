@@ -18,6 +18,6 @@ public class MainController {
 	
 	@GetMapping("/")
 	public String index() {
-		return "redirect:/board/list";
+		return "redirect:/board/list/freeboard";
 	}
 }

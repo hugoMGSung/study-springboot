@@ -58,4 +58,9 @@ public class Board {
 
 	@ManyToMany
 	Set<SiteUser> voter; // 한사람이 여러 게시글을 게시글에 여러 사람이 추천할 수 있음!
+
+	@ManyToOne
+	private Category category;
+
+	private Integer hit;
 }

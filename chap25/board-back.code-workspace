@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": "board-back"
+		}
+	],
+	"settings": {
+		"java.compile.nullAnalysis.mode": "disabled",
+		"java.configuration.updateBuildConfiguration": "automatic"
+	}
+}

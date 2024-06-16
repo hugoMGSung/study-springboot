@@ -23,8 +23,9 @@ public interface BoardRepository extends JpaRepository<Board, Long> {
 	@SuppressWarnings("null")
 	Page<Board> findAll(Pageable pageable);
 
-	Page<Board> findAll(Specification<Board> spec, Pageable pageable);
+    Page<Board> findAll(Specification<Board> spec, Pageable pageable);
 
+    // 카테고리 쿼리 추가는 차후.
 	@Query("   SELECT distinct b "
             + "  FROM Board b " 
             + "  LEFT OUTER JOIN SiteUser u1 ON b.author=u1 "
@@ -35,5 +36,11 @@ public interface BoardRepository extends JpaRepository<Board, Long> {
             + "    OR u1.username LIKE %:kw% "
             + "    OR r.content LIKE %:kw% "
             + "    OR u2.username LIKE %:kw% ")
-	Page<Board> findAllByKeyword(@Param("kw") String kw, Pageable pageable);
+    Page<Board> findAllByKeyword(@Param("kw") String kw, Pageable pageable);
+    
+    // @Query("  SELECT b FROM Board b "
+    //        + " INNER JOIN SiteUser u ON b.author_id=u "
+    //        + " WHERE u.username = :username " 
+    //        + " ORDER BY b.createDate DESC ")
+    // List<Board> findCurrentBoard(@Param("username") String username, Pageable pageable);
 }

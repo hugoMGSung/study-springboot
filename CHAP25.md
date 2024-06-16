@@ -735,6 +735,72 @@ React + Spring Boot + DB(H2DB -> Oracle)
 
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0443.png" width="730">
 
+## 카테고리 기능 추가
+- /entity/Category.java 생성
+- /repository/CategoryRepository.java 인터페이스 작성
+- /service/CategoryService.java
+
+- /service/BoardService.java 조회조건에 카테고리 추가 수정
+
+- 카테고리를 질문과 자유게시판으로 분리
+- /templates/layout.html에 navbar.html 작성 추가
+
+- /controller/BoardController create GetMapping 메서드에 카테고리 추가
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0444.png" width="730">
+
+## 비밀번호 찾기 설정(보류!)
+- Gmail SMTP 서버 설정
+	- 구글 계정 진입, 보안 클릭. 
+	- 2단계 인증 활성화 변경 사용함(나중에 다시 변경할 것!)
+
+- build.gradle 의존성 추가
+
+	```properties
+	implementation 'org.springframework.boot:spring-boot-starter-mail'
+	```
+
+- /config/MailConfig.java 추가
+- /common/SHA256Util 클래스 작성
+- /controller/UserController 에 메일 요청 추가
+
+## 프로필 보기(보류!)
+- /repository/BoardRepository에 쿼리 추가
+- /service/BoardService 검색 메서드 추가
+- /controller/UserController.java profile() 메서드 추가
+- /templates/user/profile.html 작성
+
+- reply도 추가해 볼 것!
+
+## 조회수 표시
+- /entity/Board.java 에 hit 추가
+- /service/BoardService.java에 메서드 추가
+- /controller/BoardController.java detail메서드 수정
+- /templates/board/list.html 조회수 추가
+
+## 카카오 로그인(다시!)
+- build.gradle 의존성 추가
+- /templates/user/login.html에 카카오 로그인버튼 추가
+- https://developers.kakao.com/ 접속
+- 내 애플리케이션 추가
+- 플랫폼 > Web 플랫폼 등록
+- Redirect URI 등록 가기
+- Redirect URI 등록버튼 클릭 
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0445.png" width="730">
+
+- 카카오 로그인 활성화
+- 비즈앱 전환
+- 동의항목 설정
+- 보안 > Client Secret 코드 생성
+- application.properties 설정
+- /config/PrincipalDetails.java 생성
+- /entity/SiteUser.java에 sns 필드 추가 및 @Builder 추가
+- /entity/OAuthAttributes.java 생성
+- /service/CustomOAuth2UserService.java 생성
+- /config/SecurityConfig 에 OAuth2 내용 추가
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0446.png" width="730">
 
 ## AWS 라이트세일 시작하기
 

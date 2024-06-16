@@ -19,9 +19,19 @@
   <body>
     <!-- 내비게이션바-->
     <nav th:replace="~{navbar :: navbarFragment}"></nav>
-    <!-- 기본 템플릿 안에 삽입될 내용 Start -->
-    <th:block layout:fragment="content"></th:block>
-    <!-- 기본 템플릿 안에 삽입될 내용 End -->
+
+    <div class="container mt-3" style="height: auto !important;">
+        <div class="row" style="height: auto !important;">
+            <div class="col-sm-12 col-md-3 col-lg-2 p-2">
+                <nav th:replace="sidebar :: sidebarFragment"></nav>
+            </div>
+            <div class="col-sm-12 col-md-9 col-lg-10 p-2">
+                <!-- 기본 템플릿 안에 삽입될 내용 Start -->
+                <th:block layout:fragment="content"></th:block>
+                <!-- 기본 템플릿 안에 삽입될 내용 End -->
+            </div>
+        </div>
+    </div>
     <!-- Bootstrap JS-->
     <script th:src="@{/bootstrap.min.js}"></script>
     <!-- 자바스크립트 Start -->
