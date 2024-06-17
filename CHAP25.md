@@ -826,6 +826,36 @@ React + Spring Boot + DB(H2DB -> Oracle)
 
 
 ## AWS 라이트세일 시작하기
+- https://aws.amazon.com/ko/ 접속
+- 회원 가입 및 로그인
+- https://lightsail.aws.amazon.com/ 링크로 진입
+- 기어 클릭 > 한국어로 변경
+	- 인스턴스 생성
+	- Linux/Unix > 운영체제 전용 > Ubuntu 22.04 LTS 선택
+	- 네트워크 듀얼스택
+	- 크기 선택 - 월별 $5 (512MB, 2개의 vCPU, 20GB SSD, 1TB전송 ) 선택
+	- 인스턴스 확인 이름 변경 또는 체크
+	
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0452.png" width="730">
+
+	- 대기 중 -> 실행 중 변경 확인
+
+	- 네트워킹 > 고정 IP 생성
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0453.png" width="730">
+
+	- 인스턴스 ... 관리 클릭
+	- 네트워킹 탭 > + 규칙 추가 > 8080 입력 후 생성 아이콘 클릭
+
+- 우분투 인스턴스 접속 준비
+	- 계정 > SSH 키 탭 > 기본 키 다운로드 받기(*.pem)
+	- puttyGen으로 pem -> ppk로 변경
+	- putty에서 접속 확인
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0454.png" width="700">
+
+	- 파일질라 설치
+	
 
 ## 웹서버 배포
 
