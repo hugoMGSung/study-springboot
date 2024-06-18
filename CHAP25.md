@@ -854,9 +854,60 @@ React + Spring Boot + DB(H2DB -> Oracle)
 
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0454.png" width="700">
 
-	- 파일질라 설치
-	
+	- 파일질라 설치 https://filezilla-project.org/
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0456.png" width="700">
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0457.png" width="730">
+
 
 ## 웹서버 배포
+- PuTTY 접속
+	```shell
+	ubuntu@ip-172-26-13-99:~$ sudo ln -sf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
+	ubuntu@ip-172-26-13-99:~$ date
+	Tue Jun 18 19:51:47 KST 2024
+
+	ubuntu@ip-172-26-13-99:~$ sudo hostnamectl set-hostname hugos
+	ubuntu@ip-172-26-13-99:~$ sudo reboot
+	```
+
+- PuTTY 재접속
+	```shell	
+	ubuntu@hugos:~$ sudo apt-get update
+	...
+	ubuntu@hugos:~$ java
+	Command 'java' not found, but can be installed with:
+	sudo apt install openjdk-11-jre-headless  # version 11.0.20.1+1-0ubuntu1~22.04, or
+	sudo apt install default-jre              # version 2:1.11-72build2
+	sudo apt install openjdk-17-jre-headless  # version 17.0.8.1+1~us1-0ubuntu1~22.04
+	sudo apt install openjdk-18-jre-headless  # version 18.0.2+9-2~22.04
+	sudo apt install openjdk-19-jre-headless  # version 19.0.2+7-0ubuntu3~22.04
+	sudo apt install openjdk-8-jre-headless   # version 8u382-ga-1~22.04.1
+	ubuntu@hugos:~$
+	ubuntu@hugos:~$ sudo apt install openjdk-17-jre-headless
+	...
+	ubuntu@hugos:~$ java -version
+	openjdk version "17.0.11" 2024-04-16
+	OpenJDK Runtime Environment (build 17.0.11+9-Ubuntu-122.04.1)
+	OpenJDK 64-Bit Server VM (build 17.0.11+9-Ubuntu-122.04.1, mixed mode, sharing)
+	ubuntu@hugos:~$ mkdir sbserver
+	```
+
+- VSCode 에서 Gradle for java에서 Tasks > Build > bootjar 선택
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0458.png" width="400">
+
+- 파일질라로 접속 후 jar 파일 복사
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0460.png" width="730">
+
+	- 실행
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0461.png" width="730">
+	
+- 실행확인
+	
+
 
 ## 리액트 프론트엔드 시작

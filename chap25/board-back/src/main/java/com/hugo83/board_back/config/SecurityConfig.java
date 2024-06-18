@@ -1,5 +1,7 @@
 package com.hugo83.board_back.config;
 
+import java.util.Arrays;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -7,6 +9,9 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.header.writers.frameoptions.XFrameOptionsHeaderWriter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 // import com.hugo83.board_back.service.CustomOAuth2UserService;
 
@@ -32,6 +37,7 @@ public class SecurityConfig {
 	@Bean
 	SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http.authorizeHttpRequests((authorizeHttpRequests) -> authorizeHttpRequests
+				// .anyRequest().authenticated()
 				.requestMatchers(new AntPathRequestMatcher("/**")).permitAll())
 				.csrf((csrf) -> csrf
 						.ignoringRequestMatchers(new AntPathRequestMatcher("/h2-console/**")))
@@ -46,17 +52,33 @@ public class SecurityConfig {
 						.logoutSuccessUrl("/")
 						.invalidateHttpSession(true))
 				// OAuth2 로그인 기능에 대한 여러 설정
-				.oauth2Login(Customizer.withDefaults()); // 아래 코드와 동일한 결과
-				// .oauth2Login(
-				// 		(oauth) ->
-				// 			oauth.userInfoEndpoint(
-				// 					(endpoint) -> endpoint.userService(customOAuth2UserService)
-				// 			))
-				;
-		
+				//.oauth2Login(Customizer.withDefaults()); // 아래 코드와 동일한 결과
+		// .oauth2Login(
+		// 		(oauth) ->
+		// 			oauth.userInfoEndpoint(
+		// 					(endpoint) -> endpoint.userService(customOAuth2UserService)
+		// 			))
+		;
+
+		// http.csrf(csrf -> csrf.disable()); // Cross Site Request Forgery
+		// http.cors(hsc -> {
+		// 	hsc.configurationSource(corsConfigurationSource());
+		// });
 		// userInfoEndpoint() 는 deprecated and marked for removal 6.1에서 
 
 		return http.build();
+	}
+	
+	@Bean
+	public CorsConfigurationSource corsConfigurationSource() {
+		CorsConfiguration configuration = new CorsConfiguration();
+		configuration.setAllowedOriginPatterns(Arrays.asList("*"));
+		configuration.setAllowedMethods(Arrays.asList("HEAD", "GET", "POST", "PUT", "DELETE"));
+		configuration.setAllowedHeaders(Arrays.asList("Authorization", "Cache-Control", "Content-Type"));
+		configuration.setAllowCredentials(true);
+		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+		source.registerCorsConfiguration("/**", configuration);
+		return source;
 	}
 	
 	@Bean

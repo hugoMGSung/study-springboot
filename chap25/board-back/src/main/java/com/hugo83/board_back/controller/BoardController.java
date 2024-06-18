@@ -24,7 +24,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
-import org.springframework.security.web.authentication.WebAuthenticationDetails;
+// import org.springframework.security.web.authentication.WebAuthenticationDetails;
 
 import com.hugo83.board_back.validation.BoardForm;
 import com.hugo83.board_back.validation.ReplyForm;
