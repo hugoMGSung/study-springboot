@@ -914,4 +914,48 @@ React + Spring Boot + DB(H2DB -> Oracle)
 
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0463.png" width="730">
 
+- start.sh 생성
+
+	```shell
+	#!/bin/bash
+
+	JAR=board-back-0.0.1-SNAPSHOT.jar
+	LOG=/home/ubuntu/sbserver/board-back.log
+
+	nohup java -jar $JAR > $LOG 2>&1 &
+	```
+	```shell
+	> chmod +x start.sh
+	```
+
+- stop.sh 생성
+	```shell
+	#!/bin/bash
+
+	BB_PID=$(ps -ef | grep java | grep board-back | awk '{print $2}')
+
+	if [ -z "$BB_PID" ];
+	then
+		echo "BOARD-BACK is not running"
+	else
+		kill -9 $BB_PID
+		echo "BOARD-BACK terminated!"
+	fi
+	```
+	```shell
+	> chmod +x stop.sh
+	```
+
+## Nginx 활용 80포트 사용하기
+
+## 도메인 서버 연결(생략)
+
+## HTTPS로 전환
+
+## AWS Database 사용
+- 두 가지 종류만 지원
+	- MySQL, PostgreSQL
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0464.png" width="730">
+
 ## 리액트 프론트엔드 시작
