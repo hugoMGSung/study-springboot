@@ -833,7 +833,7 @@ React + Spring Boot + DB(H2DB -> Oracle)
 	- 인스턴스 생성
 	- Linux/Unix > 운영체제 전용 > Ubuntu 22.04 LTS 선택
 	- 네트워크 듀얼스택
-	- 크기 선택 - 월별 $5 (512MB, 2개의 vCPU, 20GB SSD, 1TB전송 ) 선택
+	- 크기 선택 - 월별 $5 (512MB, 2개의 vCPU, 20GB SSD, 1TB전송) 선택
 	- 인스턴스 확인 이름 변경 또는 체크
 	
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0452.png" width="730">
@@ -885,7 +885,7 @@ React + Spring Boot + DB(H2DB -> Oracle)
 	sudo apt install openjdk-19-jre-headless  # version 19.0.2+7-0ubuntu3~22.04
 	sudo apt install openjdk-8-jre-headless   # version 8u382-ga-1~22.04.1
 	ubuntu@hugos:~$
-	ubuntu@hugos:~$ sudo apt install openjdk-17-jre-headless
+	ubuntu@hugos:~$ sudo apt install openjdk-17-jdk
 	...
 	ubuntu@hugos:~$ java -version
 	openjdk version "17.0.11" 2024-04-16
@@ -908,6 +908,10 @@ React + Spring Boot + DB(H2DB -> Oracle)
 	
 - 실행확인
 	
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0462.png" width="730">
 
+- local.mv.db 파일질라로 이동
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0463.png" width="730">
 
 ## 리액트 프론트엔드 시작
