@@ -213,31 +213,7 @@ React + Spring Boot + DB(H2DB -> Oracle)
 	chap25/board-front> _
 	```
 
-## C. Bootstrap 패키지 설치
-- Bootstrap 설치 방법 두가지
-	1. 일반적인 CDN으로 설치하는 방법
-	2. npm 명령어로 추가하는 방법 - https://www.npmjs.com/package/bootstrap 확인
-
-		```shell
-		> npm i bootstrap
-		```
-	
-	3. package.json에 설치결과 확인
-
-		<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0405.png" width="730">
-
-- axios 패키지 설치
-
-	```shell
-	> npm i axios
-	```
-
-- react-router-dom 패키지 설치
-	```shell
-	> npm i react-router-dom
-	```
-
-## D. Back-end 개발설정
+## C. Back-end 개발설정
 - 명령 팔레트 실행(Ctrl + Shift + P)
 	1. Spring Initializr: Create a Gradle Project...
 	2. Specify Spring Boot version : 3.2.x 이상 선택
@@ -271,7 +247,7 @@ React + Spring Boot + DB(H2DB -> Oracle)
 - test/BoardBackApplicationTests.java --> jbak으로 변경후 그레이들 빌드
 - controller/HelloController.java 생성
 
-## JPA, DB 시작
+## D. JPA, DB 시작
 - build.gradle 추가
 	- Database - H2DB(inmemory DB)에 각 다른 DBMS로 이전 쉬움
 	- JPA 설정
@@ -361,7 +337,7 @@ React + Spring Boot + DB(H2DB -> Oracle)
 
 - 테스트에 조회 작성 테스트
 
-## JPA, Oracle로 변경 테스트(성공!)
+## E, JPA, Oracle로 변경 테스트(성공!)
 - 중요사항!! JPA가 만들어주는 페이징 쿼리가 Oracle 12c 아래버전은 제대로 동작하지 않음.
 	- 최소 12c, 그 이상 버전으로 설치할 것!!!
 - H2와 변경
@@ -425,7 +401,7 @@ React + Spring Boot + DB(H2DB -> Oracle)
 			// ...
 		```
 
-## 다시 H2DB
+## F. 다시 H2DB
 - 답변 입력 테스트 확인
 
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0413.png" width="730">
@@ -439,7 +415,7 @@ React + Spring Boot + DB(H2DB -> Oracle)
 - HelloController -> MainController로 변경
 	- index() 메서드 추가
 
-### 서비스 활용
+### 1. 서비스 활용
 - 서비스는 복잡한 코드를 모듈화 할 수 있음
 	- 중복된 메서드를 서비스에서 통합 여러 컨트롤러에서 호출해서 사용할 수 있음
 - 엔티티 객체를 DTO(Data Transfer Object)로 변환가능
@@ -474,7 +450,7 @@ React + Spring Boot + DB(H2DB -> Oracle)
 	- 이전에 Board.java에 replyList 확인!
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0419.png" width="730">
 
-### 부트스트랩 적용
+### 2. 부트스트랩 적용
 - 부트스트랩은 다운로드 받아서 static에 넣기, CDN을 추가하는 두 방법 
 - bootstrap-5.3.3-dist.zip 다운로드
 	- 압축 해제 후 bootstrap.min.css를 static에 위치
@@ -499,7 +475,7 @@ React + Spring Boot + DB(H2DB -> Oracle)
 
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0423.png" width="730">
 
-### 스프링부트 검증 라이브러리 
+### 3. 스프링부트 검증 라이브러리 
 - build.gradle에 Spring Boot Validation 추가
 	```properties
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
@@ -521,7 +497,7 @@ React + Spring Boot + DB(H2DB -> Oracle)
 - create.html, detail.html에 사용한 오류메시지 부분 공통템플릿으로 만들기
 - 기존 화면에 적용
 
-### 내비게이션바 추가
+### 4. 내비게이션바 추가
 - layout.html 템플릿에 내비케이션 바 추가
 
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0426.png" width="730">
@@ -530,7 +506,7 @@ React + Spring Boot + DB(H2DB -> Oracle)
 - layout.html 템플릿 소스 맨아래 부트스트랩 자바스크립트 소스 추가
 - navbar.html에 내비게이션바 분리하기
 
-### 페이징 추가
+### 5. 페이징 추가
 - 대량데이터 출력시 불편함 해소
 - /test/.../service/BoardServiceTests.java 작성, 대량데이터 테스트 생성 및 실행
 
@@ -561,7 +537,7 @@ React + Spring Boot + DB(H2DB -> Oracle)
 
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0431.png" width="730">
 
-### 로그인 처리
+### 6. 로그인 처리
 - build.gradle에 스프링 시큐리티 설치
 	```gradle
 	implementation 'org.springframework.boot:spring-boot-starter-security'
@@ -623,7 +599,7 @@ React + Spring Boot + DB(H2DB -> Oracle)
 - /board/detail.html에 로그아웃시 답변 작성 못하도록 변경
 - 글쓴이 추가
 
-## 수정 삭제 등 추가기능 완료
+## G. 수정 삭제 등 추가기능 완료
 - 게시글 수정/삭제 기능
 	- /entity/Reply.java에 수정일차 추가
 	- /board/detail.html 에 질문 수정버튼 생성
@@ -657,7 +633,7 @@ React + Spring Boot + DB(H2DB -> Oracle)
 
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0439.png" width="730">
 
-## 추천 등 추가 기능 
+## H. 추천 등 추가 기능 
 - Board와 Reply 엔티티에 추천자 속성 추가
 
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0440.png" width="730">
@@ -669,7 +645,7 @@ React + Spring Boot + DB(H2DB -> Oracle)
 - /service/ReplyService.java에 추천메서드 추가
 - /controller/ReplyController.java에 GetMapping 메서드 추가
 
-## 앵커기능
+## I. 앵커기능
 - /templates/board/detail.html 에 a 태그 추가
 - 답변 등록, 수정 후 리다이렉트 부분을 변경
 	```java
@@ -681,7 +657,7 @@ React + Spring Boot + DB(H2DB -> Oracle)
 - /service/ReplyService.java 에서 setReply() 메서드 리턴값 변경
 - /controller/ReplyController.java createReply() 메서드 수정
 
-## 목록으로 돌아가기 
+## J. 목록으로 돌아가기 
 - /controller/BoardController.java에 detail() 메서드 수정
 	```java
 	@GetMapping(value = "/detail/{Bno}")
@@ -699,7 +675,7 @@ React + Spring Boot + DB(H2DB -> Oracle)
 	<a th:href="${prevUrl}" class="btn btn-secondary my-2">목록</a>
 	```
 	
-## 검색기능 추가
+## K. 검색기능 추가
 - JPA의 Specification 인터페이스 사용
 	- /service/BoardService.java 에 search() 메서드 추가
 	- /repository/BoardRepository.java 수정
@@ -722,7 +698,7 @@ React + Spring Boot + DB(H2DB -> Oracle)
 
 - 참조링크 : https://velog.io/@puar12/%EC%A0%90%ED%94%84%ED%88%AC%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8-%EC%B6%94%EA%B0%80%EA%B8%B0%EB%8A%A5-%EA%B5%AC%ED%98%84-%EC%A1%B0%ED%9A%8C%EC%88%98
 
-## 마크다운 에디터 적용
+## L. 마크다운 에디터 적용
 - https://simplemde.com/ 에서 확인
 	- layout.html에 css, js 링크 추가
 	- /templates/board/create.html 수정
@@ -735,7 +711,7 @@ React + Spring Boot + DB(H2DB -> Oracle)
 
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0443.png" width="730">
 
-## 카테고리 기능 추가
+## M. 카테고리 기능 추가
 - /entity/Category.java 생성
 - /repository/CategoryRepository.java 인터페이스 작성
 - /service/CategoryService.java
@@ -749,7 +725,7 @@ React + Spring Boot + DB(H2DB -> Oracle)
 
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0444.png" width="730">
 
-## 비밀번호 찾기 설정(보류!)
+## N. 비밀번호 찾기 설정(보류!)
 - Gmail SMTP 서버 설정
 	- 구글 계정 진입, 보안 클릭. 
 	- 2단계 인증 활성화 변경 사용함(나중에 다시 변경할 것!)
@@ -764,7 +740,7 @@ React + Spring Boot + DB(H2DB -> Oracle)
 - /common/SHA256Util 클래스 작성
 - /controller/UserController 에 메일 요청 추가
 
-## 프로필 보기(보류!)
+## O. 프로필 보기(보류!)
 - /repository/BoardRepository에 쿼리 추가
 - /service/BoardService 검색 메서드 추가
 - /controller/UserController.java profile() 메서드 추가
@@ -772,13 +748,13 @@ React + Spring Boot + DB(H2DB -> Oracle)
 
 - reply도 추가해 볼 것!
 
-## 조회수 표시
+## P. 조회수 표시
 - /entity/Board.java 에 hit 추가
 - /service/BoardService.java에 메서드 추가
 - /controller/BoardController.java detail메서드 수정
 - /templates/board/list.html 조회수 추가
 
-## 카카오 로그인(다시!)
+## Q. 카카오 로그인(다시!)
 - build.gradle 의존성 추가
 - /templates/user/login.html에 카카오 로그인버튼 추가
 - https://developers.kakao.com/ 접속
@@ -802,7 +778,7 @@ React + Spring Boot + DB(H2DB -> Oracle)
 
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0446.png" width="730">
 
-## 구글 로그인
+## R. 구글 로그인
 - 구글 개발자 콘솔에서 설정(패스)
 - application.properties 구글 설정 업로드
 - /templates/user/login.html 에 구글 로그인 추가
@@ -825,7 +801,7 @@ React + Spring Boot + DB(H2DB -> Oracle)
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0451.png" width="730">
 
 
-## AWS 라이트세일 시작하기
+## S. AWS 라이트세일 시작하기
 - https://aws.amazon.com/ko/ 접속
 - 회원 가입 및 로그인
 - https://lightsail.aws.amazon.com/ 링크로 진입
@@ -861,7 +837,7 @@ React + Spring Boot + DB(H2DB -> Oracle)
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0457.png" width="730">
 
 
-## 웹서버 배포
+### 1. 웹서버 배포
 - PuTTY 접속
 	```shell
 	ubuntu@ip-172-26-13-99:~$ sudo ln -sf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
@@ -946,16 +922,107 @@ React + Spring Boot + DB(H2DB -> Oracle)
 	> chmod +x stop.sh
 	```
 
-## Nginx 활용 80포트 사용하기
+### 2. Nginx 활용 80포트 사용하기
 
-## 도메인 서버 연결(생략)
+### 3, 도메인 서버 연결(생략)
 
-## HTTPS로 전환
+### 4. HTTPS로 전환
 
-## AWS Database 사용
+### 5. AWS Database 사용
 - 두 가지 종류만 지원
 	- MySQL, PostgreSQL
 
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0464.png" width="730">
 
-## 리액트 프론트엔드 시작
+
+## T. 리액트 개발
+### 1. Bootstrap 패키지 설치
+- 주의! 아래의 구문이 콘솔에 표시됨. 절대 실행하지 말 것!!!
+	```shell
+	> npm audit fix --force
+	```
+
+- Bootstrap 설치 방법 두가지
+	1. 일반적인 CDN으로 설치하는 방법
+	2. npm 명령어로 추가하는 방법 - https://www.npmjs.com/package/bootstrap 확인
+
+		```shell
+		> npm install react-bootstrap bootstrap
+		```
+	
+	3. App.js에 import
+
+		```javascript
+		import 'bootstrap/dist/css/bootstrap.min.css';
+		```
+
+	4. Bootstrap 버튼 입력 후 확인
+
+		<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0465.png" width="730">
+
+- axios 패키지 설치
+
+	```shell
+	> npm install axios
+	```
+
+- react-router-dom 패키지 설치
+	```shell
+	> npm install react-router-dom
+	```
+
+- react-js-pagination 설치
+	```shell
+	> npm i react-js-pagination
+	```
+
+- 노드 다시 시작할 때 처리
+	```shell
+	npm start
+		Starts the development server.
+
+	npm run build
+		Bundles the app into static files for production.
+
+	npm test
+		Starts the test runner.
+
+	npm run eject
+		Removes this tool and copies build dependencies, configuration files
+		and scripts into the app directory. If you do this, you can’t go back!
+
+	We suggest that you begin by typing:
+
+	cd board-front
+	npm start
+
+	Happy hacking!
+	```
+
+	- 새로 내려받으면 npm install 부터 시작
+
+- index.js 에 App에 대한 내용이 포함되어 있음
+- App.js를 수정하면 최초 화면 변경됨
+
+- 리액트는 http://localhost:3000 서버를 실행시켜놓고 진행
+
+### 2. 리액트에서 사용할 Spring Boot RestController
+- /common/Header.java 생성
+
+- /restcontroller/RestBoardController.java 생성 /api/board/list/{category} GetMapping 메서드 우선 작성
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0466.png" width="730">
+
+- 리액트 프론트 작업, 아래 파일들
+	- App.js
+	- index.js
+	- App.test.js
+	- index.css
+	- logo.svg
+	- reportWebVitals.js
+	- setupTests.js
+
+- 레이아웃 분할
+	- /layout/Header. Footer.js로 분할. contents 영역은 App으로 사용
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0467.png" width="730">

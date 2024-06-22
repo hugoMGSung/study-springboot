@@ -19,6 +19,8 @@ import com.hugo83.board_back.entity.Category;
 import com.hugo83.board_back.entity.Reply;
 import com.hugo83.board_back.entity.SiteUser;
 import com.hugo83.board_back.repository.BoardRepository;
+import com.hugo83.board_back.repository.CategoryRepository;
+import com.hugo83.board_back.repository.UserRepository;
 
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
@@ -34,6 +36,10 @@ import lombok.RequiredArgsConstructor;
 public class BoardService {
 
 	private final BoardRepository boardRepository;
+
+	private final CategoryRepository categoryRepository;
+
+	private final UserRepository userRepository;
 
 	public List<Board> getBoardList() {
 		return this.boardRepository.findAll();
@@ -67,12 +73,37 @@ public class BoardService {
 		this.boardRepository.save(b);
 	}
 
+	// 2024.06.00 React 용으로 새롭게 추가!!!
+	public Board setBoardDetailReact(String title, String content, String user, String category) {
+		Board b = Board.builder().title(title).content(content).createDate(LocalDateTime.now()).build();
+		Optional<Category> _cat = categoryRepository.findByTitle(category);
+		if (_cat.isPresent()) {
+			Category cat = _cat.get();
+			b.setCategory(cat);
+		}
+		Optional<SiteUser> _user = userRepository.findByusername(user);
+		if (_user.isPresent()) {
+			SiteUser author = _user.get();
+			b.setAuthor(author);
+		}
+		return this.boardRepository.save(b);
+	}
+
 	public void setBoardModify(Board board, String title, String content) {
 		board.setTitle(title);
 		board.setContent(content);
 		board.setModifyDate(LocalDateTime.now());
 
 		this.boardRepository.save(board);
+	}
+
+	// 2023.067.00 React 용으로 새롭게 추가!!!
+	public Board setBoardModifyReact(Board board, String title, String content) {
+		board.setTitle(title);
+		board.setContent(content);
+		board.setModifyDate(LocalDateTime.now());
+
+		return this.boardRepository.save(board);
 	}
 
 	public void setBoardDelete(Board board) {

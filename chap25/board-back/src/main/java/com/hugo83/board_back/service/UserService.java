@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.hugo83.board_back.common.DataNotFoundException;
 import com.hugo83.board_back.entity.SiteUser;
 import com.hugo83.board_back.repository.UserRepository;
+import com.hugo83.board_back.role.UserRole;
 
 import lombok.RequiredArgsConstructor;
 
@@ -26,6 +27,7 @@ public class UserService {
 		user.setEmail(email);
 		user.setRegDate(LocalDateTime.now());
 		user.setPassword(passwordEncoder.encode(password));
+		user.setRole(UserRole.USER);
 		this.userRepository.save(user);
 		return user;
 	}
