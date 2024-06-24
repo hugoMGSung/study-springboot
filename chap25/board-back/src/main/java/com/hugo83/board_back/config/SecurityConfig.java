@@ -1,6 +1,7 @@
 package com.hugo83.board_back.config;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -39,8 +40,11 @@ public class SecurityConfig {
 		http.authorizeHttpRequests((authorizeHttpRequests) -> authorizeHttpRequests
 				// .anyRequest().authenticated()
 				.requestMatchers(new AntPathRequestMatcher("/**")).permitAll())
+				// CORS추가
+				.cors(corsConfig -> corsConfig.configurationSource(corsConfigurationSource()))
 				.csrf((csrf) -> csrf
-						.ignoringRequestMatchers(new AntPathRequestMatcher("/h2-console/**")))
+						.ignoringRequestMatchers(new AntPathRequestMatcher("/h2-console/**"))
+						.disable())
 				.headers((headers) -> headers
 						.addHeaderWriter(new XFrameOptionsHeaderWriter(
 								XFrameOptionsHeaderWriter.XFrameOptionsMode.SAMEORIGIN)))
@@ -70,18 +74,6 @@ public class SecurityConfig {
 	}
 	
 	@Bean
-	public CorsConfigurationSource corsConfigurationSource() {
-		CorsConfiguration configuration = new CorsConfiguration();
-		configuration.setAllowedOriginPatterns(Arrays.asList("*"));
-		configuration.setAllowedMethods(Arrays.asList("HEAD", "GET", "POST", "PUT", "DELETE"));
-		configuration.setAllowedHeaders(Arrays.asList("Authorization", "Cache-Control", "Content-Type"));
-		configuration.setAllowCredentials(true);
-		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-		source.registerCorsConfiguration("/**", configuration);
-		return source;
-	}
-	
-	@Bean
 	PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
@@ -90,4 +82,17 @@ public class SecurityConfig {
 	AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
 		return authenticationConfiguration.getAuthenticationManager();
 	}
+
+	// ⭐️ CORS 설정
+	@Bean
+    CorsConfigurationSource corsConfigurationSource() {
+        return request -> {
+            CorsConfiguration config = new CorsConfiguration();
+            config.setAllowedHeaders(Collections.singletonList("*"));
+            config.setAllowedMethods(Collections.singletonList("*"));
+            config.setAllowedOriginPatterns(Collections.singletonList("http://localhost:3000")); // ⭐️ 허용할 origin
+            config.setAllowCredentials(true);
+            return config;
+        };
+    }
 }

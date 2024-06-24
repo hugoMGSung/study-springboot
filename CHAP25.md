@@ -961,17 +961,19 @@ React + Spring Boot + DB(H2DB -> Oracle)
 		<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0465.png" width="730">
 
 - axios 패키지 설치
-
+	- api 호출 시 필요
 	```shell
 	> npm install axios
 	```
 
 - react-router-dom 패키지 설치
+	- 페이지 이동시 필요.
 	```shell
 	> npm install react-router-dom
 	```
 
 - react-js-pagination 설치
+	- 페이징 시 필요(굳이?)
 	```shell
 	> npm i react-js-pagination
 	```
@@ -1013,6 +1015,8 @@ React + Spring Boot + DB(H2DB -> Oracle)
 
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0466.png" width="730">
 
+- /entity/Pagination.java 생성
+
 - 리액트 프론트 작업, 아래 파일들
 	- App.js
 	- index.js
@@ -1026,3 +1030,50 @@ React + Spring Boot + DB(H2DB -> Oracle)
 	- /layout/Header. Footer.js로 분할. contents 영역은 App으로 사용
 
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0467.png" width="730">
+
+- 헤더를 부트스트랩 기능으로 추가
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0468.png" width="730">
+
+- /routes/BoardList.js 생성
+- App.js 페이지 이동 추가
+- index.js에 App 컴포넌트를 BrowserRouter로 래핑
+
+- /layout/Header.js 변경
+	- SPA 형태로 작동하게 하려면 react-router Link로 변경(화면 깜빡임!)
+
+- 패키지 매니저 yarn 설치
+	```shell
+	> npm install -g yarn
+	...
+	> yarn --v
+	... 자동 설치! 
+	```
+
+	- yarn start == npm start
+
+- 게시판 목록조회, axios 추가
+	- /routes/BoardList.js 수정
+	- 실행 시 오류 
+	
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0469.png" width="650">
+
+- CORS policy 문제 -> Spring Boot에서 해결해야 함
+	- /security/SecurityConfig.java에 CORS 설정 추가
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0470.png" width="650">
+
+- BoardList.js 추가작업
+
+	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0471.png" width="650">
+
+- /common/CommonFunc.js 생성
+	- 
+
+- (문제) 댓글을 달게 되면 리커시브 오류로 리액트 모두 에러
+	- entity, repository, service, controller 등을 React용 rest api로 변경해야 함!!
+
+- 
+
+### 3. 회원 로그인
+- 

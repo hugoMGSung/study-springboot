@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.hugo83.board_back.common.Header;
 import com.hugo83.board_back.entity.Board;
 import com.hugo83.board_back.entity.Category;
+import com.hugo83.board_back.entity.Pagination;
 import com.hugo83.board_back.service.BoardService;
 import com.hugo83.board_back.service.CategoryService;
 
@@ -21,6 +22,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/api")
@@ -29,16 +32,24 @@ public class RestBoardController {
 	private final BoardService boardService;
 	private final CategoryService categoryService; // 카테고리 추가
 
-	@GetMapping("/board/{category}")
+	@GetMapping("/board/list/{category}")
 	@ResponseBody
-	public Header<Page<Board>> list(@RequestParam(value = "page", defaultValue = "0") int page,
+	public Header<List<Board>> list(@RequestParam(value = "page", defaultValue = "0") int page,
 						@PathVariable("category") String category,
 			@RequestParam(value = "kw", defaultValue = "") String kw) {
 		// List<Board> boardList = this.boardService.getBoardList();
 		// model.addAttribute("boardList", boardList);
 		Category category1 = this.categoryService.getCategoryByTitle(category);
 		Page<Board> paging = this.boardService.getList(page, kw, category1);
-		Header<Page<Board>> result = Header.OK(paging);
+		List<Board> list = paging.getContent();
+		Pagination pagination = new Pagination(
+			paging.getTotalElements(),
+			paging.getNumber() + 1,
+			10,
+			10
+		);
+
+		Header<List<Board>> result = Header.OK(list, pagination);
 		// model.addAttribute("paging", paging);
 		// model.addAttribute("kw", kw);
 		// model.addAttribute("category", category);

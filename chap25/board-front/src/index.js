@@ -4,16 +4,24 @@ import "./index.css";
 import App from "./App";
 import Header from "./layout/Header";
 import Footer from "./layout/Footer";
+import { BrowserRouter } from "react-router-dom";
 // import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   // <React.StrictMode>
-  <>
-    <Header />
-    <App />
-    <Footer />
-  </>
+  <div className="App h-full w-full">
+    <BrowserRouter>
+      <div id="wrapper" className="flex flex-col h-screen">
+
+        <Header />
+        <div id="main-content" className="flex-1">
+          <App />
+        </div>
+        <Footer />
+      </div>
+    </BrowserRouter>
+  </div>
   // </React.StrictMode>
 );
 
