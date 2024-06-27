@@ -7,9 +7,9 @@ function Home() {
 	var username = "";
 	var role = "";
 
-	if (location.state != null) {
-		username = location.state.userData.username ?? "";
-		role = location.state.userData.role ?? "";
+	if (localStorage != null) {
+		username = localStorage.getItem("username");
+		role = localStorage.getItem("role");
 	}	
 
 	return (

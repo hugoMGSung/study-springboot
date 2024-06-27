@@ -34,7 +34,15 @@ function Login() {
         alert('로그인 성공! ');
         console.log('유저아이디: ' + response.data.username);
         console.log('권한: ' + response.data.role);
-        console.log('Type'  + typeof(response.data));
+        // console.log('Type'  + typeof(response.data));
+        // localStorage로 변경
+        localStorage.setItem("username", response.data.username);
+        localStorage.setItem("password", response.data.password);
+        localStorage.setItem("email", response.data.email);
+        localStorage.setItem("role", response.data.role);
+        localStorage.setItem("loginDt", new Date());
+        console.log(response.data);
+        console.log(localStorage);
         navigate('/home', { state: { userData: response.data } });
       }
     } catch (error) {
