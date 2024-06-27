@@ -726,19 +726,16 @@ React + Spring Boot + DB(H2DB -> Oracle)
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0444.png" width="730">
 
 ## N. 비밀번호 찾기 설정(보류!)
-- Gmail SMTP 서버 설정
-	- 구글 계정 진입, 보안 클릭. 
-	- 2단계 인증 활성화 변경 사용함(나중에 다시 변경할 것!)
+- build.gradle 디펜던시 추가
+- application.properties 메일설정
+- 네이버 메일 SMTP설정 > 환경설정 > POP3/IMAP 설정
 
-- build.gradle 의존성 추가
+	<img src="https://raw.githubusercontent.com/hugoMGSung/basic-springboot-2024/main/images/sp012.png" width="730">
 
-	```properties
-	implementation 'org.springframework.boot:spring-boot-starter-mail'
-	```
-
+- /config/SecurityConfig.java CSRF 설정변경(!)
 - /config/MailConfig.java 추가
-- /common/SHA256Util 클래스 작성
-- /controller/UserController 에 메일 요청 추가
+- /restcontroller/MailController.java 생성
+
 
 ## O. 프로필 보기(보류!)
 - /repository/BoardRepository에 쿼리 추가

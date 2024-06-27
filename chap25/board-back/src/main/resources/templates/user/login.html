@@ -18,13 +18,21 @@
             <button type="submit" class="btn btn-primary">로그인</button>
             <button type="button" id="kakao_login_btn" class="btn btn-warning">카카오 로그인</button>
             <a href="/oauth2/authorization/google" class="btn btn-danger">Google Login</a>
+            <!--utton type="button" id="reset_pass" class="btn btn-info">비번초기화</button-->
+            <a href="/email/reset" class="btn btn-info">비번초기화</a>
         </div>
     </form>
+
+    <div id="content">
+        
+    </div>
 </div>
 <script layout:fragment="script" type='text/javascript'>
     const kakao_login_btn = document.getElementById("kakao_login_btn");
     kakao_login_btn.addEventListener('click', function () {
     location.href = "/oauth2/authorization/kakao";
     });
+
+    
 </script>
 </html>

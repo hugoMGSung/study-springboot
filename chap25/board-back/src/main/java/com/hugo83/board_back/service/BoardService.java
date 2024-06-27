@@ -81,7 +81,7 @@ public class BoardService {
 			Category cat = _cat.get();
 			b.setCategory(cat);
 		}
-		Optional<SiteUser> _user = userRepository.findByusername(user);
+		Optional<SiteUser> _user = userRepository.findByUsername(user);
 		if (_user.isPresent()) {
 			SiteUser author = _user.get();
 			b.setAuthor(author);

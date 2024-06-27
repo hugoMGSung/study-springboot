@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" th:href="@{/bootstrap.min.css}" />
+    <link rel="icon" href="https://getbootstrap.com//docs/5.3/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="https://getbootstrap.com//docs/5.3/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+    <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+    <!-- sbb CSS -->
+    <link rel="stylesheet" type="text/css" th:href="@{/style.css}" />
+    <title>Hello, Backboard</title>
+  </head>
+  <body>
+    <!-- 내비게이션바-->
+    <nav th:replace="~{navbar :: navbarFragment}"></nav>
+
+    <div class="container mt-3" style="height: auto !important;">
+        <div class="col-sm-12 col-md-9 col-lg-10 p-2">
+            <div class="my-3 border-bottom">
+                <div>
+                    <h4>비번초기화</h4>
+                </div>
+            </div>
+            <form th:action="@{/email/reset-password}" method="post"
+                <div class="mb-3">
+                    <label for="email" class="form-label">이메일</label>
+                    <input type="email" id="email" name="email" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-primary">초기화</button>
+            </form>
+        
+        </div>
+    </div>
+    <!-- Bootstrap JS-->
+    <script th:src="@{/bootstrap.min.js}"></script>
+    <!-- 자바스크립트 Start -->
+    <th:block layout:fragment="script"></th:block>
+    <!-- 자바스크립트 End -->
+     
+  </body>
+</html>
+
+	
+    <div id="result">
+        
+    </div>
+</div>
+<script layout:fragment="script" type='text/javascript'>
+</script>
