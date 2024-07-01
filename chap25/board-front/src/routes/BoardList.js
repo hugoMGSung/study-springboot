@@ -6,38 +6,46 @@ import { Link } from "react-router-dom";
 import * as common from '../common/CommonFunc';
 
 const BoardList = () => {
-  const [boardList, setBoardList] = useState([]);
-  const [pageList, setPageList] = useState([]);
+	const [boardList, setBoardList] = useState([]);
+	const [pageList, setPageList] = useState([]);
+	let [lastPage, setLastPage] = useState(0);
 
-  const getBoardList = async (number) => {
-	var pageString = (number == null) ? 'page=0' : 'page=' + number; 
-    const resp = (await axios.get("//localhost:8080/api/board/list/freeboard?" + pageString)).data;
-	setBoardList(resp.data);
-    console.log(resp.data);
+	const getBoardList = async (number) => {
+		var pageString = (number == null) ? 'page=0' : 'page=' + number; 
+		const resp = (await axios.get("//localhost:8080/api/board/list/freeboard?" + pageString)).data;
+		setBoardList(resp.data);
+		console.log(resp.data);
 
-	const pngn = resp.pagination;
-	// console.log(pngn);
+		const pngn = resp.pagination;
+		// console.log(pngn);
 
-	const { endPage, nextBlock, prevBlock, startPage, totalPageCnt } = pngn;
+		const { endPage, nextBlock, prevBlock, startPage, totalPageCnt } = pngn;
 
-	const tmpPages = [];
-	for (let i = startPage; i <= endPage; i++) {
-		tmpPages.push(i);
-	}
-	setPageList(tmpPages);
-  };
+		setLastPage(totalPageCnt);
+		console.log(startPage);
+		console.log(endPage);
+		console.log(nextBlock);
+		console.log(prevBlock);
+		console.log(totalPageCnt);
 
-  const onClick = (event) => {
-    let value = event.currentTarget.value;
-	console.log(value);
-    getBoardList(value - 1);
-  };
+		const tmpPages = [];
+		for (let i = startPage; i <= endPage; i++) {
+			tmpPages.push(i);
+		}
+		setPageList(tmpPages);
+	};
 
-  useEffect(() => {
-    getBoardList(); // 1) 게시글 목록 조회 함수 호출
-  }, []);
+	function onClick(page) {
+		console.log(page);
+		getBoardList(page - 1);
+	};
 
-  return (
+
+	useEffect(() => {
+		getBoardList(); // 1) 게시글 목록 조회 함수 호출
+	}, []);
+
+	return (
 	<div className="container">
 		 <table className="table">
 			<thead className="table-dark">
@@ -79,19 +87,19 @@ const BoardList = () => {
 			<nav aria-label="Page navigation">
 				<ul className="pagination">
 					<li className="page-item">
-						<Link className="page-link" aria-label="Previous">
+						<button className="page-link" aria-label="Previous" onClick={() => onClick(1)}>
 							<span aria-hidden="true">&laquo;</span>
-						</Link>
+						</button>
 					</li>
 					{pageList.map((page, index) => (
 						<li className="page-item" key={index}>
-							<Link className="page-link" onClick={onClick} value={page}>{page}</Link>
+							<button className="page-link" onClick={() => onClick(page)}>{page}</button>
 						</li>
 					))}
 					<li className="page-item">
-						<Link className="page-link" aria-label="Next">
+						<button className="page-link" aria-label="Next" onClick={() => onClick(lastPage)}>
 							<span aria-hidden="true">&raquo;</span>
-						</Link>
+						</button>
 					</li>
 				</ul>
 			</nav>
