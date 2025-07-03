@@ -10,7 +10,6 @@ import com.hugo83.webmall.entity.ItemSellStatus;
 
 @Repository
 public interface ItemRepository extends JpaRepository<Item, Long> {
-
     // 상품 이름으로 검색
     List<Item> findByItemNameContaining(String itemName);
 
@@ -25,5 +24,4 @@ public interface ItemRepository extends JpaRepository<Item, Long> {
 
     // 가격이 특정 값 이하인 상품 검색
     List<Item> findByPriceLessThanEqual(int price);
-
 }
