@@ -46,6 +46,10 @@ class WebmallApplicationTests {
 		}
 	}
 
+	@Test
+	void selectListItemJpa() {
+		List<Item> itemList = this.itemRepository
+	}
 
 	@Test
 	void contextLoads() {

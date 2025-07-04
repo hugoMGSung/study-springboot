@@ -24,4 +24,6 @@ public interface ItemRepository extends JpaRepository<Item, Long> {
 
     // 가격이 특정 값 이하인 상품 검색
     List<Item> findByPriceLessThanEqual(int price);
+
+    List<Item> findByItemNameOrItemDetail(String itemName, String itemDetail);
 }
