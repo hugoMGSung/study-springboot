@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hugo83.mybatis_demo.mapper.MemberMapper">
+
+  <insert id="insert" parameterType="Member">
+    INSERT INTO members(name, email, password)
+    VALUES(#{name}, #{email}, #{password});
+  </insert>
+
+  <select id="findAll" resultType="Member">
+    SELECT id, name, email FROM members;
+  </select>
+
+</mapper>
