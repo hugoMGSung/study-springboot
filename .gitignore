@@ -163,3 +163,8 @@ dist
 .pnp.*
 
 **/.gradle/
+*.lock
+*.lock
+chap00/.gradle/8.1.1/checksums/checksums.lock
+chap03/.gradle/8.0/checksums/checksums.lock
+chap07/.gradle/8.0/checksums/checksums.lock

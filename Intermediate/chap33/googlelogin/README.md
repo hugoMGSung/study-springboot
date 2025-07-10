@@ -27,4 +27,6 @@
 11. MemberRepository 작성
 12. CustomOAuth2UserService 에 유저 정보 DB저장 로직 작성
 
+13. 커스텀 로그인 페이지 작성
+
 13. 세션처리 - TODO
