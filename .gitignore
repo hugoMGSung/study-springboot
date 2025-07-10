@@ -175,3 +175,9 @@ dist
 /chap02/.gradle
 app-ec2/.gradle/8.4/checksums/checksums.lock
 /app-ec2/.gradle
+/chap00/.gradle
+/chap03/.gradle
+/chap05/.gradle
+/chap07/.gradle
+/chap09/.gradle
+/chap09/.gradle
