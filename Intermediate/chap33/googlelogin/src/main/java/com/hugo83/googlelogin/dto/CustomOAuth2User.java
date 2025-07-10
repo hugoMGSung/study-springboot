@@ -5,9 +5,10 @@ import java.util.Collection;
 import java.util.Map;
 
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 
-public class CustomOAuth2User implements OAuth2User  {
+public class CustomOAuth2User implements OAuth2User, UserDetails  {
 
     private final UserDto userDto;
 
@@ -49,6 +50,12 @@ public class CustomOAuth2User implements OAuth2User  {
 
     public String getUsername() {
         return userDto.getUsername();
+    }
+
+    @Override
+    public String getPassword() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getPassword'");
     }
 
 }

@@ -33,7 +33,7 @@ public class SecurityConfig {
                                             .requestMatchers("/", "/login/**", "/oauth2/**", "/my", "/css/**", "/js/**").permitAll()
                                             .anyRequest().authenticated())
             .oauth2Login(oauth2 -> oauth2
-                                        .loginPage("/login")  // 커스텀 로그인시 추가!
+                                        .loginPage("/login")  // 나중에 커스텀 로그인시 추가!
                                         .userInfoEndpoint(uiep -> uiep.userService(customOAuth2UserService))
                                         .defaultSuccessUrl("/my", true))
         ;
