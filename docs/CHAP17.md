@@ -84,4 +84,4 @@
 3. /util/LocalUploader.java 작성
 4. ...
 
-[Next](https://github.com/hugoMGSung/study-springboot/blob/main/CHAP91.md)
+[Next](./CHAP91.md)

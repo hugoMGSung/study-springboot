@@ -296,4 +296,4 @@ DB에서 테이블을 만들 필요없음
 24. 삭제 처리
 
 
-[Next](https://github.com/hugoMGSung/study-springboot/blob/main/CHAP11.md)
+[Next](./CHAP11.md)

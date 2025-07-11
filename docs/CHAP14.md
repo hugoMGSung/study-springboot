@@ -194,4 +194,4 @@
 
 17. 테스트.... 현재 이미지에 _ 들어가면 문제 발생(오류 수정요)
 
-[Next](https://github.com/hugoMGSung/study-springboot/blob/main/CHAP15.md)
+[Next](./CHAP15.md)

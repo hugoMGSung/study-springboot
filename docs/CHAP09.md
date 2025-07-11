@@ -517,4 +517,4 @@
 13. TodoController에서 modify() 가 /todo/list에서 /todo/read로 이동하도록 변경
 
 
-[Next](https://github.com/hugoMGSung/study-springboot/blob/main/CHAP10.md)
+[Next](./CHAP10.md)

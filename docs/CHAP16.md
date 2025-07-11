@@ -262,4 +262,4 @@
 
 ... 다시
 
-[Next](https://github.com/hugoMGSung/study-springboot/blob/main/CHAP17.md)
+[Next](./CHAP17.md)

@@ -148,4 +148,4 @@ PASS
 
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0022.png" width="600">
 
-[Next](https://github.com/hugoMGSung/study-springboot/blob/main/CHAP04.md)
+[Next](./CHAP04.md)

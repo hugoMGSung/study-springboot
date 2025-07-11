@@ -194,4 +194,4 @@
 
 	<img src="https://raw.githubusercontent.com/hugoMGSung/study-springboot/main/images/sb0026.png" width="600">
 
-[Next](https://github.com/hugoMGSung/study-springboot/blob/main/CHAP07.md)
+[Next](./CHAP07.md)

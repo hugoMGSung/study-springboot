@@ -96,4 +96,4 @@
 3. TodoListController.java doGet() 메서드에 리스너 확인코드 추가
 4. 세션관련 리스너 LoginListener 클래스 추가/작성
 
-[Next](https://github.com/hugoMGSung/study-springboot/blob/main/CHAP09.md)
+[Next](./CHAP09.md)

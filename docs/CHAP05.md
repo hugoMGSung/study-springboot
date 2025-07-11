@@ -108,4 +108,4 @@
 
 	GET, POST 후 Redirect를 처리하는 방식을 POST-Redirect-GET(PRG) 라고 함
 
-[Next](https://github.com/hugoMGSung/study-springboot/blob/main/CHAP06.md)
+[Next](./CHAP06.md)

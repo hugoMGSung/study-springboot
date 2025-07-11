@@ -167,4 +167,4 @@ REST API와 JWT
 
 19. "Token is null or too short" 문제해결 요
 
-[Next](https://github.com/hugoMGSung/study-springboot/blob/main/CHAP16.md)
+[Next](./CHAP16.md)
