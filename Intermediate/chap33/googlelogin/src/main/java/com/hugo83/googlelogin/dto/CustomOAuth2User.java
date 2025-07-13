@@ -55,7 +55,7 @@ public class CustomOAuth2User implements OAuth2User, UserDetails  {
     @Override
     public String getPassword() {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getPassword'");
+        return "";
     }
 
 }
